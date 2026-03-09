@@ -12,4 +12,4 @@ UFRN — Escola de Ciência e Tecnologia
 
 # Aulas
 
-- [Aula 01 — Variáveis, Constantes e Operadores](01-intro.html)
+- [Aula 01 — Variáveis, Constantes e Operadores](slides/01-intro.html)

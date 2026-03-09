@@ -16,5 +16,5 @@ do
     title=$name
   fi
 
-  echo "- [$title]($name.html)" >> index.md
+  echo "- [Aula $num — $title](slides/$name.html)" >> index.md
 done
