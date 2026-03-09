@@ -40,14 +40,15 @@ Prof. Éverton Santi
 
 # Processo de Compilação
 
-O processo de compilação em C++ transforma o código-fonte em um programa executável.
+Compilar significa transformar o arquivo `.cpp` em um programa que pode ser executado.
 
 ## Etapas principais:
 
-1. **Pré-processamento**: Expande diretivas como `#include` e `#define`
-2. **Compilação**: Traduz o código para linguagem assembly
-3. **Montagem (Assembly)**: Converte assembly em código objeto
-4. **Ligação (Linking)**: Combina código objeto com bibliotecas para criar o executável
+1. **Pré-processamento**: resolve diretivas como `#include` e `#define`
+2. **Compilação**: verifica o código e gera arquivos intermediários
+3. **Ligação (linking)**: junta tudo (incluindo bibliotecas) e produz o executável
+
+Na prática, os compiladores modernos executam esse fluxo automaticamente.
 
 ---
 
