@@ -368,7 +368,7 @@ Outro exemplo:
 
 ```cpp
 int a = 5, b = 2;
-double resultado = (double)(a) / b; // 2.5
+double resultado = (double)(a) / b; // 2.0
 ```
 
 ---
