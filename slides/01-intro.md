@@ -179,6 +179,28 @@ long int populacao;
 
 <!-- fit -->
 
+# Tipos Modificáveis e Limites
+
+Valores **típicos** em compiladores modernos (arquitetura 64-bit):
+
+| Tipo                     | Mínimo                                | Máximo                                 |
+| ------------------------ | ------------------------------------- | -------------------------------------- |
+| `signed char`            | -128                                  | 127                                    |
+| `unsigned char`          | 0                                     | 255                                    |
+| `short int`              | -32.768                               | 32.767                                 |
+| `unsigned short int`     | 0                                     | 65.535                                 |
+| `int`                    | -2.147.483.648                        | 2.147.483.647                          |
+| `unsigned int`           | 0                                     | 4.294.967.295                          |
+| `long int`               | -9.223.372.036.854.775.808            | 9.223.372.036.854.775.807              |
+| `unsigned long int`      | 0                                     | 18.446.744.073.709.551.615             |
+| `long long int`          | -9.223.372.036.854.775.808            | 9.223.372.036.854.775.807              |
+| `unsigned long long int` | 0                                     | 18.446.744.073.709.551.615             |
+| `long double`            | ~3.4 × 10^-4932                       | ~1.1 × 10^4932                         |
+
+---
+
+<!-- fit -->
+
 # Identificadores
 
 Regras para nomes de variáveis:
