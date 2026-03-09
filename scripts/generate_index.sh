@@ -103,15 +103,15 @@ cat > index.html <<'HTML'
   <title>ECT3201 - Linguagem de Programação (C++)</title>
   <style>
     :root {
-      --bg-1: #f8fbff;
-      --bg-2: #edf4fb;
-      --panel: rgba(255, 255, 255, 0.92);
-      --border: #c7d2df;
+      --bg: #eef1f5;
+      --panel: #ffffff;
+      --border: #d5dbe5;
       --text: #0b1220;
-      --muted: #365f8c;
-      --accent: #0a2f57;
-      --accent-2: #0f457b;
-      --ok: #0f6ab3;
+      --muted: #5a6475;
+      --brand: #1f4f93;
+      --brand-dark: #143f78;
+      --link: #0f5eb8;
+      --ok: #1168af;
       --pdf: #b42318;
     }
     * { box-sizing: border-box; }
@@ -119,28 +119,97 @@ cat > index.html <<'HTML'
       margin: 0;
       font-family: "Segoe UI", "Poppins", system-ui, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(900px 500px at -15% -20%, rgba(15, 69, 123, 0.14) 0%, transparent 60%),
-        radial-gradient(900px 520px at 120% -10%, rgba(11, 79, 140, 0.11) 0%, transparent 62%),
-        linear-gradient(140deg, var(--bg-1), var(--bg-2));
+      background: var(--bg);
       min-height: 100vh;
+    }
+    .govbar {
+      height: 34px;
+      background: #f0f0f0;
+      border-bottom: 1px solid #d9dde3;
+      font-size: .9rem;
+      color: #384455;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 0 12px;
+      overflow: hidden;
+    }
+    .govbar a { color: #384455; text-decoration: none; font-weight: 600; white-space: nowrap; }
+    .govbar a:hover { text-decoration: underline; }
+    .ectbar {
+      background: linear-gradient(90deg, var(--brand-dark), var(--brand));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 20px;
+    }
+    .ect-logo {
+      font-weight: 700;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      font-size: .95rem;
+    }
+    .ect-nav {
+      display: flex;
+      gap: 16px;
+      font-size: .92rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .ect-nav a { color: #fff; text-decoration: none; font-weight: 600; }
+    .ect-nav a:hover { text-decoration: underline; }
+    .hero-banner {
+      position: relative;
+      min-height: 290px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18) 1px, transparent 2px) 0 0 / 36px 36px,
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.14) 1px, transparent 2px) 0 0 / 42px 42px,
+        linear-gradient(160deg, #021637 0%, #062b61 55%, #0e3f7e 100%);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(2, 8, 25, 0.46), rgba(2, 8, 25, 0.15));
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 940px;
+    }
+    .hero-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 4.4vw, 3rem);
+      line-height: 1.12;
+      font-weight: 800;
+    }
+    .hero-sub {
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #dbeafe;
     }
     .grid {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 28px 18px 40px;
+      padding: 22px 18px 40px;
       display: grid;
       gap: 18px;
     }
-    .hero {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      background: var(--panel);
-      box-shadow: 0 10px 30px rgba(10, 47, 87, 0.08);
+    .section-title {
+      margin: 0;
+      color: #243246;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 700;
     }
-    h1 { margin: 0 0 6px; font-size: clamp(1.8rem, 4vw, 2.7rem); }
-    .sub { margin: 0; color: var(--muted); }
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -151,24 +220,54 @@ cat > index.html <<'HTML'
       border-radius: 14px;
       background: var(--panel);
       padding: 14px;
-      box-shadow: 0 8px 24px rgba(10, 47, 87, 0.06);
+      box-shadow: 0 8px 18px rgba(11, 29, 58, 0.05);
     }
-    .card h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      color: var(--brand-dark);
+      border-bottom: 2px solid #edf2f8;
+      padding-bottom: 7px;
+    }
     table { width: 100%; border-collapse: collapse; font-size: .95rem; }
     th, td { border-top: 1px solid var(--border); padding: 8px 6px; text-align: left; }
-    th { color: #0f457b; border-top: none; }
-    a { color: #0f5eb8; text-decoration: none; font-weight: 600; }
+    th { color: #1d4777; border-top: none; background: #f7faff; }
+    a { color: var(--link); text-decoration: none; font-weight: 600; }
     a:hover { text-decoration: underline; }
     .html { color: var(--ok); }
     .pdf { color: var(--pdf); }
+    @media (max-width: 760px) {
+      .govbar { gap: 14px; font-size: .8rem; }
+      .ectbar { padding: 10px 12px; }
+      .ect-logo { font-size: .85rem; }
+      .ect-nav { gap: 10px; font-size: .85rem; }
+    }
   </style>
 </head>
 <body>
+  <div class="govbar">
+    <a href="#">Brasil</a>
+    <a href="#">Simplifique!</a>
+    <a href="#">Acesso à Informação</a>
+    <a href="#">Legislação</a>
+  </div>
+  <div class="ectbar">
+    <div class="ect-logo">Escola de Ciências e Tecnologia - UFRN</div>
+    <nav class="ect-nav">
+      <a href="#">Institucional</a>
+      <a href="#">Ensino</a>
+      <a href="#">Serviços</a>
+      <a href="#">Mídias</a>
+    </nav>
+  </div>
+  <section class="hero-banner">
+    <div class="hero-content">
+      <h1 class="hero-title">ECT3201 - Linguagem de Programação (C++)</h1>
+      <p class="hero-sub">Índice dos materiais da disciplina: aulas, laboratórios e listas.</p>
+    </div>
+  </section>
   <main class="grid">
-    <section class="hero">
-      <h1>ECT3201 - Linguagem de Programação (C++)</h1>
-      <p class="sub">Prof. Éverton Santi</p>
-    </section>
+    <p class="section-title">Materiais Disponíveis</p>
     <section class="cards">
       <article class="card">
         <h2>Aulas Teóricas</h2>
