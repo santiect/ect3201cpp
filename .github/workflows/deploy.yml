@@ -39,6 +39,9 @@ jobs:
       - name: Export slides to HTML
         run: marp slides/*.md --html --theme-set theme/ect.css --theme ect
 
+      - name: Export slides to PDF
+        run: marp slides/*.md --pdf --theme-set theme/ect.css --theme ect
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

@@ -30,8 +30,8 @@ for file in slides/*.md; do
   fi
 
   if [ -n "$num" ]; then
-    echo "- [Aula $num - $title](slides/$name.html)" >> index.md
+    echo "- Aula $num - $title: [Ver slides](slides/$name.html) | [Baixar PDF](slides/$name.pdf)" >> index.md
   else
-    echo "- [$title](slides/$name.html)" >> index.md
+    echo "- $title: [Ver slides](slides/$name.html) | [Baixar PDF](slides/$name.pdf)" >> index.md
   fi
 done
