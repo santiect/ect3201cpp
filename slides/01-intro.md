@@ -258,7 +258,7 @@ Escreva um programa para ler o nome e a idade de uma pessoa. Exiba os dados lido
 
 ## Distanciamento de Segurança
 
-Escreva um programa para a distância segura entre veículos:
+Escreva um programa para calcular a distância segura entre veículos:
 
 $$
 d = \left(\frac{velocidade}{10}\right)^2
