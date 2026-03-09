@@ -3,42 +3,100 @@
 
 section {
   box-sizing: border-box;
-  padding: 30px 44px 36px 44px;
-  font-size: 24px;
-  line-height: 1.12;
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 40px 56px 44px 56px;
+  font-size: 30px;
+  line-height: 1.2;
 }
 
 section h1 {
-  margin: 0 0 0.22em 0;
-  font-size: 1.28em;
+  margin: 0 0 0.28em 0;
+  font-size: 1.4em;
+  color: #0b3a67;
 }
 
 section h2 {
-  margin: 0.14em 0;
-  font-size: 1em;
+  margin: 0.2em 0;
+  font-size: 1.1em;
+  color: #134e8a;
 }
 
 section p {
-  margin: 0.16em 0;
+  margin: 0.24em 0;
 }
 
 section ul,
 section ol {
-  margin: 0.16em 0;
+  margin: 0.24em 0;
 }
 
 section li {
-  margin: 0.06em 0;
+  margin: 0.1em 0;
 }
 
 section pre {
-  margin: 0.16em 0;
-  font-size: 0.62em;
-  line-height: 1.18;
+  margin: 0.22em 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 0.7em;
+  line-height: 1.22;
+  text-align: left;
+  text-indent: 0;
+  align-self: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+}
+
+section pre code.hljs {
+  color: #24292f;
+  background: transparent;
+  text-align: left;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+}
+
+section .hljs-comment,
+section .hljs-quote {
+  color: #6e7781;
+}
+
+section .hljs-keyword,
+section .hljs-selector-tag,
+section .hljs-type {
+  color: #cf222e;
+}
+
+section .hljs-string,
+section .hljs-doctag {
+  color: #0a3069;
+}
+
+section .hljs-number,
+section .hljs-literal {
+  color: #0550ae;
+}
+
+section .hljs-title,
+section .hljs-function {
+  color: #8250df;
+}
+
+section .hljs-params,
+section .hljs-variable,
+section .hljs-attr {
+  color: #24292f;
 }
 
 section table {
-  font-size: 0.66em;
+  font-size: 0.78em;
 }
 
 section > *:last-child {
