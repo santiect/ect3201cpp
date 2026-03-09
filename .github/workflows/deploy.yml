@@ -39,8 +39,20 @@ jobs:
       - name: Export slides to HTML
         run: marp slides/*.md --html --theme-set theme/ect.css --theme ect
 
+      - name: Export labs to HTML
+        run: marp labs/*.md --html --theme-set theme/ect.css --theme ect
+
+      - name: Export exercise lists to HTML
+        run: marp listas/*.md --html --theme-set theme/ect.css --theme ect
+
       - name: Export slides to PDF
         run: marp slides/*.md --pdf --theme-set theme/ect.css --theme ect
+
+      - name: Export labs to PDF
+        run: marp labs/*.md --pdf --theme-set theme/ect.css --theme ect
+
+      - name: Export exercise lists to PDF
+        run: marp listas/*.md --pdf --theme-set theme/ect.css --theme ect
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
