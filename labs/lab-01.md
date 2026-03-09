@@ -162,25 +162,23 @@ Dica: use divisão inteira e o operador de resto (`%`).
 
 # Exercício 7 - Ponto e Círculo (`cmath`)
 
-Crie um programa que use a biblioteca `cmath` para verificar se um ponto está dentro de um círculo.
+Use `cmath` para verificar se um ponto está dentro de um círculo.
 
 Entradas:
 
-1. Coordenadas do centro do círculo: `cx`, `cy`
-2. Raio do círculo: `r`
-3. Coordenadas do ponto: `x`, `y`
+1. Centro: `cx`, `cy`
+2. Raio: `r`
+3. Ponto: `x`, `y`
 
-Calcule a distância euclidiana entre o ponto e o centro:
+Distância euclidiana:
 
 $$
 d = \sqrt{(x-cx)^2 + (y-cy)^2}
 $$
 
-Mostre:
+Saída (somente uma palavra):
 
-1. O valor de `d` com 2 casas decimais
-2. O resultado final do problema, imprimindo apenas:
-   - `verdadeiro`, se `d <= r`
-   - `falso`, se `d > r`
+1. `verdadeiro`, se `d <= r`
+2. `falso`, se `d > r`
 
-Dica: use `sqrt()` e `pow()` da `cmath`.
+Dica: use `sqrt()` da `cmath`.
