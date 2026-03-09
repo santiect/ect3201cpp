@@ -33,8 +33,8 @@ jobs:
       - name: Generate index.md
         run: bash scripts/generate_index.sh
 
-      - name: Export index.md to HTML
-        run: marp index.md --html --theme-set theme/ect.css --theme ect
+      - name: Export slide index to HTML
+        run: marp indice.md --html --theme-set theme/ect.css --theme ect
 
       - name: Export slides to HTML
         run: marp slides/*.md --html --theme-set theme/ect.css --theme ect
