@@ -19,8 +19,10 @@ printf '%s\n' \
   '' \
   '# Índice' \
   '' \
-  '| Tipo | Nº | Tema | Slides | PDF |' \
-  '| --- | --- | --- | --- | --- |' > index.md
+  '## Aulas Teóricas' \
+  '' \
+  '| Nº | Tema | HTML | PDF |' \
+  '| --- | --- | --- | --- |' > index.md
 
 for file in slides/*.md; do
   name=$(basename "$file" .md)
@@ -32,11 +34,20 @@ for file in slides/*.md; do
   fi
 
   if [ -n "$num" ]; then
-    printf '| Aula | %02d | %s | [Ver](slides/%s.html) | [PDF](slides/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
+    printf '| %02d | %s | [&#128065; HTML](slides/%s.html) | [&#128196; PDF](slides/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
   else
-    printf '| Aula | - | %s | [Ver](slides/%s.html) | [PDF](slides/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
+    printf '| - | %s | [&#128065; HTML](slides/%s.html) | [&#128196; PDF](slides/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
   fi
 done
+
+printf '%s\n' \
+  '' \
+  '---' \
+  '' \
+  '## Laboratórios' \
+  '' \
+  '| Nº | Tema | HTML | PDF |' \
+  '| --- | --- | --- | --- |' >> index.md
 
 for file in labs/lab-*.md; do
   name=$(basename "$file" .md)
@@ -48,11 +59,20 @@ for file in labs/lab-*.md; do
   fi
 
   if [ -n "$num" ]; then
-    printf '| Laboratório | %02d | %s | [Ver](labs/%s.html) | [PDF](labs/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
+    printf '| %02d | %s | [&#128065; HTML](labs/%s.html) | [&#128196; PDF](labs/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
   else
-    printf '| Laboratório | - | %s | [Ver](labs/%s.html) | [PDF](labs/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
+    printf '| - | %s | [&#128065; HTML](labs/%s.html) | [&#128196; PDF](labs/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
   fi
 done
+
+printf '%s\n' \
+  '' \
+  '---' \
+  '' \
+  '## Listas de Exercícios' \
+  '' \
+  '| Nº | Tema | HTML | PDF |' \
+  '| --- | --- | --- | --- |' >> index.md
 
 for file in listas/lista-*.md; do
   name=$(basename "$file" .md)
@@ -64,8 +84,8 @@ for file in listas/lista-*.md; do
   fi
 
   if [ -n "$num" ]; then
-    printf '| Lista | %02d | %s | [Ver](listas/%s.html) | [PDF](listas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
+    printf '| %02d | %s | [&#128065; HTML](listas/%s.html) | [&#128196; PDF](listas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
   else
-    printf '| Lista | - | %s | [Ver](listas/%s.html) | [PDF](listas/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
+    printf '| - | %s | [&#128065; HTML](listas/%s.html) | [&#128196; PDF](listas/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
   fi
 done
