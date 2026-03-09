@@ -142,7 +142,7 @@ cat > index.html <<'HTML'
       color: #fff;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 12px;
       padding: 12px 20px;
     }
@@ -152,15 +152,6 @@ cat > index.html <<'HTML'
       text-transform: uppercase;
       font-size: .95rem;
     }
-    .ect-nav {
-      display: flex;
-      gap: 16px;
-      font-size: .92rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .ect-nav a { color: #fff; text-decoration: none; font-weight: 600; }
-    .ect-nav a:hover { text-decoration: underline; }
     .hero-banner {
       position: relative;
       min-height: 290px;
@@ -240,7 +231,6 @@ cat > index.html <<'HTML'
       .govbar { gap: 14px; font-size: .8rem; }
       .ectbar { padding: 10px 12px; }
       .ect-logo { font-size: .85rem; }
-      .ect-nav { gap: 10px; font-size: .85rem; }
     }
   </style>
 </head>
@@ -253,12 +243,6 @@ cat > index.html <<'HTML'
   </div>
   <div class="ectbar">
     <div class="ect-logo">Escola de Ciências e Tecnologia - UFRN</div>
-    <nav class="ect-nav">
-      <a href="#">Institucional</a>
-      <a href="#">Ensino</a>
-      <a href="#">Serviços</a>
-      <a href="#">Mídias</a>
-    </nav>
   </div>
   <section class="hero-banner">
     <div class="hero-content">
