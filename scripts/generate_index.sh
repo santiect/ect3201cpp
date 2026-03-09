@@ -1,8 +1,24 @@
 #!/bin/bash
 set -euo pipefail
 shopt -s nullglob
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
 
-printf '%s\n' '---' 'marp: true' 'theme: ect' 'title: ECT3201 - Linguagem de Programação' '---' '' '# ECT3201 - Linguagem de Programação (C++)' '' 'Prof. Éverton Santi' '' '---' '' '# Aulas' '' > index.md
+printf '%s\n' \
+  '---' \
+  'marp: true' \
+  'theme: ect' \
+  $'title: ECT3201 - Linguagem de Programa\u00e7\u00e3o' \
+  '---' \
+  '' \
+  $'# ECT3201 - Linguagem de Programa\u00e7\u00e3o (C++)' \
+  '' \
+  $'Prof. \u00c9verton Santi' \
+  '' \
+  '---' \
+  '' \
+  '# Aulas' \
+  '' > index.md
 
 for file in slides/*.md; do
   name=$(basename "$file" .md)
