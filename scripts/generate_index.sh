@@ -122,21 +122,6 @@ cat > index.html <<'HTML'
       background: var(--bg);
       min-height: 100vh;
     }
-    .govbar {
-      height: 34px;
-      background: #f0f0f0;
-      border-bottom: 1px solid #d9dde3;
-      font-size: .9rem;
-      color: #384455;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 22px;
-      padding: 0 12px;
-      overflow: hidden;
-    }
-    .govbar a { color: #384455; text-decoration: none; font-weight: 600; white-space: nowrap; }
-    .govbar a:hover { text-decoration: underline; }
     .ectbar {
       background: linear-gradient(90deg, var(--brand-dark), var(--brand));
       color: #fff;
@@ -228,19 +213,12 @@ cat > index.html <<'HTML'
     .html { color: var(--ok); }
     .pdf { color: var(--pdf); }
     @media (max-width: 760px) {
-      .govbar { gap: 14px; font-size: .8rem; }
       .ectbar { padding: 10px 12px; }
       .ect-logo { font-size: .85rem; }
     }
   </style>
 </head>
 <body>
-  <div class="govbar">
-    <a href="#">Brasil</a>
-    <a href="#">Simplifique!</a>
-    <a href="#">Acesso à Informação</a>
-    <a href="#">Legislação</a>
-  </div>
   <div class="ectbar">
     <div class="ect-logo">Escola de Ciências e Tecnologia - UFRN</div>
   </div>
