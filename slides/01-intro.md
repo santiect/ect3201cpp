@@ -1,40 +1,11 @@
 ---
 marp: true
-style: |
-  section {
-    box-sizing: border-box;
-    padding: 40px 52px 64px 52px;
-    font-size: 28px;
-    line-height: 1.2;
-  }
-  section h1 {
-    margin-top: 0;
-    margin-bottom: 0.35em;
-    font-size: 1.45em;
-  }
-  section h2 {
-    font-size: 1.1em;
-    margin: 0.2em 0;
-  }
-  section ul,
-  section ol {
-    margin: 0.3em 0;
-  }
-  section li {
-    margin: 0.12em 0;
-  }
-  section pre {
-    font-size: 0.72em;
-    line-height: 1.25;
-    margin: 0.25em 0;
-  }
-  section table {
-    font-size: 0.8em;
-  }
+theme: ect
 ---
 
 <!-- fit -->
 
+# Introdução
 
 **ECT3201 – Linguagem de Programação**
 
@@ -44,6 +15,8 @@ Prof. Éverton Santi
 
 <!-- fit -->
 # Cronograma e Avaliações
+
+- SIGAA
 
 ---
 
@@ -170,7 +143,7 @@ void
 
 | Tipo   | Tamanho | Faixa        |
 | ------ | ------- | ------------ |
-| char   | 1 byte  | -127 a 127   |
+| char   | 1 byte  | -128 a 127   |
 | int    | 4 bytes | ±2 bilhões   |
 | float  | 4 bytes | ±3.4 × 10³⁸  |
 | double | 8 bytes | ±1.7 × 10³⁰⁸ |
@@ -282,14 +255,11 @@ Em C++ usamos **cin** para entrada.
 using namespace std;
 
 int main() {
-
     int idade;
-
     cout << "Digite sua idade: ";
     cin >> idade;
-
     cout << "Idade digitada: " << idade << endl;
-
+    return 0;
 }
 ```
 
@@ -345,8 +315,8 @@ Use a biblioteca `iomanip` para customizar a exibição de casas decimais do exe
 using namespace std;
 
 int main() {
-
     cout << fixed << setprecision(2);
+    return 0;
 }
 ```
 ---
@@ -355,29 +325,19 @@ int main() {
 
 # Exemplo Completo
 
-```cpp
-#include <iostream>
-#include <iomanip>
+Enunciado:
 
-using namespace std;
+Crie um programa que:
 
-int main(){
+1. Leia o **peso** (kg) e a **altura** (m) de uma pessoa
+2. Calcule o IMC usando:
 
-    double peso, altura, imc;
+$$
+IMC = \frac{peso}{altura^2}
+$$
 
-    cout << "Digite o peso: ";
-    cin >> peso;
+3. Mostre o resultado com **2 casas decimais**
 
-    cout << "Digite a altura: ";
-    cin >> altura;
-
-    imc = peso / (altura * altura);
-
-    cout << fixed << setprecision(2);
-    cout << "IMC = " << imc << endl;
-
-}
-```
 
 ---
 
@@ -414,18 +374,17 @@ Exemplo:
 
 using namespace std;
 
-int main(){
-
+int main() {
     cout << "Gravidade = " << GRAVIDADE << endl;
-
+    return 0;
 }
 ```
 
-<!-- fit -->
-
 ---
 
-# Casting (Conversção Forçada)
+<!-- fit -->
+
+# Casting (Conversão Forçada)
 
 Quando queremos converter de forma explícita entre tipos, usamos **casting**.
 
@@ -440,11 +399,12 @@ Outro exemplo:
 
 ```cpp
 int a = 5, b = 2;
-double resultado = (double) a / b; // 2.5
+double resultado = (double)(a) / b; // 2.5
 ```
 
-<!-- fit -->
 ---
+
+<!-- fit -->
 
 # Conversão de Tipos
 
@@ -455,12 +415,10 @@ Cuidado ao misturar tipos.
 
 using namespace std;
 
-int main(){
-
+int main() {
     int x = 2.4;
-
     cout << x << endl;
-
+    return 0;
 }
 ```
 
@@ -476,7 +434,7 @@ A parte decimal é perdida.
 
 <!-- fit -->
 
-# Exercício 1
+# Exercício 1  - Arredondamento
 
 Crie um programa que:
 
@@ -497,3 +455,32 @@ Dica:
 #include <cmath>
 round()
 ```
+
+---
+
+<!-- fit -->
+
+# Exercício 2 - Pedágio
+
+Crie um programa que calcule o **custo de uma viagem**.
+
+Entradas:
+
+1. Distância da viagem (km)
+2. Consumo do carro (km/L)
+3. Preço do litro de combustível (R$)
+
+Use a constante:
+
+```cpp
+const double PEDAGIO = 12.50;
+```
+
+Calcule e mostre:
+
+1. Litros necessários
+2. Custo do combustível
+3. Custo total da viagem (combustível + pedágio)
+4. Litros inteiros usando **casting**: `(int) litros`
+
+Mostre os valores monetários com **2 casas decimais**.

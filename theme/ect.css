@@ -1,0 +1,45 @@
+/* @theme ect */
+
+section {
+  box-sizing: border-box;
+  padding: 30px 44px 36px 44px;
+  font-size: 24px;
+  line-height: 1.12;
+}
+
+section h1 {
+  margin: 0 0 0.22em 0;
+  font-size: 1.28em;
+}
+
+section h2 {
+  margin: 0.14em 0;
+  font-size: 1em;
+}
+
+section p {
+  margin: 0.16em 0;
+}
+
+section ul,
+section ol {
+  margin: 0.16em 0;
+}
+
+section li {
+  margin: 0.06em 0;
+}
+
+section pre {
+  margin: 0.16em 0;
+  font-size: 0.62em;
+  line-height: 1.18;
+}
+
+section table {
+  font-size: 0.66em;
+}
+
+section > *:last-child {
+  margin-bottom: 0;
+}
