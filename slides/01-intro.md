@@ -91,9 +91,9 @@ Uma **variável** representa um espaço na memória.
 
 Ela possui:
 
-* um **identificador**
-* um **tipo**
-* um **valor**
+* um identificador
+* um tipo
+* um valor
 
 Exemplo conceitual:
 
@@ -246,40 +246,9 @@ idade = 35;
 
 <!-- fit -->
 
-# Entrada de Dados
+# Entrada/Saída de Dados
 
-Em C++ usamos **cin** para entrada.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-    int idade;
-    cout << "Digite sua idade: ";
-    cin >> idade;
-    cout << "Idade digitada: " << idade << endl;
-    return 0;
-}
-```
-
----
-
-<!-- fit -->
-
-# Saída de Dados
-
-Usamos **cout** para exibir informações.
-
-```cpp
-cout << "Hello world" << endl;
-```
-
-Podemos combinar texto e variáveis.
-
-```cpp
-cout << "Voce tem " << idade << " anos" << endl;
-```
+Escreva um programa para ler o nome e a idade de uma pessoa. Exiba os dados lidos na tela.
 
 ---
 
