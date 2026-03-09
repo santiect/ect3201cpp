@@ -1,8 +1,39 @@
 ---
 marp: true
-theme: ect
-paginate: true
+style: |
+  section {
+    box-sizing: border-box;
+    padding: 40px 52px 64px 52px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  section h1 {
+    margin-top: 0;
+    margin-bottom: 0.35em;
+    font-size: 1.45em;
+  }
+  section h2 {
+    font-size: 1.1em;
+    margin: 0.2em 0;
+  }
+  section ul,
+  section ol {
+    margin: 0.3em 0;
+  }
+  section li {
+    margin: 0.12em 0;
+  }
+  section pre {
+    font-size: 0.72em;
+    line-height: 1.25;
+    margin: 0.25em 0;
+  }
+  section table {
+    font-size: 0.8em;
+  }
 ---
+
+<!-- fit -->
 
 
 **ECT3201 – Linguagem de Programação**
@@ -11,6 +42,12 @@ Prof. Éverton Santi
 
 ---
 
+<!-- fit -->
+# Cronograma e Avaliações
+
+---
+
+<!-- fit -->
 # Linguagens de Programação
 
 ## Alto vs Baixo Nível
@@ -25,6 +62,8 @@ Prof. Éverton Santi
 
 ---
 
+<!-- fit -->
+
 # Processo de Compilação
 
 O processo de compilação em C++ transforma o código-fonte em um programa executável.
@@ -38,9 +77,9 @@ O processo de compilação em C++ transforma o código-fonte em um programa exec
 
 ---
 
-# Hello World em C++
+<!-- fit -->
 
-O primeiro programa em qualquer linguagem é geralmente o "Hello World".
+# Hello World em C++
 
 ```cpp
 #include <iostream>
@@ -54,6 +93,8 @@ int main() {
 Este programa imprime "Hello, World!" na tela.
 
 ---
+
+<!-- fit -->
 
 # Programa de Computador
 
@@ -69,52 +110,7 @@ Um programa:
 
 ---
 
-# Exemplo
-
-## Distanciamento de Segurança
-
-No trânsito é recomendado manter uma distância segura entre veículos.
-
-Regra prática:
-
-$$
-d = \left(\frac{velocidade}{10}\right)^2
-$$
-
-onde:
-
-- velocidade em **km/h**
-- distância **em metros**
-
----
-
-# Controlando Casas Decimais
-
-Podemos controlar casas decimais usando a biblioteca `iomanip`.
-
-```cpp
-#include <iostream>
-#include <iomanip>
-
-using namespace std;
-
-int main() {
-
-    double velocidade;
-    double distancia;
-
-    cout << "Digite a velocidade: ";
-    cin >> velocidade;
-
-    distancia = (velocidade / 10) * (velocidade / 10);
-
-    cout << fixed << setprecision(2);
-    cout << "Distancia segura: " << distancia << " metros" << endl;
-
-}
-```
-
----
+<!-- fit -->
 
 # Variáveis
 
@@ -136,6 +132,8 @@ Exemplo conceitual:
 
 ---
 
+<!-- fit -->
+
 # Informações Importantes
 
 Quando declaramos variáveis precisamos definir:
@@ -148,6 +146,8 @@ O compilador decide:
 * **endereço na memória**
 
 ---
+
+<!-- fit -->
 
 # Tipos Básicos em C++
 
@@ -164,6 +164,8 @@ void
 
 ---
 
+<!-- fit -->
+
 # Tamanho dos Tipos
 
 | Tipo   | Tamanho | Faixa        |
@@ -176,6 +178,8 @@ void
 Tipos diferentes ocupam **quantidades diferentes de memória**.
 
 ---
+
+<!-- fit -->
 
 # Modificadores de Tipo
 
@@ -198,6 +202,8 @@ long int populacao;
 ```
 
 ---
+
+<!-- fit -->
 
 # Identificadores
 
@@ -225,6 +231,8 @@ desvio-padrão
 
 ---
 
+<!-- fit -->
+
 # Declaração de Variáveis
 
 Sintaxe geral:
@@ -243,6 +251,8 @@ char a, b, c;
 
 ---
 
+<!-- fit -->
+
 # Inicialização
 
 Podemos declarar e atribuir ao mesmo tempo.
@@ -260,6 +270,8 @@ idade = 35;
 ```
 
 ---
+
+<!-- fit -->
 
 # Entrada de Dados
 
@@ -283,6 +295,8 @@ int main() {
 
 ---
 
+<!-- fit -->
+
 # Saída de Dados
 
 Usamos **cout** para exibir informações.
@@ -298,6 +312,46 @@ cout << "Voce tem " << idade << " anos" << endl;
 ```
 
 ---
+
+<!-- fit -->
+
+# Exemplo
+
+## Distanciamento de Segurança
+
+Escreva um programa para a distância segura entre veículos:
+
+$$
+d = \left(\frac{velocidade}{10}\right)^2
+$$
+
+em que:
+
+- velocidade em **km/h**
+- distância **em metros**
+
+---
+
+<!-- fit -->
+
+# Controlando Casas Decimais
+
+Use a biblioteca `iomanip` para customizar a exibição de casas decimais do exemplo anterior:
+
+```cpp
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+
+    cout << fixed << setprecision(2);
+}
+```
+---
+
+<!-- fit -->
 
 # Exemplo Completo
 
@@ -327,6 +381,8 @@ int main(){
 
 ---
 
+<!-- fit -->
+
 # Constantes
 
 Constantes são valores que **não podem ser alterados**.
@@ -338,6 +394,8 @@ const double T = 1e-10;
 ```
 
 ---
+
+<!-- fit -->
 
 # Constantes Simbólicas
 
@@ -363,18 +421,29 @@ int main(){
 }
 ```
 
+<!-- fit -->
+
 ---
 
-# Operador de Atribuição
+# Casting (Conversção Forçada)
 
-O operador `=` armazena valores em variáveis.
+Quando queremos converter de forma explícita entre tipos, usamos **casting**.
 
 ```cpp
-idade = 35;
-peso = 98.5;
-letra = 'd';
+double media = 8.75;
+int nota_inteira = (int)(media);
 ```
 
+Nesse caso, a parte decimal é descartada e `nota_inteira` recebe `8`.
+
+Outro exemplo:
+
+```cpp
+int a = 5, b = 2;
+double resultado = (double) a / b; // 2.5
+```
+
+<!-- fit -->
 ---
 
 # Conversão de Tipos
@@ -405,6 +474,8 @@ A parte decimal é perdida.
 
 ---
 
+<!-- fit -->
+
 # Exercício 1
 
 Crie um programa que:
@@ -425,92 +496,4 @@ Dica:
 ```
 #include <cmath>
 round()
-```
-
----
-
-# Operador sizeof
-
-O operador `sizeof` retorna o tamanho em bytes.
-
-```cpp
-#include <iostream>
-
-using namespace std;
-
-int main(){
-
-    int a = 10;
-    float b;
-
-    cout << sizeof(a) << endl;
-    cout << sizeof(b) << endl;
-
-}
-```
-
----
-
-# Exemplo Mais Completo
-
-```cpp
-#include <iostream>
-
-using namespace std;
-
-int main(){
-
-    int tamanho_a;
-    float b;
-
-    tamanho_a = sizeof(int);
-
-    cout << "int ocupa " << tamanho_a << " bytes" << endl;
-    cout << "float ocupa " << sizeof(b) << " bytes" << endl;
-    cout << "expressao ocupa " << sizeof(10.1 * 3.2) << " bytes" << endl;
-
-}
-```
-
----
-
-# Exercício 2
-
-Crie um programa que imprime:
-
-**o maior valor possível de um `unsigned int`.**
-
-Dica:
-
-```cpp
-#include <limits>
-```
-
-Exemplo:
-
-```cpp
-#include <iostream>
-#include <limits>
-
-using namespace std;
-
-int main(){
-
-    cout << numeric_limits<unsigned int>::max() << endl;
-
-}
-```
-
----
-
-# Próxima Aula
-
-Veremos:
-
-* operadores aritméticos
-* operadores relacionais
-* operadores lógicos
-* estruturas condicionais
-
-```
 ```
