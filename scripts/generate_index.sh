@@ -17,8 +17,10 @@ printf '%s\n' \
   '' \
   '---' \
   '' \
-  '# Aulas Teóricas' \
-  '' > index.md
+  '# Índice' \
+  '' \
+  '| Tipo | Nº | Tema | Slides | PDF |' \
+  '| --- | --- | --- | --- | --- |' > index.md
 
 for file in slides/*.md; do
   name=$(basename "$file" .md)
@@ -30,16 +32,11 @@ for file in slides/*.md; do
   fi
 
   if [ -n "$num" ]; then
-    echo "- Aula $num - $title: [Ver slides](slides/$name.html) | [Baixar PDF](slides/$name.pdf)" >> index.md
+    printf '| Aula | %02d | %s | [Ver](slides/%s.html) | [PDF](slides/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
   else
-    echo "- $title: [Ver slides](slides/$name.html) | [Baixar PDF](slides/$name.pdf)" >> index.md
+    printf '| Aula | - | %s | [Ver](slides/%s.html) | [PDF](slides/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
   fi
 done
-
-printf '%s\n' \
-  '' \
-  '# Laboratórios' \
-  '' >> index.md
 
 for file in labs/lab-*.md; do
   name=$(basename "$file" .md)
@@ -51,16 +48,11 @@ for file in labs/lab-*.md; do
   fi
 
   if [ -n "$num" ]; then
-    echo "- Laboratório $num - $title: [Ver slides](labs/$name.html) | [Baixar PDF](labs/$name.pdf)" >> index.md
+    printf '| Laboratório | %02d | %s | [Ver](labs/%s.html) | [PDF](labs/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
   else
-    echo "- $title: [Ver slides](labs/$name.html) | [Baixar PDF](labs/$name.pdf)" >> index.md
+    printf '| Laboratório | - | %s | [Ver](labs/%s.html) | [PDF](labs/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
   fi
 done
-
-printf '%s\n' \
-  '' \
-  '# Listas de Exercícios' \
-  '' >> index.md
 
 for file in listas/lista-*.md; do
   name=$(basename "$file" .md)
@@ -72,8 +64,8 @@ for file in listas/lista-*.md; do
   fi
 
   if [ -n "$num" ]; then
-    echo "- Lista $num - $title: [Ver slides](listas/$name.html) | [Baixar PDF](listas/$name.pdf)" >> index.md
+    printf '| Lista | %02d | %s | [Ver](listas/%s.html) | [PDF](listas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> index.md
   else
-    echo "- $title: [Ver slides](listas/$name.html) | [Baixar PDF](listas/$name.pdf)" >> index.md
+    printf '| Lista | - | %s | [Ver](listas/%s.html) | [PDF](listas/%s.pdf) |\n' "$title" "$name" "$name" >> index.md
   fi
 done
