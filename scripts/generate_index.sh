@@ -103,16 +103,16 @@ cat > index.html <<'HTML'
   <title>ECT3201 - Linguagem de Programação (C++)</title>
   <style>
     :root {
-      --bg-1: #030712;
-      --bg-2: #0b1f3a;
-      --panel: rgba(15, 23, 42, 0.78);
-      --border: rgba(148, 163, 184, 0.28);
-      --text: #e2e8f0;
-      --muted: #93c5fd;
-      --accent: #22d3ee;
-      --accent-2: #38bdf8;
-      --ok: #86efac;
-      --pdf: #fca5a5;
+      --bg-1: #f8fbff;
+      --bg-2: #edf4fb;
+      --panel: rgba(255, 255, 255, 0.92);
+      --border: #c7d2df;
+      --text: #0b1220;
+      --muted: #365f8c;
+      --accent: #0a2f57;
+      --accent-2: #0f457b;
+      --ok: #0f6ab3;
+      --pdf: #b42318;
     }
     * { box-sizing: border-box; }
     body {
@@ -120,9 +120,9 @@ cat > index.html <<'HTML'
       font-family: "Segoe UI", "Poppins", system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1200px 700px at -10% -20%, #1d4ed8 0%, transparent 55%),
-        radial-gradient(1000px 650px at 120% 0%, #0ea5e9 0%, transparent 55%),
-        linear-gradient(130deg, var(--bg-1), var(--bg-2));
+        radial-gradient(900px 500px at -15% -20%, rgba(15, 69, 123, 0.14) 0%, transparent 60%),
+        radial-gradient(900px 520px at 120% -10%, rgba(11, 79, 140, 0.11) 0%, transparent 62%),
+        linear-gradient(140deg, var(--bg-1), var(--bg-2));
       min-height: 100vh;
     }
     .grid {
@@ -137,23 +137,10 @@ cat > index.html <<'HTML'
       border-radius: 16px;
       padding: 24px;
       background: var(--panel);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(10, 47, 87, 0.08);
     }
     h1 { margin: 0 0 6px; font-size: clamp(1.8rem, 4vw, 2.7rem); }
     .sub { margin: 0; color: var(--muted); }
-    .actions { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-weight: 600;
-      text-decoration: none;
-      border: 1px solid transparent;
-      transition: transform .16s ease, border-color .16s ease;
-    }
-    .btn.primary { background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #062033; }
-    .btn.ghost { border-color: var(--border); color: var(--text); background: rgba(15, 23, 42, 0.4); }
-    .btn:hover { transform: translateY(-1px); }
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -164,12 +151,13 @@ cat > index.html <<'HTML'
       border-radius: 14px;
       background: var(--panel);
       padding: 14px;
+      box-shadow: 0 8px 24px rgba(10, 47, 87, 0.06);
     }
     .card h2 { margin: 0 0 10px; font-size: 1.1rem; }
     table { width: 100%; border-collapse: collapse; font-size: .95rem; }
     th, td { border-top: 1px solid var(--border); padding: 8px 6px; text-align: left; }
-    th { color: #bae6fd; border-top: none; }
-    a { color: #7dd3fc; text-decoration: none; font-weight: 600; }
+    th { color: #0f457b; border-top: none; }
+    a { color: #0f5eb8; text-decoration: none; font-weight: 600; }
     a:hover { text-decoration: underline; }
     .html { color: var(--ok); }
     .pdf { color: var(--pdf); }
@@ -180,9 +168,6 @@ cat > index.html <<'HTML'
     <section class="hero">
       <h1>ECT3201 - Linguagem de Programação (C++)</h1>
       <p class="sub">Prof. Éverton Santi</p>
-      <div class="actions">
-        <a class="btn primary" href="indice.html">Abrir Índice em Slides</a>
-      </div>
     </section>
     <section class="cards">
       <article class="card">
