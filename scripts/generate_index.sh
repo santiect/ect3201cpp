@@ -1,11 +1,12 @@
 #!/bin/bash
 set -euo pipefail
+shopt -s nullglob
 
 printf '%s\n' '---' 'marp: true' 'title: ECT3201 - Linguagem de Programacao' '---' '' '# ECT3201 - Linguagem de Programacao (C++)' '' 'Prof. Everton Santi' '' '---' '' '# Aulas' '' > index.md
 
 for file in slides/*.md; do
   name=$(basename "$file" .md)
-  title=$(head -n 5 "$file" | grep '^# ' | head -n 1 | sed 's/^# //')
+  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file")
   num=$(echo "$name" | sed -n 's/^\([0-9][0-9]*\).*/\1/p')
 
   if [ -z "$title" ]; then
