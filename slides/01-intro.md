@@ -145,6 +145,7 @@ void
 | Tipo   | Tamanho | Faixa        |
 | ------ | ------- | ------------ |
 | char   | 1 byte  | -128 a 127   |
+| bool   | 1 byte  | false / true |
 | int    | 4 bytes | ±2 bilhões   |
 | float  | 4 bytes | ±3.4 × 10³⁸  |
 | double | 8 bytes | ±1.7 × 10³⁰⁸ |
@@ -183,19 +184,28 @@ long int populacao;
 
 Valores **típicos** em compiladores modernos (arquitetura 64-bit):
 
-| Tipo                     | Mínimo                                | Máximo                                 |
-| ------------------------ | ------------------------------------- | -------------------------------------- |
-| `signed char`            | -128                                  | 127                                    |
-| `unsigned char`          | 0                                     | 255                                    |
-| `short int`              | -32.768                               | 32.767                                 |
-| `unsigned short int`     | 0                                     | 65.535                                 |
-| `int`                    | -2.147.483.648                        | 2.147.483.647                          |
-| `unsigned int`           | 0                                     | 4.294.967.295                          |
-| `long int`               | -9.223.372.036.854.775.808            | 9.223.372.036.854.775.807              |
-| `unsigned long int`      | 0                                     | 18.446.744.073.709.551.615             |
-| `long long int`          | -9.223.372.036.854.775.808            | 9.223.372.036.854.775.807              |
-| `unsigned long long int` | 0                                     | 18.446.744.073.709.551.615             |
-| `long double`            | ~3.4 × 10^-4932                       | ~1.1 × 10^4932                         |
+| Tipo                     | Tamanho (bytes) | Mínimo                                | Máximo                                 |
+| ------------------------ | --------------- | ------------------------------------- | -------------------------------------- |
+| `signed char`            | 1               | -128                                  | 127                                    |
+| `unsigned char`          | 1               | 0                                     | 255                                    |
+| `short int`              | 2               | -32.768                               | 32.767                                 |
+| `unsigned short int`     | 2               | 0                                     | 65.535                                 |
+| `int`                    | 4               | -2.147.483.648                        | 2.147.483.647                          |
+| `unsigned int`           | 4               | 0                                     | 4.294.967.295                          |
+
+---
+
+<!-- fit -->
+
+# Tipos Modificáveis e Limites (continuação)
+
+| Tipo                     | Tamanho (bytes) | Mínimo                     | Máximo                      |
+| ------------------------ | --------------- | -------------------------- | --------------------------- |
+| `long int`               | 8               | -9,22 × 10^18              | 9,22 × 10^18                |
+| `unsigned long int`      | 8               | 0                          | 1,84 × 10^19                |
+| `long long int`          | 8               | -9,22 × 10^18              | 9,22 × 10^18                |
+| `unsigned long long int` | 8               | 0                          | 1,84 × 10^19                |
+| `long double`            | 16              | ~3,4 × 10^-4932            | ~1,1 × 10^4932              |
 
 ---
 
