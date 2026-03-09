@@ -1,22 +1,9 @@
 ---
 marp: true
-theme: uncover
-scrollable: true
-title: Variáveis, Constantes e Operadores
-author: Prof. Éverton Santi
-description: Aula de introdução a variáveis, constantes e operadores em C++
+theme: ect
+paginate: true
 ---
 
-# Índice da Aula
-
-## Tópicos Abordados
-
-- **Linguagens de Programação**: Alto vs Baixo Nível e Compiladas vs Interpretadas
-- **Processo de Compilação**: Etapas da transformação do código-fonte
-- **Hello World em C++**: Primeiro programa prático
-- **Programa de Computador**: Objetivo e funcionamento
-- **Exemplo Motivador**: Distanciamento de Segurança
-- **Controlando Casas Decimais**: Uso da biblioteca iomanip
 
 **ECT3201 – Linguagem de Programação**
 

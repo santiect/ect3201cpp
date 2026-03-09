@@ -17,22 +17,30 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install Marp
         run: npm install -g @marp-team/marp-cli
 
+      - name: Generate index
+        run: |
+          chmod +x scripts/generate_index.sh
+          ./scripts/generate_index.sh
+
       - name: Build slides
         run: |
           mkdir public
-          marp slides/*.md --html --output public/
-          marp index.md --html --output public/index.html
+          marp slides --html --theme-set theme --output public
+          marp index.md --html --theme-set theme --output public/index.html
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
@@ -46,6 +54,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
