@@ -26,8 +26,8 @@ printf '%s\n' \
 
 for file in slides/*.md; do
   name=$(basename "$file" .md)
-  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file")
-  num=$(echo "$name" | sed -n 's/^\([0-9][0-9]*\).*/\1/p')
+  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+  num=$(echo "$name" | sed -n 's/^\([0-9][0-9]*\).*/\1/p' | tr -d '\r')
 
   if [ -z "$title" ]; then
     title="$name"
@@ -51,8 +51,8 @@ printf '%s\n' \
 
 for file in labs/lab-*.md; do
   name=$(basename "$file" .md)
-  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file")
-  num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p')
+  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+  num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
 
   if [ -z "$title" ]; then
     title="$name"
@@ -76,8 +76,8 @@ printf '%s\n' \
 
 for file in listas/lista-*.md; do
   name=$(basename "$file" .md)
-  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file")
-  num=$(echo "$name" | sed -n 's/^lista-\([0-9][0-9]*\)$/\1/p')
+  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+  num=$(echo "$name" | sed -n 's/^lista-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
 
   if [ -z "$title" ]; then
     title="$name"
