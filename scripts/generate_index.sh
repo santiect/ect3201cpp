@@ -8,12 +8,12 @@ printf '%s\n' \
   '---' \
   'marp: true' \
   'theme: ect' \
-  $'title: ECT3201 - Linguagem de Programa\u00e7\u00e3o' \
+  'title: ECT3201 - Linguagem de Programação' \
   '---' \
   '' \
-  $'# ECT3201 - Linguagem de Programa\u00e7\u00e3o (C++)' \
+  '# ECT3201 - Linguagem de Programação (C++)' \
   '' \
-  $'Prof. \u00c9verton Santi' \
+  'Prof. Éverton Santi' \
   '' \
   '---' \
   '' \
