@@ -161,6 +161,21 @@ cat > index.html <<'HTML'
     a:hover { text-decoration: underline; }
     .html { color: var(--ok); }
     .pdf { color: var(--pdf); }
+    .sandbox-title { margin: 0 0 6px; font-size: 1.2rem; color: #0a2f57; }
+    .sandbox-desc { margin: 0 0 12px; color: #365f8c; }
+    .sandbox-frame {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .sandbox-frame iframe {
+      display: block;
+      width: 100%;
+      height: 460px;
+      border: 0;
+    }
+    .sandbox-fallback { margin: 10px 0 0; font-size: .95rem; color: #365f8c; }
   </style>
 </head>
 <body>
@@ -168,6 +183,20 @@ cat > index.html <<'HTML'
     <section class="hero">
       <h1>ECT3201 - Linguagem de Programação (C++)</h1>
       <p class="sub">Prof. Éverton Santi</p>
+    </section>
+    <section class="hero">
+      <h2 class="sandbox-title">Sandbox C++</h2>
+      <p class="sandbox-desc">Escreva e execute código C++ diretamente no navegador.</p>
+      <div class="sandbox-frame">
+        <iframe
+          title="Sandbox C++"
+          loading="lazy"
+          src="https://www.onlinegdb.com/online_c++_compiler">
+        </iframe>
+      </div>
+      <p class="sandbox-fallback">
+        Se o sandbox não carregar aqui, <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" rel="noopener noreferrer">abra em nova aba</a>.
+      </p>
     </section>
     <section class="cards">
       <article class="card">
