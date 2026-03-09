@@ -6,9 +6,9 @@ math: katex
 
 <!-- fit -->
 
-# Lista 01
+# Introdução
 
-## Exercícios da Aula 1
+## Lista 01 - Exercícios da Aula 01
 
 ECT3201 - Linguagem de Programação (C++)
 

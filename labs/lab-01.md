@@ -6,9 +6,9 @@ math: katex
 
 <!-- fit -->
 
-# Laboratório 1
+# Introdução
 
-## Prática da Aula 1
+## Laboratório 01 - Prática da Aula 01
 
 ECT3201 - Linguagem de Programação (C++)
 
