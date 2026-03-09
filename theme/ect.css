@@ -1,0 +1,25 @@
+/* Tema Marp para disciplina */
+
+section {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+h1 {
+  color: #003366;
+}
+
+h2 {
+  color: #0055aa;
+}
+
+code {
+  font-size: 0.9em;
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.7em;
+  color: gray;
+}
