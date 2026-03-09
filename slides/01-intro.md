@@ -142,13 +142,13 @@ void
 
 # Tamanho dos Tipos
 
-| Tipo   | Tamanho | Faixa        |
-| ------ | ------- | ------------ |
-| char   | 1 byte  | -128 a 127   |
-| bool   | 1 byte  | false / true |
-| int    | 4 bytes | ±2 bilhões   |
-| float  | 4 bytes | ±3.4 × 10³⁸  |
-| double | 8 bytes | ±1.7 × 10³⁰⁸ |
+| Tipo     | Tamanho (bytes) | Mínimo                      | Máximo                     |
+| -------- | --------------- | --------------------------- | -------------------------- |
+| `char`   | 1               | -128                        | 127                        |
+| `bool`   | 1               | false                       | true                       |
+| `int`    | 4               | -2.147.483.648              | 2.147.483.647              |
+| `float`  | 4               | ~1,2 × 10^-38               | ~3,4 × 10^38               |
+| `double` | 8               | ~2,2 × 10^-308              | ~1,7 × 10^308              |
 
 Tipos diferentes ocupam **quantidades diferentes de memória**.
 
