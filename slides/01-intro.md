@@ -92,9 +92,9 @@ Uma **variável** representa um espaço na memória.
 
 Ela possui:
 
-* um identificador
-* um tipo
-* um valor
+- um identificador
+- um tipo
+- um valor
 
 Exemplo conceitual:
 
@@ -112,12 +112,12 @@ Exemplo conceitual:
 
 Quando declaramos variáveis precisamos definir:
 
-* **tipo de dado**
-* **nome da variável**
+- **tipo de dado**
+- **nome da variável**
 
 O compilador decide:
 
-* **endereço na memória**
+- **endereço na memória**
 
 ---
 
