@@ -3,8 +3,8 @@
 
 section {
   box-sizing: border-box;
-  background: #f8fafc;
-  color: #0f172a;
+  background: #ffffff;
+  color: #0b1220;
   padding: 40px 56px 44px 56px;
   font-size: 30px;
   line-height: 1.2;
@@ -13,13 +13,13 @@ section {
 section h1 {
   margin: 0 0 0.28em 0;
   font-size: 1.4em;
-  color: #0b3a67;
+  color: #0a2f57;
 }
 
 section h2 {
   margin: 0.2em 0;
   font-size: 1.1em;
-  color: #134e8a;
+  color: #0f457b;
 }
 
 section p {
@@ -47,13 +47,13 @@ section pre {
   width: 100%;
   box-sizing: border-box;
   padding: 12px 14px;
-  background: #f6f8fa;
-  border: 1px solid #d0d7de;
+  background: #f7f9fc;
+  border: 1px solid #c7d2df;
   border-radius: 8px;
 }
 
 section pre code.hljs {
-  color: #24292f;
+  color: #111827;
   background: transparent;
   text-align: left;
   display: block;
@@ -65,34 +65,34 @@ section pre code.hljs {
 
 section .hljs-comment,
 section .hljs-quote {
-  color: #6e7781;
+  color: #4b5563;
 }
 
 section .hljs-keyword,
 section .hljs-selector-tag,
 section .hljs-type {
-  color: #cf222e;
+  color: #b42318;
 }
 
 section .hljs-string,
 section .hljs-doctag {
-  color: #0a3069;
+  color: #0b4f8c;
 }
 
 section .hljs-number,
 section .hljs-literal {
-  color: #0550ae;
+  color: #0f5eb8;
 }
 
 section .hljs-title,
 section .hljs-function {
-  color: #8250df;
+  color: #6b21a8;
 }
 
 section .hljs-params,
 section .hljs-variable,
 section .hljs-attr {
-  color: #24292f;
+  color: #111827;
 }
 
 section table {
