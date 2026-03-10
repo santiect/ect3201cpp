@@ -282,7 +282,7 @@ idade = 35;
 
 # Entrada/Saída de Dados
 
-Escreva um programa para ler o nome e a idade de uma pessoa. Exiba os dados lidos na tela.
+Escreva um programa para ler a idade de uma pessoa. Exiba o dado lidos na tela.
 
 ---
 
@@ -402,7 +402,7 @@ Outro exemplo:
 
 ```cpp
 int a = 5, b = 2;
-double resultado = (double)(a) / b; // 2.0
+double resultado = (double)(a) / b; // 2.5
 ```
 
 ---
