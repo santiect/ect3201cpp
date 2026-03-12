@@ -17,7 +17,53 @@ ECT3201 - Linguagem de Programação (C++)
 
 <!-- fit -->
 
-# Exercício 1 - Nível de Combustível
+# Exercício 1 - Valor de Expressões Relacionais
+
+Considere:
+
+```cpp
+int a = 12, b = 7, c = 12;
+```
+
+Determine o valor lógico de cada expressão:
+
+- Faça o cálculo à mão (sem implementar código neste exercício).
+
+1. `a > b`
+2. `a == c`
+3. `b >= c`
+4. `a != b`
+5. `(a + b) < (c * 2)`
+
+---
+
+<!-- fit -->
+
+# Exercício 2 - Valor de Expressões Lógicas
+
+Considere:
+
+```cpp
+int idade = 17;
+double media = 6.8;
+int frequencia = 82;
+```
+
+Determine o valor lógico de cada expressão:
+
+- Faça o cálculo à mão (sem implementar código neste exercício).
+
+1. `idade >= 18 && media >= 7.0`
+2. `idade >= 16 && frequencia >= 75`
+3. `media >= 7.0 || frequencia >= 85`
+4. `!(idade >= 18)`
+5. `(media >= 6.0 && frequencia >= 80) || idade >= 21`
+
+---
+
+<!-- fit -->
+
+# Exercício 3 - Nível de Combustível
 
 Crie um programa que:
 
@@ -28,7 +74,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 2 - Faixa de Velocidade
+# Exercício 4 - Faixa de Velocidade
 
 Crie um programa que:
 
@@ -39,7 +85,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 3 - Número Positivo
+# Exercício 5 - Número Positivo
 
 Crie um programa que:
 
@@ -51,7 +97,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 4 - Entrada com Documento
+# Exercício 6 - Entrada com Documento
 
 Crie um programa que:
 
@@ -65,7 +111,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 5 - Verificação de Intervalo
+# Exercício 7 - Verificação de Intervalo
 
 Crie um programa que:
 
@@ -77,7 +123,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 6 - Login Básico
+# Exercício 8 - Login Básico
 
 Crie um programa que:
 
@@ -90,7 +136,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 7 - Classificação de Desempenho
+# Exercício 9 - Classificação de Desempenho
 
 Crie um programa que:
 
@@ -104,7 +150,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 8 - Situação de Temperatura
+# Exercício 10 - Situação de Temperatura
 
 Crie um programa que:
 
@@ -118,7 +164,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 9 - Benefício no Transporte
+# Exercício 11 - Benefício no Transporte
 
 Crie um programa que leia:
 
@@ -136,7 +182,7 @@ Classifique:
 
 <!-- fit -->
 
-# Exercício 10 - Elegibilidade de Bolsa
+# Exercício 12 - Elegibilidade de Bolsa
 
 Crie um programa que leia:
 
