@@ -130,21 +130,6 @@ a != b
 ---
 
 <!-- fit -->
-# Combinando Condições
-
-Exemplos:
-
-```cpp
-idade >= 18 && idade <= 65
-media >= 7.0 || nota_final >= 5.0
-!(numero == 0)
-```
-
-- Nesses casos, estamos formando expressões maiores a partir de comparações.
-
----
-
-<!-- fit -->
 # Tabela-Verdade do `&&`
 
 | A       | B       | A `&&` B |
@@ -209,6 +194,21 @@ false || false
 | `false` | `true`  |
 
 - O operador `!` inverte o valor lógico da expressão.
+
+---
+
+<!-- fit -->
+# Combinando Condições
+
+Exemplos:
+
+```cpp
+idade >= 18 && idade <= 65
+media >= 7.0 || nota_final >= 5.0
+!(numero == 0)
+```
+
+- Nesses casos, estamos formando expressões maiores a partir de comparações.
 
 ---
 
