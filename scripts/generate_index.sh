@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 set -euo pipefail
 shopt -s nullglob
 export LANG=C.UTF-8
@@ -12,20 +12,20 @@ printf '%s\n' \
   '---' \
   'marp: true' \
   'theme: ect' \
-  'title: ECT3201 - Linguagem de Programação' \
+  'title: ECT3201 - Linguagem de Programacao' \
   '---' \
   '' \
-  '# ECT3201 - Linguagem de Programação (C++)' \
+  '# ECT3201 - Linguagem de Programacao (C++)' \
   '' \
-  'Prof. Éverton Santi' \
+  'Prof. Everton Santi' \
   '' \
   '---' \
   '' \
-  '# Índice' \
+  '# Indice' \
   '' \
-  '## Aulas Teóricas' \
+  '## Aulas Teoricas' \
   '' \
-  '| Nº | Tema | HTML | PDF |' \
+  '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' > indice.md
 
 for file in slides/*.md; do
@@ -48,9 +48,9 @@ printf '%s\n' \
   '' \
   '---' \
   '' \
-  '## Laboratórios' \
+  '## Laboratorios' \
   '' \
-  '| Nº | Tema | HTML | PDF |' \
+  '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' >> indice.md
 
 for file in labs/lab-*.md; do
@@ -73,9 +73,9 @@ printf '%s\n' \
   '' \
   '---' \
   '' \
-  '## Listas de Exercícios' \
+  '## Listas de Exercicios' \
   '' \
-  '| Nº | Tema | HTML | PDF |' \
+  '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' >> indice.md
 
 for file in listas/lista-*.md; do
@@ -100,14 +100,13 @@ cat > index.html <<'HTML'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ECT3201 - Linguagem de Programação (C++)</title>
+  <title>ECT3201 - Linguagem de Programacao (C++)</title>
   <style>
     :root {
       --bg: #eef1f5;
       --panel: #ffffff;
       --border: #d5dbe5;
       --text: #0b1220;
-      --muted: #5a6475;
       --brand: #1f4f93;
       --brand-dark: #143f78;
       --link: #0f5eb8;
@@ -186,19 +185,42 @@ cat > index.html <<'HTML'
       font-size: clamp(1.1rem, 2vw, 1.35rem);
       font-weight: 700;
     }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 14px;
-    }
-    .card {
+    .tabs {
       border: 1px solid var(--border);
       border-radius: 14px;
       background: var(--panel);
-      padding: 14px;
+      overflow: hidden;
       box-shadow: 0 8px 18px rgba(11, 29, 58, 0.05);
     }
-    .card h2 {
+    .tab-buttons {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      background: #f6f9fd;
+    }
+    .tab-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: #27466b;
+      font-weight: 700;
+      font-size: .98rem;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+    }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--brand-dark);
+      box-shadow: inset 0 -3px 0 var(--brand);
+    }
+    .tab-panel {
+      display: none;
+      padding: 14px;
+    }
+    .tab-panel.active { display: block; }
+    .tab-panel h2 {
       margin: 0 0 10px;
       font-size: 1.08rem;
       color: var(--brand-dark);
@@ -215,26 +237,32 @@ cat > index.html <<'HTML'
     @media (max-width: 760px) {
       .ectbar { padding: 10px 12px; }
       .ect-logo { font-size: .85rem; }
+      .tab-btn { padding: 10px 12px; font-size: .92rem; }
     }
   </style>
 </head>
 <body>
   <div class="ectbar">
-    <div class="ect-logo">Escola de Ciências e Tecnologia - UFRN</div>
+    <div class="ect-logo">Escola de Ciencias e Tecnologia - UFRN</div>
   </div>
   <section class="hero-banner">
     <div class="hero-content">
-      <h1 class="hero-title">ECT3201 - Linguagem de Programação (C++)</h1>
-      <p class="hero-sub">Índice dos materiais da disciplina: aulas, laboratórios e listas.</p>
+      <h1 class="hero-title">ECT3201 - Linguagem de Programacao (C++)</h1>
+      <p class="hero-sub">Indice dos materiais da disciplina: aulas, laboratorios e listas.</p>
     </div>
   </section>
   <main class="grid">
-    <p class="section-title">Materiais Disponíveis</p>
-    <section class="cards">
-      <article class="card">
-        <h2>Aulas Teóricas</h2>
+    <p class="section-title">Materiais Disponiveis</p>
+    <section class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-target="tab-aulas">Aulas</button>
+        <button class="tab-btn" data-target="tab-listas">Listas</button>
+        <button class="tab-btn" data-target="tab-labs">Laboratorios</button>
+      </div>
+      <section id="tab-aulas" class="tab-panel active">
+        <h2>Aulas Teoricas</h2>
         <table>
-          <thead><tr><th>Nº</th><th>Tema</th><th>Links</th></tr></thead>
+          <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
           <tbody>
 HTML
 
@@ -245,38 +273,17 @@ for file in slides/*.md; do
   [ -z "$title" ] && title="$name"
   [ -z "$num" ] && num="-"
   safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="slides/%s.html">👁 HTML</a> · <a class="pdf" href="slides/%s.pdf">📄 PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="slides/%s.html">HTML</a> · <a class="pdf" href="slides/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
 done
 
 cat >> index.html <<'HTML'
           </tbody>
         </table>
-      </article>
-      <article class="card">
-        <h2>Laboratórios</h2>
+      </section>
+      <section id="tab-listas" class="tab-panel">
+        <h2>Listas de Exercicios</h2>
         <table>
-          <thead><tr><th>Nº</th><th>Tema</th><th>Links</th></tr></thead>
-          <tbody>
-HTML
-
-for file in labs/lab-*.md; do
-  name=$(basename "$file" .md)
-  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
-  num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
-  [ -z "$title" ] && title="$name"
-  [ -z "$num" ] && num="-"
-  safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="labs/%s.html">👁 HTML</a> · <a class="pdf" href="labs/%s.pdf">📄 PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
-done
-
-cat >> index.html <<'HTML'
-          </tbody>
-        </table>
-      </article>
-      <article class="card">
-        <h2>Listas de Exercícios</h2>
-        <table>
-          <thead><tr><th>Nº</th><th>Tema</th><th>Links</th></tr></thead>
+          <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
           <tbody>
 HTML
 
@@ -287,15 +294,49 @@ for file in listas/lista-*.md; do
   [ -z "$title" ] && title="$name"
   [ -z "$num" ] && num="-"
   safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="listas/%s.html">👁 HTML</a> · <a class="pdf" href="listas/%s.pdf">📄 PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="listas/%s.html">HTML</a> · <a class="pdf" href="listas/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
 done
 
 cat >> index.html <<'HTML'
           </tbody>
         </table>
-      </article>
+      </section>
+      <section id="tab-labs" class="tab-panel">
+        <h2>Laboratorios</h2>
+        <table>
+          <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
+          <tbody>
+HTML
+
+for file in labs/lab-*.md; do
+  name=$(basename "$file" .md)
+  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+  num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
+  [ -z "$title" ] && title="$name"
+  [ -z "$num" ] && num="-"
+  safe_title=$(escape_html "$title")
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="labs/%s.html">HTML</a> · <a class="pdf" href="labs/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+done
+
+cat >> index.html <<'HTML'
+          </tbody>
+        </table>
+      </section>
     </section>
   </main>
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach((b) => b.classList.remove('active'));
+        tabPanels.forEach((p) => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById(btn.dataset.target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
 HTML
