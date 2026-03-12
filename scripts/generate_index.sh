@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 set -euo pipefail
 shopt -s nullglob
 export LANG=C.UTF-8
