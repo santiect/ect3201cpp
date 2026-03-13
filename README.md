@@ -88,5 +88,5 @@ Depois use o Marp CLI para gerar HTML/PDF, como no workflow.
 
 ## Autoria
 
-**Everton Santi**  
+**Éverton Santi**  
 Email: `everton.santi@ufrn.br`
