@@ -149,17 +149,17 @@ cat > index.html <<'HTML'
       background: var(--bg);
     }
     .topbar {
-      background: #fff;
-      color: var(--brand);
+      background: linear-gradient(90deg, #123b6d 0%, #1b568d 100%);
+      color: #eef5ff;
       padding: 14px 18px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid #0f3158;
       font-size: .9rem;
       font-weight: 700;
       letter-spacing: .02em;
       text-transform: uppercase;
     }
     .hero {
-      background: #fff;
+      background: linear-gradient(180deg, #edf4fb 0%, #f8fbff 100%);
       border-bottom: 1px solid var(--line);
     }
     .hero-inner {
