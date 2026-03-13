@@ -60,20 +60,7 @@ Crie um programa que:
 
 <!-- fit -->
 
-# Exercício 3 - Ano Bissexto Simplificado
-
-Crie um programa que:
-
-1. Leia um ano inteiro
-2. Considere apenas a regra simplificada:
-- bissexto se o ano for divisível por `4`
-3. Mostre `"Bissexto"` ou `"Nao bissexto"`
-
----
-
-<!-- fit -->
-
-# Exercício 4 - Triagem de Pedido
+# Exercício 3 - Triagem de Pedido
 
 Crie um programa que leia:
 
@@ -84,6 +71,22 @@ Classifique:
 
 1. `"Frete gratis"` para pedidos de maior valor ou para clientes premium
 2. `"Frete normal"` nos demais casos
+
+---
+
+<!-- fit -->
+
+# Exercício 4 - Ano Bissexto
+
+Crie um programa que:
+
+1. Leia um ano inteiro
+2. Classifique o ano considerando as regras do calendário gregoriano:
+- anos divisíveis por `400` são bissextos
+- anos divisíveis por `100`, mas não por `400`, não são bissextos
+- anos divisíveis por `4`, mas não por `100`, são bissextos
+- nos demais casos, o ano não é bissexto
+3. Mostre `"Bissexto"` ou `"Nao bissexto"`
 
 ---
 
