@@ -102,3 +102,8 @@ section table {
 section > *:last-child {
   margin-bottom: 0;
 }
+
+section::after {
+  font-size: 0.52em;
+  color: #5b6472;
+}

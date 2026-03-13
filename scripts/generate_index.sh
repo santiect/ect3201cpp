@@ -50,15 +50,19 @@ link_cell_html() {
   local raw
   raw="$(trim "$1")"
 
-  local regex='^\[(.+)\]\((https?://[^)]+)\)$'
-  if [[ "$raw" =~ $regex ]]; then
-    local label="${BASH_REMATCH[1]}"
-    local url="${BASH_REMATCH[2]}"
-    printf '<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>' "$(escape_html "$url")" "$(escape_html "$label")"
-    return
+  if [[ "$raw" == \[*\]\(*\) ]]; then
+    local label="${raw#\[}"
+    label="${label%%\]*}"
+    local url="${raw#*\(}"
+    url="${url%\)}"
+
+    if [[ "$url" == http://* || "$url" == https://* ]]; then
+      printf '<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>' "$(escape_html "$url")" "$(escape_html "$label")"
+      return
+    fi
   fi
 
-  if [[ "$raw" =~ ^https?:// ]]; then
+  if [[ "$raw" == http://* || "$raw" == https://* ]]; then
     printf '<a href="%s" target="_blank" rel="noopener noreferrer">Abrir</a>' "$(escape_html "$raw")"
     return
   fi
@@ -143,6 +147,10 @@ printf '%s\n' \
 for file in listas/lista-*.md; do
   name=$(basename "$file" .md)
   title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+
+  # Ignorar lab-02 temporariamente
+  [ "$name" == "lab-02" ] && continue
+
   num=$(echo "$name" | sed -n 's/^lista-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
 
   if [ -z "$title" ]; then

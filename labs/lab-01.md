@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: ect
+paginate: true
 math: katex
 ---
 
