@@ -8,6 +8,63 @@ escape_html() {
   printf '%s' "$1" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
 }
 
+trim() {
+  local value="$1"
+  value="${value#"${value%%[![:space:]]*}"}"
+  value="${value%"${value##*[![:space:]]}"}"
+  printf '%s' "$value"
+}
+
+render_markdown_table_rows() {
+  local file="$1"
+  local cols="$2"
+
+  [ -f "$file" ] || return 0
+
+  awk -F'|' -v cols="$cols" '
+    function trim(s) { gsub(/^[ \t]+|[ \t]+$/, "", s); return s }
+    {
+      if ($0 !~ /^\|/) next
+      for (i = 1; i <= cols; i++) {
+        c[i] = trim($(i + 1))
+      }
+      if (c[1] == "") next
+
+      sep = 1
+      for (i = 1; i <= cols; i++) {
+        if (c[i] !~ /^:?-{3,}:?$/) sep = 0
+      }
+      if (sep) next
+
+      lc = tolower(c[1])
+      if (lc == "nome" || lc == "ferramenta" || lc == "referência" || lc == "referencia") next
+
+      out = c[1]
+      for (i = 2; i <= cols; i++) out = out "\t" c[i]
+      print out
+    }
+  ' "$file"
+}
+
+link_cell_html() {
+  local raw
+  raw="$(trim "$1")"
+
+  if [[ "$raw" =~ ^\[(.+)\]\((https?://[^)]+)\)$ ]]; then
+    local label="${BASH_REMATCH[1]}"
+    local url="${BASH_REMATCH[2]}"
+    printf '<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>' "$(escape_html "$url")" "$(escape_html "$label")"
+    return
+  fi
+
+  if [[ "$raw" =~ ^https?:// ]]; then
+    printf '<a href="%s" target="_blank" rel="noopener noreferrer">Abrir</a>' "$(escape_html "$raw")"
+    return
+  fi
+
+  printf '%s' "$(escape_html "$raw")"
+}
+
 printf '%s\n' \
   '---' \
   'marp: true' \
@@ -100,7 +157,7 @@ cat > index.html <<'HTML'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ECT3201 - Linguagem de Programacao (C++)</title>
+  <title>ECT3201 - Linguagem de Programa&ccedil;&atilde;o (C++)</title>
   <style>
     :root {
       --bg: #eef1f5;
@@ -197,6 +254,7 @@ cat > index.html <<'HTML'
       gap: 0;
       border-bottom: 1px solid var(--border);
       background: #f6f9fd;
+      flex-wrap: wrap;
     }
     .tab-btn {
       appearance: none;
@@ -228,7 +286,7 @@ cat > index.html <<'HTML'
       padding-bottom: 7px;
     }
     table { width: 100%; border-collapse: collapse; font-size: .95rem; }
-    th, td { border-top: 1px solid var(--border); padding: 8px 6px; text-align: left; }
+    th, td { border-top: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
     th { color: #1d4777; border-top: none; background: #f7faff; }
     a { color: var(--link); text-decoration: none; font-weight: 600; }
     a:hover { text-decoration: underline; }
@@ -243,24 +301,26 @@ cat > index.html <<'HTML'
 </head>
 <body>
   <div class="ectbar">
-    <div class="ect-logo">Escola de Ciencias e Tecnologia - UFRN</div>
+    <div class="ect-logo">Escola de Ci&ecirc;ncias e Tecnologia - UFRN</div>
   </div>
   <section class="hero-banner">
     <div class="hero-content">
-      <h1 class="hero-title">ECT3201 - Linguagem de Programacao (C++)</h1>
-      <p class="hero-sub">Indice dos materiais da disciplina: aulas, laboratorios e listas.</p>
+      <h1 class="hero-title">ECT3201 - Linguagem de Programa&ccedil;&atilde;o (C++)</h1>
+      <p class="hero-sub">&Iacute;ndice dos materiais da disciplina: aulas, laborat&oacute;rios e listas.</p>
     </div>
   </section>
   <main class="grid">
-    <p class="section-title">Materiais Disponiveis</p>
+    <p class="section-title">Materiais Dispon&iacute;veis</p>
     <section class="tabs">
       <div class="tab-buttons">
         <button class="tab-btn active" data-target="tab-aulas">Aulas</button>
         <button class="tab-btn" data-target="tab-listas">Listas</button>
-        <button class="tab-btn" data-target="tab-labs">Laboratorios</button>
+        <button class="tab-btn" data-target="tab-labs">Laborat&oacute;rios</button>
+        <button class="tab-btn" data-target="tab-ferramentas">Ferramentas</button>
+        <button class="tab-btn" data-target="tab-referencias">Refer&ecirc;ncias</button>
       </div>
       <section id="tab-aulas" class="tab-panel active">
-        <h2>Aulas Teoricas</h2>
+        <h2>Aulas Te&oacute;ricas</h2>
         <table>
           <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
           <tbody>
@@ -273,7 +333,7 @@ for file in slides/*.md; do
   [ -z "$title" ] && title="$name"
   [ -z "$num" ] && num="-"
   safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="slides/%s.html">HTML</a> · <a class="pdf" href="slides/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="slides/%s.html">HTML</a> &middot; <a class="pdf" href="slides/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
 done
 
 cat >> index.html <<'HTML'
@@ -281,7 +341,7 @@ cat >> index.html <<'HTML'
         </table>
       </section>
       <section id="tab-listas" class="tab-panel">
-        <h2>Listas de Exercicios</h2>
+        <h2>Listas de Exerc&iacute;cios</h2>
         <table>
           <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
           <tbody>
@@ -294,7 +354,7 @@ for file in listas/lista-*.md; do
   [ -z "$title" ] && title="$name"
   [ -z "$num" ] && num="-"
   safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="listas/%s.html">HTML</a> · <a class="pdf" href="listas/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="listas/%s.html">HTML</a> &middot; <a class="pdf" href="listas/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
 done
 
 cat >> index.html <<'HTML'
@@ -302,7 +362,7 @@ cat >> index.html <<'HTML'
         </table>
       </section>
       <section id="tab-labs" class="tab-panel">
-        <h2>Laboratorios</h2>
+        <h2>Laborat&oacute;rios</h2>
         <table>
           <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
           <tbody>
@@ -315,8 +375,57 @@ for file in labs/lab-*.md; do
   [ -z "$title" ] && title="$name"
   [ -z "$num" ] && num="-"
   safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="labs/%s.html">HTML</a> · <a class="pdf" href="labs/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="labs/%s.html">HTML</a> &middot; <a class="pdf" href="labs/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
 done
+
+cat >> index.html <<'HTML'
+          </tbody>
+        </table>
+      </section>
+      <section id="tab-ferramentas" class="tab-panel">
+        <h2>Ferramentas</h2>
+        <table>
+          <thead><tr><th>Nome</th><th>Tipo</th><th>Download</th></tr></thead>
+          <tbody>
+HTML
+
+has_tools=0
+while IFS=$'\t' read -r tool_name tool_type tool_link; do
+  [ -z "${tool_name:-}" ] && continue
+  has_tools=1
+  safe_tool_name=$(escape_html "$tool_name")
+  safe_tool_type=$(escape_html "$tool_type")
+  link_html=$(link_cell_html "$tool_link")
+  printf '            <tr><td>%s</td><td>%s</td><td>%s</td></tr>\n' "$safe_tool_name" "$safe_tool_type" "$link_html" >> index.html
+done < <(render_markdown_table_rows "ferramentas/ferramentas.md" 3)
+
+if [ "$has_tools" -eq 0 ]; then
+  printf '            <tr><td colspan="3">Nenhuma ferramenta cadastrada.</td></tr>\n' >> index.html
+fi
+
+cat >> index.html <<'HTML'
+          </tbody>
+        </table>
+      </section>
+      <section id="tab-referencias" class="tab-panel">
+        <h2>Refer&ecirc;ncias</h2>
+        <table>
+          <thead><tr><th>Refer&ecirc;ncia</th><th>Link</th></tr></thead>
+          <tbody>
+HTML
+
+has_refs=0
+while IFS=$'\t' read -r ref_text ref_link; do
+  [ -z "${ref_text:-}" ] && continue
+  has_refs=1
+  safe_ref_text=$(escape_html "$ref_text")
+  link_html=$(link_cell_html "$ref_link")
+  printf '            <tr><td>%s</td><td>%s</td></tr>\n' "$safe_ref_text" "$link_html" >> index.html
+done < <(render_markdown_table_rows "referencias/referencias.md" 2)
+
+if [ "$has_refs" -eq 0 ]; then
+  printf '            <tr><td colspan="2">Nenhuma refer&ecirc;ncia cadastrada.</td></tr>\n' >> index.html
+fi
 
 cat >> index.html <<'HTML'
           </tbody>
