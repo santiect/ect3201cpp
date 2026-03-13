@@ -1,0 +1,10 @@
+course_code: "ECT3201"
+course_name: "Linguagem de Programação"
+course_suffix: "C++"
+professor_name: "Éverton Santi"
+institution_name: "Escola de Ciências e Tecnologia - UFRN"
+site_subtitle: "Índice dos materiais da disciplina."
+published_url: "https://santiect.github.io/ect3201cpp/"
+
+unpublished_items:
+  - labs/lab-02.md

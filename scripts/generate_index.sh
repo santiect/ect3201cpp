@@ -4,10 +4,52 @@ shopt -s nullglob
 export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
 
-# Files listed here are kept in the repository but hidden from publication.
-UNPUBLISHED_ITEMS=(
-  "labs/lab-02.md"
-)
+CONFIG_FILE="${1:-config/site.yml}"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+  echo "Config file not found: $CONFIG_FILE" >&2
+  exit 1
+fi
+
+yaml_get() {
+  local key="$1"
+  awk -F': *' -v k="$key" '
+    $0 ~ "^[[:space:]]*"k":[[:space:]]*" {
+      sub(/^[^:]*:[[:space:]]*/, "")
+      print
+      exit
+    }
+  ' "$CONFIG_FILE" | sed -e 's/^"//' -e 's/"$//'
+}
+
+yaml_get_list() {
+  local key="$1"
+  awk -v k="$key" '
+    $0 ~ "^[[:space:]]*"k":[[:space:]]*$" { in_list=1; next }
+    in_list && $0 ~ "^[[:space:]]*-[[:space:]]+" {
+      sub(/^[[:space:]]*-[[:space:]]+/, "")
+      print
+      next
+    }
+    in_list && $0 !~ "^[[:space:]]*$" { in_list=0 }
+  ' "$CONFIG_FILE"
+}
+
+COURSE_CODE="$(yaml_get "course_code")"
+COURSE_NAME="$(yaml_get "course_name")"
+COURSE_SUFFIX="$(yaml_get "course_suffix")"
+PROFESSOR_NAME="$(yaml_get "professor_name")"
+INSTITUTION_NAME="$(yaml_get "institution_name")"
+SITE_SUBTITLE="$(yaml_get "site_subtitle")"
+
+COURSE_CODE="${COURSE_CODE:-ECT3201}"
+COURSE_NAME="${COURSE_NAME:-Linguagem de Programacao}"
+COURSE_SUFFIX="${COURSE_SUFFIX:-C++}"
+PROFESSOR_NAME="${PROFESSOR_NAME:-Docente}"
+INSTITUTION_NAME="${INSTITUTION_NAME:-Instituicao}"
+SITE_SUBTITLE="${SITE_SUBTITLE:-Indice dos materiais da disciplina.}"
+
+mapfile -t UNPUBLISHED_ITEMS < <(yaml_get_list "unpublished_items")
 
 is_unpublished() {
   local file_path="$1"
@@ -66,12 +108,12 @@ printf '%s\n' \
   '---' \
   'marp: true' \
   'theme: ect' \
-  'title: ECT3201 - Linguagem de Programacao' \
+  "title: ${COURSE_CODE} - ${COURSE_NAME}" \
   '---' \
   '' \
-  '# ECT3201 - Linguagem de Programacao (C++)' \
+  "# ${COURSE_CODE} - ${COURSE_NAME} (${COURSE_SUFFIX})" \
   '' \
-  'Prof. Everton Santi' \
+  "Prof. ${PROFESSOR_NAME}" \
   '' \
   '---' \
   '' \
@@ -141,13 +183,17 @@ for file in listas/lista-*.md; do
   fi
 done
 
-cat > index.html <<'HTML'
+SAFE_COURSE_TITLE="$(escape_html "${COURSE_CODE} - ${COURSE_NAME} (${COURSE_SUFFIX})")"
+SAFE_INSTITUTION_NAME="$(escape_html "$INSTITUTION_NAME")"
+SAFE_SITE_SUBTITLE="$(escape_html "$SITE_SUBTITLE")"
+
+cat > index.html <<HTML
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ECT3201 - Linguagem de Programa&ccedil;&atilde;o (C++)</title>
+  <title>${SAFE_COURSE_TITLE}</title>
   <style>
     :root {
       --bg: #ffffff;
@@ -297,11 +343,11 @@ cat > index.html <<'HTML'
   </style>
 </head>
 <body>
-  <header class="topbar">Escola de Ci&ecirc;ncias e Tecnologia - UFRN</header>
+  <header class="topbar">${SAFE_INSTITUTION_NAME}</header>
   <section class="hero">
     <div class="hero-inner">
-      <h1 class="hero-title">ECT3201 - Linguagem de Programa&ccedil;&atilde;o (C++)</h1>
-      <p class="hero-sub">&Iacute;ndice dos materiais da disciplina.</p>
+      <h1 class="hero-title">${SAFE_COURSE_TITLE}</h1>
+      <p class="hero-sub">${SAFE_SITE_SUBTITLE}</p>
     </div>
   </section>
   <main class="page">
@@ -332,7 +378,7 @@ HTML
 
 append_material_rows "labs/lab-*.md" "Laborat&oacute;rio" "labs" 's/^lab-\([0-9][0-9]*\)$/\1/p'
 
-cat >> index.html <<'HTML'
+cat >> index.html <<HTML
       </div>
     </section>
   </main>

@@ -1,21 +1,17 @@
-﻿# ECT3201 - Materiais de Linguagem de Programação
+# ECT3201 - Materiais de Linguagem de Programação
 
 Este repositório reúne materiais editáveis para as aulas da disciplina **ECT3201 - Linguagem de Programação**, edição em C++.
 
-Todos os materiais são publicados na página: [https://santiect.github.io/ect3201cpp/](https://santiect.github.io/ect3201cpp/)
+Página publicada: [https://santiect.github.io/ect3201cpp/](https://santiect.github.io/ect3201cpp/)
 
 ## O que você encontra aqui
-
-Os materiais são escritos usando Markdown e incluem:
 
 - `slides/`: apresentações e conteúdo teórico.
 - `listas/`: listas de exercícios.
 - `labs/`: roteiros de laboratório/prática.
-
-Além disso, no repositório existem:
-
-- `scripts/`: scripts auxiliares para organização/geração de conteúdo.
-- `theme/`: arquivos de tema/estilo usados nos materiais.
+- `theme/`: tema visual usado nas páginas geradas.
+- `scripts/`: scripts de geração do índice e das páginas.
+- `config/site.yml`: arquivo único de configuração do site.
 
 ## Objetivo
 
@@ -23,29 +19,74 @@ Centralizar e versionar os materiais da disciplina para facilitar estudo, manute
 
 ## Como reutilizar este repositório
 
-Se você é docente e quer criar sua própria página de materiais com a mesma estrutura deste projeto:
+Se você é docente e quer criar sua própria página com esta estrutura:
 
-1. Faça um **Fork** deste repositório para sua conta do GitHub.
+1. Faça um **Fork** deste repositório para sua conta no GitHub.
 2. Clone seu fork localmente.
-3. Edite os conteúdos em `slides/`, `listas/` e `labs/` para sua disciplina.
-4. Atualize o `README.md` com seus dados (nome da disciplina, autoria e links).
+3. Personalize o arquivo `config/site.yml`.
+4. Edite os conteúdos em `slides/`, `listas/` e `labs/`.
 5. Envie as alterações para o seu repositório no GitHub.
-6. Ative o **GitHub Pages** no seu repositório:
-   - Acesse `Settings` -> `Pages`.
-   - Em `Source`, selecione a branch principal (ex.: `main`) e a pasta do site.
-   - Na maioria dos casos, escolha `/ (root)`, que significa a **pasta principal do repositório no GitHub** (não é o `root` do Linux).
-   - Use `/docs` somente se o conteúdo do site estiver dentro de uma pasta `docs/`.
-7. Após a publicação, sua página ficará em uma URL como:
+6. Ative o **GitHub Pages** em `Settings` -> `Pages`:
+   - `Branch`: `main`
+   - `Folder`: `/ (root)` (pasta principal do repositório no GitHub)
+7. A URL final ficará em formato:
    - `https://seu-usuario.github.io/seu-repositorio/`
 
-### Checklist rápido de personalização
+## Configuração central (`config/site.yml`)
 
-- Nome da disciplina e semestre.
-- Seu nome e contato na seção de autoria.
-- Links internos e externos no `README.md`.
-- Conteúdo de `slides/`, `listas/` e `labs/`.
+Todos os dados de identificação do site ficam nesse arquivo. Exemplo:
+
+```yml
+course_code: "ECT3201"
+course_name: "Linguagem de Programação"
+course_suffix: "C++"
+professor_name: "Everton Santi"
+institution_name: "Escola de Ciências e Tecnologia - UFRN"
+site_subtitle: "Índice dos materiais da disciplina."
+published_url: "https://santiect.github.io/ect3201cpp/"
+
+unpublished_items:
+  - labs/lab-02.md
+```
+
+### O que cada campo controla
+
+- `course_code`, `course_name`, `course_suffix`: título da disciplina.
+- `professor_name`: nome exibido no índice (`indice.md`).
+- `institution_name`: barra superior da página `index.html`.
+- `site_subtitle`: subtítulo da página `index.html`.
+- `published_url`: URL pública de referência.
+- `unpublished_items`: arquivos `.md` que devem ficar fora da publicação (HTML/PDF e índice).
+
+## Geração do site
+
+### No GitHub Actions (automático)
+
+Ao fazer `push` na branch `main`, o workflow em `.github/workflows/deploy.yml`:
+
+1. Executa `scripts/generate_index.sh` (lê `config/site.yml`).
+2. Gera `indice.md` e `index.html`.
+3. Converte materiais para HTML e PDF com Marp.
+4. Publica no GitHub Pages.
+
+### Localmente (opcional)
+
+Se quiser gerar localmente, execute:
+
+```bash
+bash scripts/generate_index.sh
+```
+
+Depois use o Marp CLI para gerar HTML/PDF, como no workflow.
+
+## Checklist rápido de personalização
+
+- Atualizar `config/site.yml` com disciplina, docente e instituição.
+- Ajustar `unpublished_items` para controlar o que será publicado.
+- Atualizar `README.md` com links e informações de autoria.
+- Revisar conteúdos de `slides/`, `listas/` e `labs/`.
 
 ## Autoria
 
-**Éverton Santi**  
+**Everton Santi**  
 Email: `everton.santi@ufrn.br`

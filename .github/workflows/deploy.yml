@@ -44,8 +44,21 @@ jobs:
 
       - name: Export labs to HTML
         run: |
+          UNPUBLISHED="$(awk '
+            /^unpublished_items:[[:space:]]*$/ { in_list=1; next }
+            in_list && /^[[:space:]]*-[[:space:]]+/ { sub(/^[[:space:]]*-[[:space:]]+/, ""); print; next }
+            in_list && !/^[[:space:]]*-/ { in_list=0 }
+          ' config/site.yml)"
+          is_unpublished() {
+            local target="$1"
+            while IFS= read -r item; do
+              [ -z "$item" ] && continue
+              [ "$target" = "$item" ] && return 0
+            done <<< "$UNPUBLISHED"
+            return 1
+          }
           for file in labs/lab-*.md; do
-            [ "$file" = "labs/lab-02.md" ] && continue
+            is_unpublished "$file" && continue
             marp "$file" --html --theme-set theme/ect.css --theme ect
           done
 
@@ -57,8 +70,21 @@ jobs:
 
       - name: Export labs to PDF
         run: |
+          UNPUBLISHED="$(awk '
+            /^unpublished_items:[[:space:]]*$/ { in_list=1; next }
+            in_list && /^[[:space:]]*-[[:space:]]+/ { sub(/^[[:space:]]*-[[:space:]]+/, ""); print; next }
+            in_list && !/^[[:space:]]*-/ { in_list=0 }
+          ' config/site.yml)"
+          is_unpublished() {
+            local target="$1"
+            while IFS= read -r item; do
+              [ -z "$item" ] && continue
+              [ "$target" = "$item" ] && return 0
+            done <<< "$UNPUBLISHED"
+            return 1
+          }
           for file in labs/lab-*.md; do
-            [ "$file" = "labs/lab-02.md" ] && continue
+            is_unpublished "$file" && continue
             marp "$file" --pdf --theme-set theme/ect.css --theme ect
           done
 
