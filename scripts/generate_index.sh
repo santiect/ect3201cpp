@@ -8,24 +8,82 @@ escape_html() {
   printf '%s' "$1" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
 }
 
+trim() {
+  local value="$1"
+  value="${value#"${value%%[![:space:]]*}"}"
+  value="${value%"${value##*[![:space:]]}"}"
+  printf '%s' "$value"
+}
+
+render_markdown_table_rows() {
+  local file="$1"
+  local cols="$2"
+
+  [ -f "$file" ] || return 0
+
+  awk -F'|' -v cols="$cols" '
+    function trim(s) { gsub(/^[ \t]+|[ \t]+$/, "", s); return s }
+    {
+      if ($0 !~ /^\|/) next
+      for (i = 1; i <= cols; i++) {
+        c[i] = trim($(i + 1))
+      }
+      if (c[1] == "") next
+
+      sep = 1
+      for (i = 1; i <= cols; i++) {
+        if (c[i] !~ /^:?-{3,}:?$/) sep = 0
+      }
+      if (sep) next
+
+      lc = tolower(c[1])
+      if (lc == "nome" || lc == "ferramenta" || lc == "referência" || lc == "referencia") next
+
+      out = c[1]
+      for (i = 2; i <= cols; i++) out = out "\t" c[i]
+      print out
+    }
+  ' "$file"
+}
+
+link_cell_html() {
+  local raw
+  raw="$(trim "$1")"
+
+  local regex='^\[(.+)\]\((https?://[^)]+)\)$'
+  if [[ "$raw" =~ $regex ]]; then
+    local label="${BASH_REMATCH[1]}"
+    local url="${BASH_REMATCH[2]}"
+    printf '<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>' "$(escape_html "$url")" "$(escape_html "$label")"
+    return
+  fi
+
+  if [[ "$raw" =~ ^https?:// ]]; then
+    printf '<a href="%s" target="_blank" rel="noopener noreferrer">Abrir</a>' "$(escape_html "$raw")"
+    return
+  fi
+
+  printf '%s' "$(escape_html "$raw")"
+}
+
 printf '%s\n' \
   '---' \
   'marp: true' \
   'theme: ect' \
-  'title: ECT3201 - Linguagem de Programação' \
+  'title: ECT3201 - Linguagem de Programacao' \
   '---' \
   '' \
-  '# ECT3201 - Linguagem de Programação (C++)' \
+  '# ECT3201 - Linguagem de Programacao (C++)' \
   '' \
-  'Prof. Éverton Santi' \
+  'Prof. Everton Santi' \
   '' \
   '---' \
   '' \
-  '# Índice' \
+  '# Indice' \
   '' \
-  '## Aulas Teóricas' \
+  '## Aulas Teoricas' \
   '' \
-  '| Nº | Tema | HTML | PDF |' \
+  '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' > indice.md
 
 for file in slides/*.md; do
@@ -48,14 +106,18 @@ printf '%s\n' \
   '' \
   '---' \
   '' \
-  '## Laboratórios' \
+  '## Laboratorios' \
   '' \
-  '| Nº | Tema | HTML | PDF |' \
+  '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' >> indice.md
 
 for file in labs/lab-*.md; do
   name=$(basename "$file" .md)
   title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+
+  # Ignorar lab-02 temporariamente
+  [ "$name" == "lab-02" ] && continue
+
   num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
 
   if [ -z "$title" ]; then
@@ -73,9 +135,9 @@ printf '%s\n' \
   '' \
   '---' \
   '' \
-  '## Listas de Exercícios' \
+  '## Listas de Exercicios' \
   '' \
-  '| Nº | Tema | HTML | PDF |' \
+  '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' >> indice.md
 
 for file in listas/lista-*.md; do
@@ -100,14 +162,13 @@ cat > index.html <<'HTML'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ECT3201 - Linguagem de Programação (C++)</title>
+  <title>ECT3201 - Linguagem de Programa&ccedil;&atilde;o (C++)</title>
   <style>
     :root {
       --bg: #eef1f5;
       --panel: #ffffff;
       --border: #d5dbe5;
       --text: #0b1220;
-      --muted: #5a6475;
       --brand: #1f4f93;
       --brand-dark: #143f78;
       --link: #0f5eb8;
@@ -186,19 +247,58 @@ cat > index.html <<'HTML'
       font-size: clamp(1.1rem, 2vw, 1.35rem);
       font-weight: 700;
     }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 14px;
-    }
-    .card {
+    .tabs {
       border: 1px solid var(--border);
       border-radius: 14px;
       background: var(--panel);
-      padding: 14px;
+      overflow: hidden;
       box-shadow: 0 8px 18px rgba(11, 29, 58, 0.05);
     }
-    .card h2 {
+    .tab-buttons {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      background: #f6f9fd;
+      flex-wrap: wrap;
+    }
+    .tab-select-wrapper {
+      display: none;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      background: #f6f9fd;
+    }
+    .tab-select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font: inherit;
+      color: #27466b;
+      background: #fff;
+    }
+    .tab-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: #27466b;
+      font-weight: 700;
+      font-size: .98rem;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+    }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--brand-dark);
+      box-shadow: inset 0 -3px 0 var(--brand);
+    }
+    .tab-panel {
+      display: none;
+      padding: 14px;
+    }
+    .tab-panel.active { display: block; }
+    .tab-panel h2 {
       margin: 0 0 10px;
       font-size: 1.08rem;
       color: var(--brand-dark);
@@ -206,7 +306,7 @@ cat > index.html <<'HTML'
       padding-bottom: 7px;
     }
     table { width: 100%; border-collapse: collapse; font-size: .95rem; }
-    th, td { border-top: 1px solid var(--border); padding: 8px 6px; text-align: left; }
+    th, td { border-top: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
     th { color: #1d4777; border-top: none; background: #f7faff; }
     a { color: var(--link); text-decoration: none; font-weight: 600; }
     a:hover { text-decoration: underline; }
@@ -215,26 +315,44 @@ cat > index.html <<'HTML'
     @media (max-width: 760px) {
       .ectbar { padding: 10px 12px; }
       .ect-logo { font-size: .85rem; }
+      .tab-buttons { display: none; }
+      .tab-select-wrapper { display: block; }
     }
   </style>
 </head>
 <body>
   <div class="ectbar">
-    <div class="ect-logo">Escola de Ciências e Tecnologia - UFRN</div>
+    <div class="ect-logo">Escola de Ci&ecirc;ncias e Tecnologia - UFRN</div>
   </div>
   <section class="hero-banner">
     <div class="hero-content">
-      <h1 class="hero-title">ECT3201 - Linguagem de Programação (C++)</h1>
-      <p class="hero-sub">Índice dos materiais da disciplina: aulas, laboratórios e listas.</p>
+      <h1 class="hero-title">ECT3201 - Linguagem de Programa&ccedil;&atilde;o (C++)</h1>
+      <p class="hero-sub">&Iacute;ndice dos materiais da disciplina: aulas, laborat&oacute;rios e listas.</p>
     </div>
   </section>
   <main class="grid">
-    <p class="section-title">Materiais Disponíveis</p>
-    <section class="cards">
-      <article class="card">
-        <h2>Aulas Teóricas</h2>
+    <p class="section-title">Materiais Dispon&iacute;veis</p>
+    <section class="tabs">
+      <div class="tab-select-wrapper">
+        <select id="material-tab-select" class="tab-select" aria-label="Selecionar se&ccedil;&atilde;o">
+          <option value="tab-aulas">Aulas</option>
+          <option value="tab-listas">Listas</option>
+          <option value="tab-labs">Laborat&oacute;rios</option>
+          <option value="tab-ferramentas">Ferramentas</option>
+          <option value="tab-referencias">Refer&ecirc;ncias</option>
+        </select>
+      </div>
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-target="tab-aulas">Aulas</button>
+        <button class="tab-btn" data-target="tab-listas">Listas</button>
+        <button class="tab-btn" data-target="tab-labs">Laborat&oacute;rios</button>
+        <button class="tab-btn" data-target="tab-ferramentas">Ferramentas</button>
+        <button class="tab-btn" data-target="tab-referencias">Refer&ecirc;ncias</button>
+      </div>
+      <section id="tab-aulas" class="tab-panel active">
+        <h2>Aulas Te&oacute;ricas</h2>
         <table>
-          <thead><tr><th>Nº</th><th>Tema</th><th>Links</th></tr></thead>
+          <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
           <tbody>
 HTML
 
@@ -245,38 +363,17 @@ for file in slides/*.md; do
   [ -z "$title" ] && title="$name"
   [ -z "$num" ] && num="-"
   safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="slides/%s.html">👁 HTML</a> · <a class="pdf" href="slides/%s.pdf">📄 PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="slides/%s.html">HTML</a> &middot; <a class="pdf" href="slides/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
 done
 
 cat >> index.html <<'HTML'
           </tbody>
         </table>
-      </article>
-      <article class="card">
-        <h2>Laboratórios</h2>
+      </section>
+      <section id="tab-listas" class="tab-panel">
+        <h2>Listas de Exerc&iacute;cios</h2>
         <table>
-          <thead><tr><th>Nº</th><th>Tema</th><th>Links</th></tr></thead>
-          <tbody>
-HTML
-
-for file in labs/lab-*.md; do
-  name=$(basename "$file" .md)
-  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
-  num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
-  [ -z "$title" ] && title="$name"
-  [ -z "$num" ] && num="-"
-  safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="labs/%s.html">👁 HTML</a> · <a class="pdf" href="labs/%s.pdf">📄 PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
-done
-
-cat >> index.html <<'HTML'
-          </tbody>
-        </table>
-      </article>
-      <article class="card">
-        <h2>Listas de Exercícios</h2>
-        <table>
-          <thead><tr><th>Nº</th><th>Tema</th><th>Links</th></tr></thead>
+          <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
           <tbody>
 HTML
 
@@ -287,15 +384,110 @@ for file in listas/lista-*.md; do
   [ -z "$title" ] && title="$name"
   [ -z "$num" ] && num="-"
   safe_title=$(escape_html "$title")
-  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="listas/%s.html">👁 HTML</a> · <a class="pdf" href="listas/%s.pdf">📄 PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="listas/%s.html">HTML</a> &middot; <a class="pdf" href="listas/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
 done
 
 cat >> index.html <<'HTML'
           </tbody>
         </table>
-      </article>
+      </section>
+      <section id="tab-labs" class="tab-panel">
+        <h2>Laborat&oacute;rios</h2>
+        <table>
+          <thead><tr><th>No</th><th>Tema</th><th>Links</th></tr></thead>
+          <tbody>
+HTML
+
+for file in labs/lab-*.md; do
+  name=$(basename "$file" .md)
+  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+  num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
+  [ -z "$title" ] && title="$name"
+  [ -z "$num" ] && num="-"
+  safe_title=$(escape_html "$title")
+  printf '            <tr><td>%s</td><td>%s</td><td><a class="html" href="labs/%s.html">HTML</a> &middot; <a class="pdf" href="labs/%s.pdf">PDF</a></td></tr>\n' "$num" "$safe_title" "$name" "$name" >> index.html
+done
+
+cat >> index.html <<'HTML'
+          </tbody>
+        </table>
+      </section>
+      <section id="tab-ferramentas" class="tab-panel">
+        <h2>Ferramentas</h2>
+        <table>
+          <thead><tr><th>Nome</th><th>Tipo</th><th>Download</th></tr></thead>
+          <tbody>
+HTML
+
+has_tools=0
+while IFS=$'\t' read -r tool_name tool_type tool_link; do
+  [ -z "${tool_name:-}" ] && continue
+  has_tools=1
+  safe_tool_name=$(escape_html "$tool_name")
+  safe_tool_type=$(escape_html "$tool_type")
+  link_html=$(link_cell_html "$tool_link")
+  printf '            <tr><td>%s</td><td>%s</td><td>%s</td></tr>\n' "$safe_tool_name" "$safe_tool_type" "$link_html" >> index.html
+done < <(render_markdown_table_rows "ferramentas/ferramentas.md" 3)
+
+if [ "$has_tools" -eq 0 ]; then
+  printf '            <tr><td colspan="3">Nenhuma ferramenta cadastrada.</td></tr>\n' >> index.html
+fi
+
+cat >> index.html <<'HTML'
+          </tbody>
+        </table>
+      </section>
+      <section id="tab-referencias" class="tab-panel">
+        <h2>Refer&ecirc;ncias</h2>
+        <table>
+          <thead><tr><th>Refer&ecirc;ncia</th><th>Link</th></tr></thead>
+          <tbody>
+HTML
+
+has_refs=0
+while IFS=$'\t' read -r ref_text ref_link; do
+  [ -z "${ref_text:-}" ] && continue
+  has_refs=1
+  safe_ref_text=$(escape_html "$ref_text")
+  link_html=$(link_cell_html "$ref_link")
+  printf '            <tr><td>%s</td><td>%s</td></tr>\n' "$safe_ref_text" "$link_html" >> index.html
+done < <(render_markdown_table_rows "referencias/referencias.md" 2)
+
+if [ "$has_refs" -eq 0 ]; then
+  printf '            <tr><td colspan="2">Nenhuma refer&ecirc;ncia cadastrada.</td></tr>\n' >> index.html
+fi
+
+cat >> index.html <<'HTML'
+          </tbody>
+        </table>
+      </section>
     </section>
   </main>
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    const tabSelect = document.getElementById('material-tab-select');
+
+    function activateTab(targetId) {
+      tabButtons.forEach((b) => b.classList.remove('active'));
+      tabPanels.forEach((p) => p.classList.remove('active'));
+
+      const activeButton = document.querySelector(`.tab-btn[data-target="${targetId}"]`);
+      const activePanel = document.getElementById(targetId);
+
+      if (activeButton) activeButton.classList.add('active');
+      if (activePanel) activePanel.classList.add('active');
+      if (tabSelect) tabSelect.value = targetId;
+    }
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => activateTab(btn.dataset.target));
+    });
+
+    if (tabSelect) {
+      tabSelect.addEventListener('change', () => activateTab(tabSelect.value));
+    }
+  </script>
 </body>
 </html>
 HTML
