@@ -131,13 +131,13 @@ cat > index.html <<'HTML'
   <title>ECT3201 - Linguagem de Programa&ccedil;&atilde;o (C++)</title>
   <style>
     :root {
-      --bg: #f4f7fb;
+      --bg: #ffffff;
       --panel: #ffffff;
       --text: #122033;
       --muted: #53657c;
       --brand: #123b6d;
-      --brand-soft: #e8f0fa;
-      --line: #dfe7f1;
+      --brand-soft: #f2f6fb;
+      --line: #d6e0eb;
       --html: #0a6db6;
       --pdf: #b3261e;
     }
@@ -149,9 +149,10 @@ cat > index.html <<'HTML'
       background: var(--bg);
     }
     .topbar {
-      background: var(--brand);
-      color: #fff;
-      padding: 12px 18px;
+      background: #fff;
+      color: var(--brand);
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
       font-size: .9rem;
       font-weight: 700;
       letter-spacing: .02em;
@@ -180,14 +181,20 @@ cat > index.html <<'HTML'
     .page {
       max-width: 920px;
       margin: 0 auto;
-      padding: 22px 18px 40px;
+      padding: 28px 18px 44px;
     }
     .section {
-      margin-bottom: 28px;
+      margin-bottom: 22px;
+      padding: 18px 18px 8px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
     }
     .section-title {
-      margin: 0 0 12px;
-      font-size: 1.05rem;
+      margin: 0 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--line);
+      font-size: 1.08rem;
       color: var(--brand);
       text-transform: uppercase;
       letter-spacing: .04em;
@@ -203,6 +210,9 @@ cat > index.html <<'HTML'
       align-items: center;
       padding: 14px 0;
       border-bottom: 1px solid var(--line);
+    }
+    .material-card:last-child {
+      border-bottom: none;
     }
     .material-number {
       min-width: 42px;
@@ -253,6 +263,7 @@ cat > index.html <<'HTML'
     @media (max-width: 720px) {
       .hero-inner { padding: 24px 16px 20px; }
       .page { padding: 18px 16px 32px; }
+      .section { padding: 16px 14px 6px; }
       .material-card {
         grid-template-columns: 1fr;
         gap: 10px;
