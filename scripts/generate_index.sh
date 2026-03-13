@@ -4,6 +4,22 @@ shopt -s nullglob
 export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
 
+# Files listed here are kept in the repository but hidden from publication.
+UNPUBLISHED_ITEMS=(
+  "labs/lab-02.md"
+)
+
+is_unpublished() {
+  local file_path="$1"
+  local item
+  for item in "${UNPUBLISHED_ITEMS[@]}"; do
+    if [ "$file_path" = "$item" ]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
 escape_html() {
   printf '%s' "$1" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
 }
@@ -16,6 +32,7 @@ append_material_rows() {
 
   for file in $glob_pattern; do
     [ -f "$file" ] || continue
+    is_unpublished "$file" && continue
 
     local name
     local title
@@ -88,6 +105,8 @@ printf '%s\n' \
   '| --- | --- | --- | --- |' >> indice.md
 
 for file in labs/lab-*.md; do
+  is_unpublished "$file" && continue
+
   name=$(basename "$file" .md)
   title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
   num=$(echo "$name" | sed -n 's/^lab-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')

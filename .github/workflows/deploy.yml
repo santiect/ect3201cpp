@@ -43,7 +43,11 @@ jobs:
         run: marp slides/*.md --html --theme-set theme/ect.css --theme ect
 
       - name: Export labs to HTML
-        run: marp labs/*.md --html --theme-set theme/ect.css --theme ect
+        run: |
+          for file in labs/lab-*.md; do
+            [ "$file" = "labs/lab-02.md" ] && continue
+            marp "$file" --html --theme-set theme/ect.css --theme ect
+          done
 
       - name: Export exercise lists to HTML
         run: marp listas/*.md --html --theme-set theme/ect.css --theme ect
@@ -52,7 +56,11 @@ jobs:
         run: marp slides/*.md --pdf --theme-set theme/ect.css --theme ect
 
       - name: Export labs to PDF
-        run: marp labs/*.md --pdf --theme-set theme/ect.css --theme ect
+        run: |
+          for file in labs/lab-*.md; do
+            [ "$file" = "labs/lab-02.md" ] && continue
+            marp "$file" --pdf --theme-set theme/ect.css --theme ect
+          done
 
       - name: Export exercise lists to PDF
         run: marp listas/*.md --pdf --theme-set theme/ect.css --theme ect
