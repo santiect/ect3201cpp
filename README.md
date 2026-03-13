@@ -23,5 +23,5 @@ Centralizar e versionar os materiais da disciplina para facilitar estudo, manute
 
 ## Autoria
 
-**Everton Santi**  
+**Éverton Santi**  
 Email: `everton.santi@ufrn.br`
