@@ -6,9 +6,9 @@ Página publicada: [https://santiect.github.io/ect3201cpp/](https://santiect.git
 
 ## O que você encontra aqui
 
-- `slides/`: apresentações e conteúdo teórico.
-- `listas/`: listas de exercícios.
-- `labs/`: roteiros de laboratório/prática.
+- `materiais/aulas/`: apresentações e conteúdo teórico.
+- `materiais/listas/`: listas de exercícios.
+- `materiais/labs/`: roteiros de laboratório/prática.
 - `theme/`: tema visual usado nas páginas geradas.
 - `scripts/`: scripts de geração do índice e das páginas.
 - `config/site.yml`: arquivo único de configuração do site.
@@ -24,7 +24,7 @@ Se você é docente e quer criar sua própria página com esta estrutura:
 1. Faça um **Fork** deste repositório para sua conta no GitHub.
 2. Clone seu fork localmente.
 3. Personalize o arquivo `config/site.yml`.
-4. Edite os conteúdos em `slides/`, `listas/` e `labs/`.
+4. Edite os conteúdos em `materiais/aulas/`, `materiais/listas/` e `materiais/labs/`.
 5. Envie as alterações para o seu repositório no GitHub.
 6. Ative o **GitHub Pages** em `Settings` -> `Pages`:
    - `Branch`: `main`
@@ -40,13 +40,13 @@ Todos os dados de identificação do site ficam nesse arquivo. Exemplo:
 course_code: "ECT3201"
 course_name: "Linguagem de Programação"
 course_suffix: "C++"
-professor_name: "Everton Santi"
+professor_name: "Éverton Santi"
 institution_name: "Escola de Ciências e Tecnologia - UFRN"
 site_subtitle: "Índice dos materiais da disciplina."
 published_url: "https://santiect.github.io/ect3201cpp/"
 
 unpublished_items:
-  - labs/lab-02.md
+  - materiais/labs/lab-02.md
 ```
 
 ### O que cada campo controla
@@ -84,7 +84,7 @@ Depois use o Marp CLI para gerar HTML/PDF, como no workflow.
 - Atualizar `config/site.yml` com disciplina, docente e instituição.
 - Ajustar `unpublished_items` para controlar o que será publicado.
 - Atualizar `README.md` com links e informações de autoria.
-- Revisar conteúdos de `slides/`, `listas/` e `labs/`.
+- Revisar conteúdos de `materiais/aulas/`, `materiais/listas/` e `materiais/labs/`.
 
 ## Autoria
 

@@ -1,4 +1,4 @@
-name: Deploy Marp Slides to GitHub Pages
+name: Deploy Marp Materiais to GitHub Pages
 
 on:
   push:
@@ -39,8 +39,8 @@ jobs:
       - name: Export slide index to HTML
         run: marp indice.md --html --theme-set theme/ect.css --theme ect
 
-      - name: Export slides to HTML
-        run: marp slides/*.md --html --theme-set theme/ect.css --theme ect
+      - name: Export aulas to HTML
+        run: marp materiais/aulas/*.md --html --theme-set theme/ect.css --theme ect
 
       - name: Export labs to HTML
         run: |
@@ -57,16 +57,16 @@ jobs:
             done <<< "$UNPUBLISHED"
             return 1
           }
-          for file in labs/lab-*.md; do
+          for file in materiais/labs/lab-*.md; do
             is_unpublished "$file" && continue
             marp "$file" --html --theme-set theme/ect.css --theme ect
           done
 
       - name: Export exercise lists to HTML
-        run: marp listas/*.md --html --theme-set theme/ect.css --theme ect
+        run: marp materiais/listas/*.md --html --theme-set theme/ect.css --theme ect
 
-      - name: Export slides to PDF
-        run: marp slides/*.md --pdf --theme-set theme/ect.css --theme ect
+      - name: Export aulas to PDF
+        run: marp materiais/aulas/*.md --pdf --theme-set theme/ect.css --theme ect
 
       - name: Export labs to PDF
         run: |
@@ -83,13 +83,13 @@ jobs:
             done <<< "$UNPUBLISHED"
             return 1
           }
-          for file in labs/lab-*.md; do
+          for file in materiais/labs/lab-*.md; do
             is_unpublished "$file" && continue
             marp "$file" --pdf --theme-set theme/ect.css --theme ect
           done
 
       - name: Export exercise lists to PDF
-        run: marp listas/*.md --pdf --theme-set theme/ect.css --theme ect
+        run: marp materiais/listas/*.md --pdf --theme-set theme/ect.css --theme ect
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -109,3 +109,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+
+

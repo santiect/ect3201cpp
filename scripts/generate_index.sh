@@ -124,16 +124,16 @@ printf '%s\n' \
   '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' > indice.md
 
-for file in slides/*.md; do
+for file in materiais/aulas/*.md; do
   name=$(basename "$file" .md)
   title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
   num=$(echo "$name" | sed -n 's/^\([0-9][0-9]*\).*/\1/p' | tr -d '\r')
   [ -z "$title" ] && title="$name"
 
   if [ -n "$num" ]; then
-    printf '| %02d | %s | [&#128065; HTML](slides/%s.html) | [&#128196; PDF](slides/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+    printf '| %02d | %s | [&#128065; HTML](materiais/aulas/%s.html) | [&#128196; PDF](materiais/aulas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
   else
-    printf '| - | %s | [&#128065; HTML](slides/%s.html) | [&#128196; PDF](slides/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
+    printf '| - | %s | [&#128065; HTML](materiais/aulas/%s.html) | [&#128196; PDF](materiais/aulas/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
   fi
 done
 
@@ -146,7 +146,7 @@ printf '%s\n' \
   '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' >> indice.md
 
-for file in labs/lab-*.md; do
+for file in materiais/labs/lab-*.md; do
   is_unpublished "$file" && continue
 
   name=$(basename "$file" .md)
@@ -155,9 +155,9 @@ for file in labs/lab-*.md; do
   [ -z "$title" ] && title="$name"
 
   if [ -n "$num" ]; then
-    printf '| %02d | %s | [&#128065; HTML](labs/%s.html) | [&#128196; PDF](labs/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+    printf '| %02d | %s | [&#128065; HTML](materiais/labs/%s.html) | [&#128196; PDF](materiais/labs/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
   else
-    printf '| - | %s | [&#128065; HTML](labs/%s.html) | [&#128196; PDF](labs/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
+    printf '| - | %s | [&#128065; HTML](materiais/labs/%s.html) | [&#128196; PDF](materiais/labs/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
   fi
 done
 
@@ -170,16 +170,16 @@ printf '%s\n' \
   '| No | Tema | HTML | PDF |' \
   '| --- | --- | --- | --- |' >> indice.md
 
-for file in listas/lista-*.md; do
+for file in materiais/listas/lista-*.md; do
   name=$(basename "$file" .md)
   title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
   num=$(echo "$name" | sed -n 's/^lista-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
   [ -z "$title" ] && title="$name"
 
   if [ -n "$num" ]; then
-    printf '| %02d | %s | [&#128065; HTML](listas/%s.html) | [&#128196; PDF](listas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+    printf '| %02d | %s | [&#128065; HTML](materiais/listas/%s.html) | [&#128196; PDF](materiais/listas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
   else
-    printf '| - | %s | [&#128065; HTML](listas/%s.html) | [&#128196; PDF](listas/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
+    printf '| - | %s | [&#128065; HTML](materiais/listas/%s.html) | [&#128196; PDF](materiais/listas/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
   fi
 done
 
@@ -356,7 +356,7 @@ cat > index.html <<HTML
       <div class="material-list">
 HTML
 
-append_material_rows "slides/*.md" "Aula te&oacute;rica" "slides" 's/^\([0-9][0-9]*\).*/\1/p'
+append_material_rows "materiais/aulas/*.md" "Aula te&oacute;rica" "materiais/aulas" 's/^\([0-9][0-9]*\).*/\1/p'
 
 cat >> index.html <<'HTML'
       </div>
@@ -366,7 +366,7 @@ cat >> index.html <<'HTML'
       <div class="material-list">
 HTML
 
-append_material_rows "listas/lista-*.md" "Lista de exerc&iacute;cios" "listas" 's/^lista-\([0-9][0-9]*\)$/\1/p'
+append_material_rows "materiais/listas/lista-*.md" "Lista de exerc&iacute;cios" "materiais/listas" 's/^lista-\([0-9][0-9]*\)$/\1/p'
 
 cat >> index.html <<'HTML'
       </div>
@@ -376,7 +376,7 @@ cat >> index.html <<'HTML'
       <div class="material-list">
 HTML
 
-append_material_rows "labs/lab-*.md" "Laborat&oacute;rio" "labs" 's/^lab-\([0-9][0-9]*\)$/\1/p'
+append_material_rows "materiais/labs/lab-*.md" "Laborat&oacute;rio" "materiais/labs" 's/^lab-\([0-9][0-9]*\)$/\1/p'
 
 cat >> index.html <<HTML
       </div>
@@ -385,3 +385,6 @@ cat >> index.html <<HTML
 </body>
 </html>
 HTML
+
+
+
