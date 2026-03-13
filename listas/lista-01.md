@@ -1,4 +1,4 @@
----
+﻿---
 marp: true
 theme: ect
 math: katex
@@ -6,22 +6,23 @@ math: katex
 
 <!-- fit -->
 
-# Introdução
+# IntroduÃ§Ã£o
 
-## Lista 01 - Exercícios da Aula 01
+## Lista 01 - ExercÃ­cios da Aula 01
 
-ECT3201 - Linguagem de Programação (C++)
+ECT3201 - Linguagem de ProgramaÃ§Ã£o (C++)
+Prof. Éverton Santi
 
 ---
 
 <!-- fit -->
 
-# Exercício 1 - Arredondamento (`cmath`)
+# ExercÃ­cio 1 - Arredondamento (`cmath`)
 
 Crie um programa que:
 
-1. Leia um número real positivo
-2. Arredonde para o inteiro mais próximo usando `round()`
+1. Leia um nÃºmero real positivo
+2. Arredonde para o inteiro mais prÃ³ximo usando `round()`
 3. Mostre o valor arredondado
 
 Dica:
@@ -34,15 +35,15 @@ Dica:
 
 <!-- fit -->
 
-# Exercício 2 - Pedágio
+# ExercÃ­cio 2 - PedÃ¡gio
 
 Crie um programa que calcule o custo de uma viagem.
 
 Entradas:
 
-1. Distância da viagem (km)
+1. DistÃ¢ncia da viagem (km)
 2. Consumo do carro (km/L)
-3. Preço do litro de combustível (R$)
+3. PreÃ§o do litro de combustÃ­vel (R$)
 
 Use a constante:
 
@@ -52,20 +53,20 @@ const double PEDAGIO = 12.50;
 
 Mostre:
 
-1. Litros necessários
-2. Custo do combustível
-3. Custo total (combustível + pedágio)
+1. Litros necessÃ¡rios
+2. Custo do combustÃ­vel
+3. Custo total (combustÃ­vel + pedÃ¡gio)
 4. Litros inteiros usando casting: `(int) litros`
 
 ---
 
 <!-- fit -->
 
-# Exercício 3 - Hipotenusa (`cmath`)
+# ExercÃ­cio 3 - Hipotenusa (`cmath`)
 
 Crie um programa que:
 
-1. Leia os catetos `a` e `b` de um triângulo retângulo
+1. Leia os catetos `a` e `b` de um triÃ¢ngulo retÃ¢ngulo
 2. Calcule a hipotenusa:
 
 $$
@@ -78,7 +79,7 @@ $$
 
 <!-- fit -->
 
-# Exercício 4 - Conversão de Tempo
+# ExercÃ­cio 4 - ConversÃ£o de Tempo
 
 Crie um programa que:
 
@@ -93,17 +94,17 @@ Exemplo:
 
 <!-- fit -->
 
-# Exercício 5 - Prestação em Atraso
+# ExercÃ­cio 5 - PrestaÃ§Ã£o em Atraso
 
-Crie um programa que calcule o valor de uma prestação em atraso.
+Crie um programa que calcule o valor de uma prestaÃ§Ã£o em atraso.
 
 Entradas:
 
-1. Valor da prestação
+1. Valor da prestaÃ§Ã£o
 2. Taxa de juros mensal (%)
 3. Tempo de atraso (meses)
 
-Fórmula:
+FÃ³rmula:
 
 $$
 valor\_final = valor + (valor \times taxa/100 \times tempo)
@@ -115,19 +116,19 @@ Mostre o valor final com 2 casas decimais.
 
 <!-- fit -->
 
-# Exercício 6 - Reajuste de Salário
+# ExercÃ­cio 6 - Reajuste de SalÃ¡rio
 
 Crie um programa que:
 
-1. Leia o salário atual
+1. Leia o salÃ¡rio atual
 2. Leia o percentual de reajuste
-3. Calcule e mostre o novo salário com 2 casas decimais
+3. Calcule e mostre o novo salÃ¡rio com 2 casas decimais
 
 ---
 
 <!-- fit -->
 
-# Exercício 7 - Volume de uma Esfera
+# ExercÃ­cio 7 - Volume de uma Esfera
 
 Crie um programa que:
 
@@ -150,25 +151,25 @@ $$
 
 <!-- fit -->
 
-# Exercício 8 - Divisão Inteira e Real
+# ExercÃ­cio 8 - DivisÃ£o Inteira e Real
 
 Crie um programa que:
 
 1. Leia dois inteiros `a` e `b`
 2. Mostre:
-- resultado de `a / b` (divisão inteira)
-- resultado de `(double)a / b` (divisão real)
-- resto da divisão `a % b`
+- resultado de `a / b` (divisÃ£o inteira)
+- resultado de `(double)a / b` (divisÃ£o real)
+- resto da divisÃ£o `a % b`
 
 ---
 
 <!-- fit -->
 
-# Exercício 9 - Valor Total com Desconto
+# ExercÃ­cio 9 - Valor Total com Desconto
 
 Crie um programa que:
 
-1. Leia o valor unitário de um produto
+1. Leia o valor unitÃ¡rio de um produto
 2. Leia a quantidade comprada
 3. Leia o percentual de desconto
 4. Calcule:
@@ -176,21 +177,21 @@ Crie um programa que:
 - valor do desconto
 - valor final
 
-Mostre os valores monetários com 2 casas decimais.
+Mostre os valores monetÃ¡rios com 2 casas decimais.
 
 ---
 
 <!-- fit -->
 
-# Exercício 10 - Distância em Linha Reta (`cmath`)
+# ExercÃ­cio 10 - DistÃ¢ncia em Linha Reta (`cmath`)
 
 Crie um programa que:
 
 1. Leia as coordenadas `(x1, y1)` e `(x2, y2)`
-2. Calcule a distância entre os pontos:
+2. Calcule a distÃ¢ncia entre os pontos:
 
 $$
 d = \sqrt{(x2-x1)^2 + (y2-y1)^2}
 $$
 
-3. Mostre a distância com 2 casas decimais
+3. Mostre a distÃ¢ncia com 2 casas decimais

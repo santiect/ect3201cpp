@@ -12,6 +12,7 @@ math: katex
 ## Laboratório 02 - Prática da Aula 02
 
 ECT3201 - Linguagem de Programação (C++)
+Prof. Éverton Santi
 
 ---
 
