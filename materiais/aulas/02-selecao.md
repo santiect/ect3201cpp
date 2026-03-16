@@ -144,20 +144,6 @@ a != b
 ---
 
 <!-- fit -->
-# Exercício
-
-Determine o valor lógico de:
-
-```cpp
-true && true
-true && false
-false && true
-false && false
-```
-
----
-
-<!-- fit -->
 # Tabela-Verdade do `||`
 
 | A       | B       | A `\|\|` B |
@@ -172,20 +158,6 @@ false && false
 ---
 
 <!-- fit -->
-# Exercício
-
-Determine o valor lógico de:
-
-```cpp
-true || true
-true || false
-false || true
-false || false
-```
-
----
-
-<!-- fit -->
 # Tabela-Verdade do `!`
 
 | A       | `!`A    |
@@ -194,6 +166,25 @@ false || false
 | `false` | `true`  |
 
 - O operador `!` inverte o valor lógico da expressão.
+
+---
+
+<!-- fit -->
+# Precedência de Operadores
+
+Da maior para a menor precedência:
+
+| Nível | Categoria   | Operadores           |
+| ----- | ----------- | -------------------- |
+| 1     | Lógico      | `!`                  |
+| 2     | Matemáticos | `*`, `/`, `%`        |
+| 3     | Matemáticos | `+`, `-`             |
+| 4     | Relacionais | `<`, `<=`, `>`, `>=` |
+| 5     | Relacionais | `==`, `!=`           |
+| 6     | Lógicos     | `&&`                 |
+| 7     | Lógicos     | `\|\|`               |
+
+- Use parênteses para deixar a intenção explícita.
 
 ---
 
@@ -215,7 +206,7 @@ media >= 7.0 || nota_final >= 5.0
 <!-- fit -->
 # Exercício
 
-Considere:
+Resolva no caderno:
 
 ```cpp
 int idade = 20;
@@ -333,7 +324,18 @@ Use essa estrutura quando:
 ---
 
 <!-- fit -->
-# Exercício Integrador
+# Exercício 1
+
+Dada uma equação de segundo grau $ax^2 + bx + c = 0$, calcule e mostre suas raízes reais caso existam:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+---
+
+<!-- fit -->
+# Exercício 2
 
 Uma loja quer classificar o benefício de um cliente no momento da compra.
 

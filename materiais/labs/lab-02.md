@@ -18,7 +18,7 @@ Prof. Éverton Santi
 
 <!-- fit -->
 
-# Revisão Inicial
+# Revisão
 
 Escreva um programa que leia:
 

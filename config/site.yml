@@ -6,5 +6,4 @@ institution_name: "Escola de Ciências e Tecnologia - UFRN"
 site_subtitle: "Índice dos materiais da disciplina."
 published_url: "https://santiect.github.io/ect3201cpp/"
 
-unpublished_items:
-  - materiais/labs/lab-02.md
+unpublished_items: []
