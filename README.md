@@ -44,6 +44,7 @@ professor_name: "Éverton Santi"
 institution_name: "Escola de Ciências e Tecnologia - UFRN"
 site_subtitle: "Índice dos materiais da disciplina."
 published_url: "https://santiect.github.io/ect3201cpp/"
+google_analytics_id: "G-Z30BC265SK"
 
 unpublished_items:
   - materiais/labs/lab-02.md
@@ -56,6 +57,7 @@ unpublished_items:
 - `institution_name`: barra superior da página `index.html`.
 - `site_subtitle`: subtítulo da página `index.html`.
 - `published_url`: URL pública de referência.
+- `google_analytics_id`: ID de medição do Google Analytics 4 inserido nas páginas HTML geradas.
 - `unpublished_items`: arquivos `.md` que devem ficar fora da publicação (HTML/PDF e índice).
 
 ## Geração do site

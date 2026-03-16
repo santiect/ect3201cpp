@@ -103,6 +103,10 @@ jobs:
       - name: Export exercise lists to PDF
         run: marp materiais/listas/*.md --pdf --theme-set theme/ect.css --theme ect
 
+      - name: Inject Google Analytics into generated HTML
+        run: |
+          bash scripts/inject_analytics.sh config/site.yml index.html indice.html materiais/aulas/*.html materiais/labs/*.html materiais/listas/*.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

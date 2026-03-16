@@ -41,6 +41,7 @@ COURSE_SUFFIX="$(yaml_get "course_suffix")"
 PROFESSOR_NAME="$(yaml_get "professor_name")"
 INSTITUTION_NAME="$(yaml_get "institution_name")"
 SITE_SUBTITLE="$(yaml_get "site_subtitle")"
+GOOGLE_ANALYTICS_ID="$(yaml_get "google_analytics_id")"
 
 COURSE_CODE="${COURSE_CODE:-ECT3201}"
 COURSE_NAME="${COURSE_NAME:-Linguagem de Programacao}"
@@ -48,6 +49,7 @@ COURSE_SUFFIX="${COURSE_SUFFIX:-C++}"
 PROFESSOR_NAME="${PROFESSOR_NAME:-Docente}"
 INSTITUTION_NAME="${INSTITUTION_NAME:-Instituicao}"
 SITE_SUBTITLE="${SITE_SUBTITLE:-Indice dos materiais da disciplina.}"
+GOOGLE_ANALYTICS_ID="${GOOGLE_ANALYTICS_ID:-}"
 
 mapfile -t UNPUBLISHED_ITEMS < <(yaml_get_list "unpublished_items")
 
@@ -64,6 +66,21 @@ is_unpublished() {
 
 escape_html() {
   printf '%s' "$1" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
+}
+
+write_google_analytics_snippet() {
+  local ga_id="$1"
+  [ -z "$ga_id" ] && return 0
+
+  cat <<HTML
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${ga_id}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${ga_id}');
+  </script>
+HTML
 }
 
 append_material_rows() {
@@ -194,6 +211,7 @@ cat > index.html <<HTML
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${SAFE_COURSE_TITLE}</title>
+$(write_google_analytics_snippet "$GOOGLE_ANALYTICS_ID")
   <style>
     :root {
       --bg: #ffffff;
@@ -385,4 +403,3 @@ cat >> index.html <<HTML
 </body>
 </html>
 HTML
-
