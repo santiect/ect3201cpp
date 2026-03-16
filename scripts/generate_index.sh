@@ -32,7 +32,7 @@ yaml_get_list() {
       next
     }
     in_list && $0 !~ "^[[:space:]]*$" { in_list=0 }
-  ' "$CONFIG_FILE" | tr -d '\r'
+  ' "$CONFIG_FILE" | tr -d '\r' | sed -e 's/^"//' -e 's/"$//'
 }
 
 COURSE_CODE="$(yaml_get "course_code")"
@@ -385,5 +385,4 @@ cat >> index.html <<HTML
 </body>
 </html>
 HTML
-
 
