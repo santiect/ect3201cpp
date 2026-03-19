@@ -73,6 +73,12 @@ Classifique:
 1. `"Frete gratis"` para pedidos de maior valor ou para clientes premium
 2. `"Frete normal"` nos demais casos
 
+Use uma constante simbólica para definir o valor mínimo de um produto apto a receber desconto:
+
+```cpp
+#define VALOR_MINIMO 500.0f
+```
+
 ---
 
 <!-- fit -->
@@ -124,6 +130,10 @@ Classifique:
 - pelo menos uma das notas estiver em faixa intermediária
 3. `"Reprovado"` nos demais casos
 
+Use constantes simbólicas para definir:
+1. Nota mínima para aprovação em prova;
+2. Nota mínima para aprovação em entrevista;
+3. Nota intermediária  para lista de espera, que valerá tanto para a prova quanto para a entrevista.
 ---
 
 <!-- fit -->
