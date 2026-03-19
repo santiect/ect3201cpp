@@ -125,15 +125,12 @@ Crie um programa que leia:
 Classifique:
 
 1. `"Aprovado"` quando prova e entrevista atingirem nota mínima e a documentação estiver regular
-2. `"Lista de espera"` se:
-- a documentação estiver regular, e
-- pelo menos uma das notas estiver em faixa intermediária
+2. `"Lista de espera"` se: a documentação estiver regular e pelo menos uma das notas estiver em faixa intermediária
 3. `"Reprovado"` nos demais casos
 
 Use constantes simbólicas para definir:
-1. Nota mínima para aprovação em prova;
-2. Nota mínima para aprovação em entrevista;
-3. Nota intermediária  para lista de espera, que valerá tanto para a prova quanto para a entrevista.
+1. Nota mínima para aprovação;
+2. Nota intermediária  para lista de espera;
 ---
 
 <!-- fit -->
