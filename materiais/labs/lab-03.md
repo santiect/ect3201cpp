@@ -122,13 +122,22 @@ Crie um programa que:
 2. Mostre um triângulo com `n` linhas usando o caractere `*`
 3. A primeira linha deve ter `1` caractere, a segunda `2`, e assim por diante
 
+Exemplo `n=4`
+
+```txt
+1
+22
+333
+4444
+```
+
 Esse exercício envolve **repetição aninhada**.
 
 ---
 
 <!-- fit -->
 
-# Desafio Extra - Pesquisa de Satisfação
+# Desafio 1 - Pesquisa de Satisfação
 
 Crie um programa que:
 
@@ -144,3 +153,10 @@ Crie um programa que:
 - quantidade total de respostas válidas
 - quantidade de respostas em cada categoria
 - percentual de respostas `"Bom"` e `"Otimo"` juntos
+
+---
+<!-- fit -->
+
+# Desafio 2 - Fatoração
+
+Decomponha um número inteiro positivo em fatores primos.
