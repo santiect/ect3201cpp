@@ -201,9 +201,10 @@ Depois disso:
 <!-- fit -->
 # Exemplo com `continue`
 
-- ler 10 números inteiros
+- ler números inteiros
 - somar apenas os valores positivos
-- ignorar os valores nulos ou negativos
+- ignorar os valores negativos
+- para quando usuário informar `0` (zero)
 
 ---
 
@@ -247,7 +248,7 @@ Partes principais:
 <!-- fit -->
 # Outro Exemplo com `for`
 
-- gerar a tabuada de um número `n` de `1` até `10`
+- gerar a tabuada de um número `n` qualquer
 
 ---
 
@@ -267,10 +268,15 @@ Isso acontece quando precisamos:
 <!-- fit -->
 # Exemplo com Repetição Aninhada
 
-- mostrar um retângulo de `4` linhas por `6` colunas usando o caractere `*`
-- cada linha deve conter `6` símbolos
-- ao final de cada linha, deve ocorrer uma quebra de linha
+- mostrar um retângulo de `4` linhas por `6` colunas usando o caractere `*`, como no exemplo abaixo:
 
+```txt
+******
+******
+******
+******
+
+```
 ---
 
 <!-- fit -->
