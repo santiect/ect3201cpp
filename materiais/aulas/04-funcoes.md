@@ -242,23 +242,17 @@ Crie um procedimento para tabuada:
 <!-- fit -->
 # Exemplo 9
 
-Crie um procedimento que trate:
+Crie um procedimento que resolva a equação do segundo grau:
 
 $$
 ax^2 + bx + c = 0
 $$
 
-O procedimento deve:
-
-- analisar o discriminante
-- usar:
+usando a fórmula de Bhaskara:
 
 $$
-\Delta = b^2 - 4ac
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
-
-- indicar se há raízes reais
-- calcular as raízes quando existirem
 
 ---
 
