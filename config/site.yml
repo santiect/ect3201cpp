@@ -7,7 +7,8 @@ site_subtitle: "Índice dos materiais da disciplina."
 published_url: "https://santiect.github.io/ect3201cpp/"
 google_analytics_id: "G-LSP0DL3F0X"
 
-unpublished_items: []
+unpublished_items:
+  - "materiais/labs/lab-04.md"
 
 email:
   - "everton.santi@ufrn.br"
