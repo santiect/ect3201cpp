@@ -30,7 +30,28 @@ Escreva um programa modularizado que processe as vendas e mostre:
 ---
 
 <!-- fit -->
-# Exercício 1 - Conta de Energia
+# Exercício 1 - Valor da Compra
+
+Em uma papelaria, o valor de uma compra depende da quantidade de unidades adquiridas e do preço unitário do produto. Escreva um programa modularizado que leia várias compras e calcule o valor total de cada uma:
+
+- Use uma função simples que receba os dados da compra por valor e retorne o total correspondente.
+- Estipule faixas de preço baseadas na quantidade comprada por meio de constantes.
+
+---
+
+<!-- fit -->
+# Exercício 2 - Ordem de Dois Valores
+
+Leia vários pares de números reais.
+
+Escreva um programa modularizado que, para cada par, use um procedimento para colocar os dois valores em ordem crescente.
+
+Mostre os valores antes e depois da chamada do procedimento.
+
+---
+
+<!-- fit -->
+# Exercício 3 - Conta de Energia
 
 Uma residência recebe a cobrança de energia de acordo com três faixas de consumo:
 
@@ -38,12 +59,12 @@ Uma residência recebe a cobrança de energia de acordo com três faixas de cons
 2. os próximos `100` kWh têm outra tarifa;
 3. o consumo excedente tem uma terceira tarifa.
 
-Escreva um programa modularizado que leia o consumo de vários clientes e calcule o valor da conta de cada um.
+Escreva um programa modularizado que leia o consumo de vários clientes e calcule o valor total da conta de cada um, mostrando também quanto foi paga em cada faixa de consumo. Note que a impressão de resultados na tela não deve ser realizada pela mesma função/procedimento que irá fazer o cálculo.
 
 ---
 
 <!-- fit -->
-# Exercício 2 - Pagamento de Dívida
+# Exercício 4 - Pagamento de Dívida
 
 Uma pessoa possui uma dívida. A cada mês, o valor devido sofre juros e, em seguida, é feito um pagamento fixo.
 
@@ -54,7 +75,7 @@ Ao final, mostre quantos meses foram necessários, quanto foi pago ao todo e qua
 ---
 
 <!-- fit -->
-# Exercício 3 - Estoque com Reposição
+# Exercício 5 - Estoque com Reposição
 
 Uma loja trabalha com estoque mínimo de um produto. Sempre que o estoque ficar abaixo desse mínimo, novas unidades devem ser acrescentadas de um lote fixo até o estoque voltar a um valor aceitável.
 
@@ -67,7 +88,7 @@ Escreva um programa modularizado que processe entradas e saídas do produto ao l
 ---
 
 <!-- fit -->
-# Exercício 4 - Controle de Qualidade
+# Exercício 6 - Controle de Qualidade
 
 Uma fábrica produz peças com um peso esperado. Cada peça pode variar um pouco, mas essa diferença não pode ultrapassar uma tolerância definida.
 
@@ -81,7 +102,7 @@ Escreva um programa modularizado que leia os pesos de um lote de peças e determ
 ---
 
 <!-- fit -->
-# Exercício 5 - Poupança Mensal
+# Exercício 7 - Poupança Mensal
 
 Uma pessoa deseja acompanhar a evolução de uma aplicação financeira. Todo mês o saldo rende uma taxa fixa e, depois disso, é feito um novo depósito.
 
@@ -95,7 +116,7 @@ Escreva um programa modularizado que simule a aplicação durante vários meses 
 ---
 
 <!-- fit -->
-# Exercício 6 - Pedidos de uma Lanchonete
+# Exercício 8 - Pedidos de uma Lanchonete
 
 Uma lanchonete recebe vários pedidos. Cada pedido possui vários itens, e para cada item são informados o preço unitário e a quantidade solicitada.
 
@@ -109,7 +130,7 @@ Escreva um programa modularizado que processe os pedidos do dia e mostre:
 ---
 
 <!-- fit -->
-# Exercício 7 - Fechamento do Mês
+# Exercício 9 - Fechamento do Mês
 
 Durante um mês, um pequeno comércio registra, a cada dia, o valor total de entradas e o valor total de saídas.
 
