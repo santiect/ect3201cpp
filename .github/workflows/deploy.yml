@@ -66,7 +66,7 @@ jobs:
         run: marp materiais/listas/*.md --html --theme-set theme/ect.css --theme ect
 
       - name: Export simulados to HTML
-        run: marp materiais/simulados/*.md --html --theme-set theme/ect.css --theme ect
+        run: node scripts/render_simulados_a4.js
 
       - name: Export aulas to PDF
         run: marp materiais/aulas/*.md --pdf --theme-set theme/ect.css --theme ect
@@ -107,7 +107,16 @@ jobs:
         run: marp materiais/listas/*.md --pdf --theme-set theme/ect.css --theme ect
 
       - name: Export simulados to PDF
-        run: marp materiais/simulados/*.md --pdf --theme-set theme/ect.css --theme ect
+        run: |
+          for file in materiais/simulados/simulado-*.html; do
+            google-chrome \
+              --headless \
+              --disable-gpu \
+              --no-sandbox \
+              --print-to-pdf-no-header \
+              --print-to-pdf="${file%.html}.pdf" \
+              "file://${PWD}/${file}"
+          done
 
       - name: Inject Google Analytics into generated HTML
         run: |
