@@ -59,7 +59,7 @@ Uma residência recebe a cobrança de energia de acordo com três faixas de cons
 2. os próximos `100` kWh têm outra tarifa;
 3. o consumo excedente tem uma terceira tarifa.
 
-Escreva um programa modularizado que leia o consumo de vários clientes e calcule o valor total da conta de cada um, mostrando também quanto foi paga em cada faixa de consumo. Note que a impressão de resultados na tela não deve ser realizada pela mesma função/procedimento que irá fazer o cálculo.
+Escreva um programa modularizado que leia o consumo de vários clientes e calcule o valor total da conta de cada um, mostrando também quanto foi pago em cada faixa de consumo. Note que a impressão de resultados na tela não deve ser realizada pela mesma função/procedimento que irá fazer o cálculo.
 
 ---
 
@@ -84,6 +84,8 @@ Escreva um programa modularizado que processe entradas e saídas do produto ao l
 1. o estoque após cada movimentação;
 2. quantas reposições foram feitas;
 3. o estoque final.
+
+Defina o tamanho do lote de reposição em uma constante.
 
 ---
 
