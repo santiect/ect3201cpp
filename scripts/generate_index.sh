@@ -182,6 +182,28 @@ printf '%s\n' \
   '' \
   '---' \
   '' \
+  '## Simulados' \
+  '' \
+  '| No | Tema | HTML | PDF |' \
+  '| --- | --- | --- | --- |' >> indice.md
+
+for file in materiais/simulados/simulado-*.md; do
+  name=$(basename "$file" .md)
+  title=$(awk '/^# / { sub(/^# /, ""); print; exit }' "$file" | tr -d '\r')
+  num=$(echo "$name" | sed -n 's/^simulado-\([0-9][0-9]*\)$/\1/p' | tr -d '\r')
+  [ -z "$title" ] && title="$name"
+
+  if [ -n "$num" ]; then
+    printf '| %02d | %s | [&#128065; HTML](materiais/simulados/%s.html) | [&#128196; PDF](materiais/simulados/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+  else
+    printf '| - | %s | [&#128065; HTML](materiais/simulados/%s.html) | [&#128196; PDF](materiais/simulados/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
+  fi
+done
+
+printf '%s\n' \
+  '' \
+  '---' \
+  '' \
   '## Listas de Exercicios' \
   '' \
   '| No | Tema | HTML | PDF |' \
@@ -385,6 +407,16 @@ cat >> index.html <<'HTML'
 HTML
 
 append_material_rows "materiais/listas/lista-*.md" "Lista de exerc&iacute;cios" "materiais/listas" 's/^lista-\([0-9][0-9]*\)$/\1/p'
+
+cat >> index.html <<'HTML'
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Simulados</h2>
+      <div class="material-list">
+HTML
+
+append_material_rows "materiais/simulados/simulado-*.md" "Simulado" "materiais/simulados" 's/^simulado-\([0-9][0-9]*\)$/\1/p'
 
 cat >> index.html <<'HTML'
       </div>

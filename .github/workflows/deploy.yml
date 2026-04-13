@@ -65,6 +65,9 @@ jobs:
       - name: Export exercise lists to HTML
         run: marp materiais/listas/*.md --html --theme-set theme/ect.css --theme ect
 
+      - name: Export simulados to HTML
+        run: marp materiais/simulados/*.md --html --theme-set theme/ect.css --theme ect
+
       - name: Export aulas to PDF
         run: marp materiais/aulas/*.md --pdf --theme-set theme/ect.css --theme ect
 
@@ -103,9 +106,12 @@ jobs:
       - name: Export exercise lists to PDF
         run: marp materiais/listas/*.md --pdf --theme-set theme/ect.css --theme ect
 
+      - name: Export simulados to PDF
+        run: marp materiais/simulados/*.md --pdf --theme-set theme/ect.css --theme ect
+
       - name: Inject Google Analytics into generated HTML
         run: |
-          bash scripts/inject_analytics.sh config/site.yml index.html indice.html materiais/aulas/*.html materiais/labs/*.html materiais/listas/*.html
+          bash scripts/inject_analytics.sh config/site.yml index.html indice.html materiais/aulas/*.html materiais/labs/*.html materiais/listas/*.html materiais/simulados/*.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
