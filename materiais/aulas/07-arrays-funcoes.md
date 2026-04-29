@@ -16,18 +16,35 @@ Prof. Éverton Santi
 ---
 
 <!-- fit -->
-# Arrays e Funções
+# Motivação
 
-Na chamada da função, passamos o nome do array:
+Em programas com arrays, algumas tarefas aparecem muitas vezes:
+
+- ler elementos
+- imprimir elementos
+- somar valores
+- buscar valores
+- comparar arrays
+
+Podemos organizar essas tarefas usando funções e procedimentos.
+
+---
+
+<!-- fit -->
+# Capacidade e Elementos Válidos
+
+Use uma constante para representar a capacidade máxima do array.
+
+Um array pode ter uma capacidade máxima, mas usar apenas `n` posições.
+
+Ao criar funções com arrays, é importante informar também quantos elementos são válidos.
+
+Exemplo:
 
 ```cpp
-soma = somar_elementos(v, n);
-```
+#define MAX 100
 
-No protótipo, usamos colchetes:
-
-```cpp
-int somar_elementos(int v[], int n);
+void imprimir_array(int v[MAX], int n);
 ```
 
 ---
@@ -39,62 +56,68 @@ Arrays são passados automaticamente por referência.
 
 Isso significa que a função pode alterar os elementos do array original.
 
-Não usamos `&` no parâmetro.
+Não usamos `&` no parâmetro do array.
+
+Exemplo:
+
+```cpp
+void zerar_array(int v[MAX], int n) {
+    for (int i = 0; i < n; i++) {
+        v[i] = 0;
+    }
+}
+```
 
 ---
 
 <!-- fit -->
 # Exemplo 1
 
-Crie uma função que recebe um array de inteiros e retorna a soma de seus elementos.
+Crie dois procedimentos:
 
-```cpp
-#define MAX 10
+1. um procedimento para ler os elementos de um array de inteiros;
+2. um procedimento para imprimir os elementos de um array de inteiros.
 
-int somar_elementos(int v[], int n);
-```
-
-Chamada:
-
-```cpp
-int x[MAX] = {1, 2, 3};
-int soma = somar_elementos(x, 3);
-```
+Esses procedimentos serão reutilizados nos próximos exemplos.
 
 ---
 
 <!-- fit -->
 # Exemplo 2
 
-Crie uma função que recebe um array de inteiros e sua quantidade de elementos válidos.
+Reutilize os procedimentos de leitura e impressão.
 
-A função deve imprimir os elementos do array do início para o final.
+Crie uma função que recebe um array de inteiros e retorna a soma de seus elementos.
 
-Protótipo sugerido:
-
-```cpp
-void imprimir_array(int v[], int n);
-```
+No programa principal, leia o array, calcule a soma e mostre o resultado.
 
 ---
 
 <!-- fit -->
 # Exemplo 3
 
-Crie uma função que recebe um array de inteiros e sua quantidade de elementos válidos.
+Reutilize os procedimentos de leitura e impressão.
 
-A função deve receber um valor `x` e retornar quantas vezes `x` aparece no array.
+Crie uma função que recebe um array de inteiros e um valor `x`.
 
-Protótipo sugerido:
-
-```cpp
-int contar_ocorrencias(int v[], int n, int x);
-```
+A função deve retornar quantas vezes `x` aparece no array.
 
 ---
 
 <!-- fit -->
 # Exemplo 4
+
+Crie uma função que recebe um array e verifica se seus elementos estão em ordem não decrescente.
+
+Exemplos:
+
+- `{2, 4, 4, 7}` está ordenado
+- `{2, 8, 5, 9}` não está ordenado
+
+---
+
+<!-- fit -->
+# Exemplo 5
 
 Crie um procedimento que recebe:
 
@@ -104,8 +127,48 @@ Crie um procedimento que recebe:
 
 O procedimento deve marcar `true` para notas aprovadas e `false` para notas reprovadas.
 
-Protótipo sugerido:
+---
 
-```cpp
-void marcar_aprovacao(float notas[], bool aprovado[], int n);
-```
+<!-- fit -->
+# Exemplo 6
+
+Crie uma função que verifica se dois arrays de inteiros são iguais.
+
+Dois arrays são iguais quando:
+
+- possuem a mesma quantidade de elementos
+- cada posição possui o mesmo valor correspondente
+
+---
+
+<!-- fit -->
+# Exemplo 7
+
+Crie uma função que verifica se um valor existe em um array.
+
+Depois, use essa função para verificar se todos os elementos de um array `a` aparecem em outro array `b`.
+
+Este problema deve ser resolvido com mais de uma função.
+
+---
+
+<!-- fit -->
+# Exemplo 8
+
+Crie um procedimento para eliminar valores repetidos.
+
+O procedimento deve receber:
+
+- um array de entrada
+- sua quantidade de elementos válidos
+- um array de saída
+- uma variável para guardar a quantidade de saída
+
+---
+
+<!-- fit -->
+# Exemplo 8: Reutilização
+
+Para eliminar repetidos, verifique se cada valor da entrada já apareceu no array de saída.
+
+Este problema pode reutilizar a função que verifica se um valor existe em um array.

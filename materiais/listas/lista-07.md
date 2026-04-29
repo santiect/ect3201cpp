@@ -105,6 +105,21 @@ No exemplo, `diferenca` representa `A - B`.
 
 <!-- fit -->
 
+# Exercício 3 - Reutilização
+
+Para resolver as operações entre conjuntos, reutilize funções já criadas.
+
+Ideias úteis:
+
+- verificar se um valor existe em um array
+- remover valores repetidos
+- preencher um array de saída
+- atualizar a quantidade de elementos de saída
+
+---
+
+<!-- fit -->
+
 # Exercício 4 - Contagem de Dígitos
 
 Crie uma função que receba um array de inteiros positivos.
