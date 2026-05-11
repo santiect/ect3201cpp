@@ -148,7 +148,7 @@ for file in materiais/aulas/*.md; do
   [ -z "$title" ] && title="$name"
 
   if [ -n "$num" ]; then
-    printf '| %02d | %s | [&#128065; HTML](materiais/aulas/%s.html) | [&#128196; PDF](materiais/aulas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+    printf '| %02d | %s | [&#128065; HTML](materiais/aulas/%s.html) | [&#128196; PDF](materiais/aulas/%s.pdf) |\n' "$((10#$num))" "$title" "$name" "$name" >> indice.md
   else
     printf '| - | %s | [&#128065; HTML](materiais/aulas/%s.html) | [&#128196; PDF](materiais/aulas/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
   fi
@@ -172,7 +172,7 @@ for file in materiais/labs/lab-*.md; do
   [ -z "$title" ] && title="$name"
 
   if [ -n "$num" ]; then
-    printf '| %02d | %s | [&#128065; HTML](materiais/labs/%s.html) | [&#128196; PDF](materiais/labs/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+    printf '| %02d | %s | [&#128065; HTML](materiais/labs/%s.html) | [&#128196; PDF](materiais/labs/%s.pdf) |\n' "$((10#$num))" "$title" "$name" "$name" >> indice.md
   else
     printf '| - | %s | [&#128065; HTML](materiais/labs/%s.html) | [&#128196; PDF](materiais/labs/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
   fi
@@ -194,7 +194,7 @@ for file in materiais/simulados/simulado-*.md; do
   [ -z "$title" ] && title="$name"
 
   if [ -n "$num" ]; then
-    printf '| %02d | %s | [&#128065; HTML](materiais/simulados/%s.html) | [&#128196; PDF](materiais/simulados/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+    printf '| %02d | %s | [&#128065; HTML](materiais/simulados/%s.html) | [&#128196; PDF](materiais/simulados/%s.pdf) |\n' "$((10#$num))" "$title" "$name" "$name" >> indice.md
   else
     printf '| - | %s | [&#128065; HTML](materiais/simulados/%s.html) | [&#128196; PDF](materiais/simulados/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
   fi
@@ -216,7 +216,7 @@ for file in materiais/listas/lista-*.md; do
   [ -z "$title" ] && title="$name"
 
   if [ -n "$num" ]; then
-    printf '| %02d | %s | [&#128065; HTML](materiais/listas/%s.html) | [&#128196; PDF](materiais/listas/%s.pdf) |\n' "$num" "$title" "$name" "$name" >> indice.md
+    printf '| %02d | %s | [&#128065; HTML](materiais/listas/%s.html) | [&#128196; PDF](materiais/listas/%s.pdf) |\n' "$((10#$num))" "$title" "$name" "$name" >> indice.md
   else
     printf '| - | %s | [&#128065; HTML](materiais/listas/%s.html) | [&#128196; PDF](materiais/listas/%s.pdf) |\n' "$title" "$name" "$name" >> indice.md
   fi
