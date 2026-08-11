@@ -158,29 +158,3 @@ O programa deve:
 
 Dica: use divisão inteira e o operador de resto (`%`).
 
----
-
-<!-- fit -->
-
-# Exercício 7 - Ponto e Círculo (`cmath`)
-
-Use `cmath` para verificar se um ponto está dentro de um círculo.
-
-Entradas:
-
-1. Centro: `cx`, `cy`
-2. Raio: `r`
-3. Ponto: `x`, `y`
-
-Distância euclidiana:
-
-$$
-d = \sqrt{(x-cx)^2 + (y-cy)^2}
-$$
-
-Saída (somente uma palavra):
-
-1. `verdadeiro`, se `d <= r`
-2. `falso`, se `d > r`
-
-Dica: use `sqrt()` da `cmath`.
