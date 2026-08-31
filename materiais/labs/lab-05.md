@@ -7,9 +7,9 @@ math: katex
 
 <!-- fit -->
 
-# Arrays Unidimensionais
+# Funções: Passagem por Valor e Referência
 
-## Laboratório 05 - Prática da Aula 06
+## Laboratório 05 - Prática da Aula 05
 
 ECT3201 - Linguagem de Programação (C++)
 Prof. Éverton Santi
@@ -17,137 +17,109 @@ Prof. Éverton Santi
 ---
 
 <!-- fit -->
+# Revisão - Quadrado por Valor
 
-# Exercício 1 - Estoque Diário
+Crie uma função que receba um número real por valor, calcule seu quadrado e retorne o resultado.
 
-Uma loja acompanha o estoque final de um produto durante vários dias.
+No `main`, leia um valor `x`, chame a função e mostre:
 
-Crie um programa que:
+1. o valor retornado pela função;
+2. o valor de `x` após a chamada.
 
-1. leia a quantidade de dias `n`, com `n <= 31`;
-2. leia o estoque final de cada dia em um array de inteiros;
-3. mostre quantos dias ficaram abaixo do estoque mínimo;
-4. mostre o primeiro dia em que isso ocorreu, caso exista.
-
----
-
-<!-- fit -->
-
-# Exercício 2 - Ajuste de Medições
-
-Um sensor registrou `n` medições reais, com `n <= 50`.
-
-Crie um programa que armazene as medições em um array do tipo `float`.
-
-Depois, leia os limites `minimo` e `maximo` e substitua:
-
-1. valores abaixo de `minimo` por `minimo`;
-2. valores acima de `maximo` por `maximo`.
-
-Ao final, mostre o array ajustado e quantas medições foram alteradas.
+Explique, em comentário no código, por que `x` não foi alterado.
 
 ---
 
 <!-- fit -->
+# Exercício 1 - Troca de Valores
 
-# Exercício 3 - Presenças
+Crie um procedimento `trocar` que receba dois números inteiros por referência.
 
-Uma turma possui até `40` estudantes.
+O procedimento deve inverter os valores das duas variáveis.
 
-Crie um programa que:
-
-1. leia a quantidade de estudantes `n`;
-2. leia um array do tipo `bool`, em que `true` indica presença e `false` indica falta;
-3. calcule a quantidade de presentes;
-4. calcule o percentual de presença da turma.
+No `main`, leia dois valores, mostre antes da chamada, chame o procedimento e mostre depois da chamada.
 
 ---
 
 <!-- fit -->
+# Exercício 2 - Ordem de Dois Valores
 
-# Exercício 4 - Situação de Vacinação
+Leia vários pares de números reais.
 
-Uma turma possui até `40` estudantes.
+Escreva um programa modularizado que, para cada par, use um procedimento que receba os dois valores por referência e coloque-os em ordem crescente.
 
-Crie um programa que leia dois arrays do tipo `bool`:
-
-- `primeira_dose`
-- `segunda_dose`
-
-Ao final, mostre:
-
-1. quantos estudantes tomaram as duas doses;
-2. quantos tomaram apenas a primeira dose;
-3. quantos não tomaram nenhuma dose;
-4. o percentual da turma com vacinação completa.
+Mostre os valores antes e depois da chamada do procedimento.
 
 ---
 
 <!-- fit -->
+# Exercício 3 - Faixa Permitida
 
-# Exercício 5 - Datas Próximas de Entrega
+Em um sistema de medição, vários valores reais precisam permanecer dentro de uma faixa aceitável.
 
-Uma transportadora registrou o prazo de entrega, em dias, de `n` pedidos.
+Crie um procedimento que receba uma medição por referência e os limites mínimo e máximo por valor.
 
-Leia os prazos em um array de inteiros, com `n <= 50`.
+O procedimento deve alterar a medição quando ela estiver fora da faixa.
 
-Mostre todos os pares de pedidos cujos prazos diferem em, no máximo, `2` dias.
-
-Ao final, informe quantos pares foram encontrados.
-
----
-
-<!-- fit -->
-
-# Exercício 6 - Sequência de Pagamentos
-
-Uma pessoa registrou os valores pagos em várias contas ao longo do mês.
-
-Leia os valores em um array do tipo `float`, com `n <= 50`.
-
-Verifique se os pagamentos foram registrados em ordem não decrescente.
-
-Ao final, mostre:
-
-1. se a sequência está ordenada;
-2. a primeira posição em que a ordem foi quebrada, caso exista.
+No `main`, leia `n` medições e informe quantas precisaram de ajuste.
 
 ---
 
 <!-- fit -->
+# Exercício 4 - Fechamento de Pedido
 
-# Desafio - Histograma de Notas
+No fechamento diário, uma loja precisa processar vários pedidos e informar imposto e total a pagar.
 
-Leia `n` notas inteiras no intervalo de `0` até `10`.
+Crie um procedimento que receba:
 
-Use um array contador para gerar um histograma.
+1. o subtotal por valor;
+2. o percentual de imposto por valor;
+3. o valor do imposto por referência;
+4. o valor total por referência.
 
-Ao final, imprima uma tabela com:
-
-1. nota;
-2. contagem;
-3. barra com um `*` para cada ocorrência.
-
-Use `setw` (`iomanip`) para alinhar as colunas.
-
-Continua no próximo slide.
+No `main`, leia vários pedidos e mostre também o total de impostos e o faturamento total do dia.
 
 ---
 
 <!-- fit -->
+# Exercício 5 - Simplificação de Fração
 
-# Desafio - Exemplo
+Uma fração deve ser apresentada na forma irredutível.
 
-Exemplo:
+Crie:
 
-```text
-Nota  Quantidade  Histograma
-0     2           **
-1     0
-2     1           *
-3     4           ****
-...
-10    2           **
-```
+1. uma função para calcular o máximo divisor comum entre numerador e denominador;
+2. um procedimento para simplificar a fração, recebendo numerador e denominador por referência.
 
-O valor `10` ocupa mais posições que os demais valores.
+No `main`, leia `n` frações e mostre cada resultado simplificado.
+
+---
+
+<!-- fit -->
+# Exercício 6 - Atualização de Estoque
+
+Uma loja acompanha a quantidade em estoque de um produto.
+
+Crie procedimentos para:
+
+1. registrar entrada de unidades, alterando o estoque por referência;
+2. registrar saída de unidades, alterando o estoque por referência apenas quando houver quantidade suficiente.
+
+No `main`, processe várias movimentações e mostre o estoque após cada uma.
+
+---
+
+<!-- fit -->
+# Exercício 7 - Raízes Reais
+
+Crie uma função para calcular as raízes reais de uma equação do segundo grau.
+
+A função deve receber `a`, `b` e `c` por valor, receber `x1` e `x2` por referência, e retornar `true` quando houver raízes reais.
+
+No `main`, leia várias equações e mostre as raízes apenas quando existirem.
+
+Considere:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$

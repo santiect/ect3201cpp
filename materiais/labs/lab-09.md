@@ -7,9 +7,9 @@ math: katex
 
 <!-- fit -->
 
-# Cadeias de Caracteres
+# Números Aleatórios e Ordenação
 
-## Laboratório 09 - Prática da Aula 11
+## Laboratório 09 - Prática da Aula 09
 
 ECT3201 - Linguagem de Programação (C++)
 Prof. Éverton Santi
@@ -18,131 +18,85 @@ Prof. Éverton Santi
 
 <!-- fit -->
 
-# Exercício 1 - Conversões com Caracteres
+# Exercício 1 - Amostras de Qualidade
 
-Leia um caractere.
+Uma fábrica mede automaticamente o peso de pequenas peças.
 
-Mostre:
+Leia `n`, `peso_minimo` e `peso_maximo`.
 
-- o caractere lido;
-- seu código ASCII;
-- o próximo caractere da tabela ASCII.
-
-Depois, leia um número inteiro e mostre o caractere correspondente.
-
----
-
-<!-- fit -->
-
-# Exercício 2 - Análise de Palavra
-
-Leia uma palavra em um array de `char`.
-
-Usando `strlen`, mostre:
-
-- o tamanho da palavra;
-- a primeira letra;
-- a última letra.
-
-Depois, mostre cada caractere da palavra e seu código ASCII.
-
----
-
-<!-- fit -->
-
-# Exercício 3 - Cópia e Alteração
-
-Leia uma palavra.
-
-Copie essa palavra para outro array usando `strcpy`.
-
-Depois, altere o primeiro caractere da cópia para `*`.
-
-Mostre:
-
-- a palavra original;
-- a palavra copiada e alterada.
-
----
-
-<!-- fit -->
-
-# Exercício 4 - Nome Completo
-
-Leia o primeiro nome e o sobrenome de uma pessoa.
-
-Monte o nome completo em outro array no formato:
-
-```text
-primeiro sobrenome
-```
-
-Use `strcpy` e `strcat`.
-
-O array do nome completo deve ter espaço suficiente para o resultado.
-
----
-
-<!-- fit -->
-
-# Exercício 5 - Palavra Secreta
-
-Cadastre uma palavra secreta.
-
-Depois, leia uma tentativa.
-
-Use `strcmp` para verificar se a tentativa é igual à palavra secreta.
-
-Ao final, informe se o usuário acertou ou errou.
-
----
-
-<!-- fit -->
-
-# Exercício 6 - Lista de Palavras
-
-Leia `n` palavras e armazene-as em uma matriz de `char`.
+Gere `n` pesos inteiros aleatórios no intervalo `[peso_minimo, peso_maximo]`.
 
 Depois, mostre:
 
-- todas as palavras lidas;
-- o tamanho de cada palavra;
-- a maior palavra da lista.
-
-Use `strlen` para comparar os tamanhos.
+- todos os pesos gerados;
+- quantas peças ficaram abaixo de `peso_minimo + 5`;
+- quantas peças ficaram acima de `peso_maximo - 5`.
 
 ---
 
 <!-- fit -->
 
-# Exercício 7 - Frase com Espaços
+# Exercício 2 - Monitoramento de Ruído
 
-Leia um número inteiro representando a matrícula de um aluno.
+Um laboratório mede o nível de ruído em decibéis durante vários instantes.
 
-Depois, leia uma frase curta usando `cin.getline`.
+Leia `n` e gere `n` valores aleatórios entre `30` e `120`.
 
-Use `cin.ignore()` depois da leitura da matrícula.
+Depois, leia um limite de alerta.
 
 Mostre:
 
-- a matrícula;
-- a frase;
-- a quantidade de caracteres da frase;
-- quantos espaços aparecem na frase.
+- todos os valores gerados;
+- quantos valores ficaram acima do limite;
+- o maior bloco consecutivo de valores acima do limite.
 
 ---
 
 <!-- fit -->
 
-# Exercício 8 - Matriz de Caracteres
+# Exercício 3 - Ranking de Pontuações
 
-Leia uma matriz de caracteres com `m` linhas e `n` colunas.
+Leia a pontuação de `n` jogadores.
 
-Depois, leia um caractere de busca.
+Ordene as pontuações em ordem decrescente usando o método bolha.
+
+Depois, mostre o ranking final.
+
+Se duas pontuações forem iguais, elas podem aparecer em qualquer ordem entre si.
+
+---
+
+<!-- fit -->
+
+# Exercício 4 - Tempos de Entrega
+
+Uma transportadora registrou os tempos de entrega de `n` pedidos, em minutos.
+
+Gere tempos aleatórios entre `15` e `180`.
+
+Ordene os tempos em ordem crescente.
+
+Ao final, mostre:
+
+- os tempos gerados;
+- os tempos ordenados;
+- a mediana dos tempos.
+
+---
+
+<!-- fit -->
+
+# Exercício 5 - Controle de Estoque
+
+Uma loja possui `n` produtos.
+
+Para cada produto, gere aleatoriamente uma quantidade em estoque entre `0` e `50`.
+
+Depois, ordene as quantidades em ordem crescente.
 
 Mostre:
 
-- a matriz lida;
-- quantas vezes o caractere aparece na matriz inteira.
-
-Este exercício mistura cadeias de caracteres com o percurso de matrizes.
+- as quantidades originais;
+- as quantidades ordenadas;
+- quantos produtos estão com estoque zerado;
+- quantos produtos possuem estoque menor ou igual a `5`.

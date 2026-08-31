@@ -7,7 +7,7 @@ math: katex
 
 <!-- fit -->
 
-# Funções, Procedimentos, Valor e Referência
+# Funções: Passagem por Valor e Referência
 
 ## Lista 05 - Exercícios da Aula 05
 
@@ -17,226 +17,154 @@ Prof. Éverton Santi
 ---
 
 <!-- fit -->
-# Exercício 1 - Lucro e Margem
+# Exercício 1 - Dobro por Valor
 
-Uma empresa deseja analisar o resultado financeiro de várias vendas em um mês.
+Crie uma função que receba um inteiro por valor, calcule o dobro e retorne o resultado.
 
-Crie a solução de forma modularizada para:
+No `main`, leia um inteiro `x`, chame a função e mostre:
 
-1. calcular o lucro a partir de receita e custo;
-2. calcular a margem percentual de lucro sobre a receita.
+1. o valor retornado;
+2. o valor de `x` depois da chamada.
 
-No programa principal, leia a quantidade de vendas e, para cada venda, leia receita e custo.
-
-Saídas:
-
-1. lucro e margem de cada venda;
-2. lucro total acumulado do mês.
-
-Considere:
-
-$$
-\text{margem} = \frac{lucro}{receita} \cdot 100
-$$
+Escreva um comentário curto explicando por que `x` permanece igual.
 
 ---
 
 <!-- fit -->
+# Exercício 2 - Dobro por Referência
 
-# Exercício 2 - Valor da Mensalidade
+Crie um procedimento que receba um inteiro por referência e altere seu valor para o dobro.
 
-Uma instituição precisa processar as mensalidades de uma turma.
+No `main`, leia um inteiro `x`, chame o procedimento e mostre:
 
-Descreva e implemente uma solução modularizada que calcule o valor final de cada aluno.
+1. o valor antes da chamada;
+2. o valor depois da chamada.
 
-No programa principal, repita a leitura para `n` alunos e mostre:
-
-1. valor final de cada mensalidade;
-2. soma total arrecadada.
-
-Considere:
-
-$$
-V_f = V_b - V_b\frac{d}{100} + V_b\frac{m}{100}
-$$
+Compare o comportamento com o exercício anterior.
 
 ---
 
 <!-- fit -->
+# Exercício 3 - Limites de Horário
 
-# Exercício 3 - Faixa Permitida
+Crie um procedimento que receba `hora` e `minuto` por referência.
 
-Em um sistema de medição, vários valores reais precisam permanecer dentro de uma faixa aceitável.
+O procedimento deve corrigir valores fora das faixas válidas:
 
-Implemente uma solução modularizada que ajuste cada valor para o intervalo definido pelos limites inferior e superior.
+1. se `hora < 0`, altere para `0`;
+2. se `hora > 23`, altere para `23`;
+3. se `minuto < 0`, altere para `0`;
+4. se `minuto > 59`, altere para `59`.
 
-No programa principal, leia `n` medições e informe quantas precisaram de ajuste.
-
-Regra:
-
-1. se o valor estiver abaixo do mínimo, deve ser ajustado para o mínimo;
-2. se estiver acima do máximo, deve ser ajustado para o máximo.
-3. se estiver dentro da faixa, deve permanecer inalterado.
+No `main`, leia vários horários e mostre o horário corrigido.
 
 ---
 
 <!-- fit -->
+# Exercício 4 - Caixa Eletrônico
 
-# Exercício 4 - Fechamento de Pedido
+Crie um procedimento que receba um valor inteiro em reais por valor e receba por referência as quantidades de notas de `100`, `50`, `20` e `10`.
 
-No fechamento diário, uma loja precisa processar vários pedidos e informar imposto e total a pagar.
+O procedimento deve calcular a menor quantidade de notas possível, considerando apenas valores múltiplos de `10`.
 
-Implemente uma solução modularizada que, para cada pedido, produza:
-
-1. valor do imposto;
-2. valor total do pedido.
-
-No programa principal, leia a quantidade de pedidos e mostre também:
-
-1. total de impostos do dia;
-2. faturamento total do dia.
-
-Considere:
-
-$$
-\text{valor\_imposto} = subtotal\cdot\frac{percentual\_imposto}{100}
-$$
-
-$$
-\text{valor\_total} = subtotal + \text{valor\_imposto}
-$$
+No `main`, leia vários saques válidos e mostre a decomposição de cada saque.
 
 ---
 
 <!-- fit -->
+# Exercício 5 - Maior e Menor
 
-# Exercício 5 - Simplificação de Fração
+Crie um procedimento que receba três números reais por valor e receba `menor` e `maior` por referência.
 
-Uma fração deve ser apresentada na forma irredutível.
+O procedimento deve armazenar o menor e o maior valor nos parâmetros de saída.
 
-Construa uma solução modularizada que:
-
-1. determine o máximo divisor comum entre numerador e denominador;
-2. simplifique a fração dividindo ambos pelo valor adequado.
-
-Considere numerador e denominador inteiros, com denominador diferente de zero.
-
-No programa principal, leia `n` frações e mostre cada resultado já simplificado.
+No `main`, leia vários trios de valores e mostre o menor e o maior de cada trio.
 
 ---
 
 <!-- fit -->
+# Exercício 6 - Conversão de Segundos
 
-# Exercício 6 - Extremos e Amplitude
+Crie um procedimento que receba uma quantidade total de segundos por valor e receba `horas`, `minutos` e `segundos` por referência.
 
-Um professor precisa resumir rapidamente uma sequência de medições reais.
+O procedimento deve decompor o tempo total no formato:
 
-Implemente uma solução modularizada que determine:
+```text
+horas:minutos:segundos
+```
 
-- o menor valor
-- o maior valor
-- a amplitude (`maior - menor`)
-
-No programa principal, leia `n` valores (`n >= 1`) e apresente menor, maior e amplitude.
-
----
-
-<!-- fit -->
-
-# Exercício 7 - Elegibilidade de Financiamento
-
-Uma análise de crédito considera que a parcela não pode ultrapassar 30% da renda.
-
-Implemente uma função de decisão que indique se a proposta é elegível ou não.
-
-Entradas: renda mensal e valor da parcela.
-Saída: indicação de elegibilidade.
-
-Considere elegível quando:
-
-$$
-parcela \le 0{,}30 \cdot renda
-$$
-
-No programa principal, leia `n` propostas e informe, ao final, quantas foram elegíveis e quantas não foram.
+No `main`, leia várias durações e mostre cada uma no formato decomposto.
 
 ---
 
 <!-- fit -->
+# Exercício 7 - Atualização de Saldo
 
-# Exercício 8 - Reajuste por Meta
+Uma conta bancária possui um saldo atual.
 
-Em uma empresa, o reajuste salarial depende do cumprimento de meta para cada colaborador.
+Crie um procedimento que receba o saldo por referência, um tipo de operação por valor e um valor de operação por valor.
 
-Crie uma solução modularizada em que:
+Regras:
 
-1. o salário seja atualizado somente quando a meta for atingida;
-2. o percentual de reajuste seja aplicado sobre o salário atual.
+1. operação `1`: depósito, soma o valor ao saldo;
+2. operação `2`: saque, subtrai o valor apenas se houver saldo suficiente;
+3. qualquer outro código não altera o saldo.
 
-No programa principal, processe `n` colaboradores e apresente:
-
-1. salário final de cada colaborador;
-2. total de colaboradores com reajuste aplicado.
-
----
-
-<!-- fit -->
-
-# Exercício 9 - Contagem de Dígitos Ímpares
-
-Dado um número inteiro positivo, deseja-se analisar sua composição decimal.
-
-Implemente uma função que retorne a quantidade de dígitos ímpares desse número.
-
-Entrada: inteiro positivo.
-Saída: quantidade de dígitos ímpares.
-
-Exemplo:
-
-- para `n = 28041`, o retorno deve ser `2`
-
-No programa principal, leia `k` números positivos e mostre a quantidade de dígitos ímpares de cada um.
+No `main`, processe várias operações e mostre o saldo após cada uma.
 
 ---
 
 <!-- fit -->
+# Exercício 8 - Preço com Desconto e Acréscimo
 
-# Exercício 10 - Depreciação de Equipamento
+Crie um procedimento que receba o preço original por valor, o percentual de desconto por valor, o percentual de acréscimo por valor, e receba por referência:
 
-Um equipamento perde valor ao longo dos anos por depreciação composta.
+1. o valor do desconto;
+2. o valor do acréscimo;
+3. o preço final.
 
-Implemente uma função que calcule o valor estimado ano a ano.
-
-Entradas: valor inicial, taxa anual de depreciação (%) e quantidade de anos.
-Saídas:
-
-1. valor do equipamento ao final de cada ano;
-2. valor final ao término do período.
-
-Considere depreciação composta:
-
-$$
-V = V_0\left(1-\frac{t}{100}\right)^n
-$$
+No `main`, leia vários produtos e mostre os três resultados calculados para cada um.
 
 ---
 
 <!-- fit -->
+# Exercício 9 - Normalização de Data
 
-# Desafio Extra - Controle de Produção
+Crie um procedimento que receba `dia` e `mes` por referência.
 
-Apresente um programa modularizado com:
+Considere todos os meses com `30` dias.
 
-1. uma função para calcular a eficiência diária (`itens_bons / itens_totais`);
-2. uma função para classificar o dia (`Excelente`, `Adequado`, `Crítico`) usando código inteiro;
-3. um procedimento para atualizar os acumuladores das categorias.
+O procedimento deve transformar valores acima do limite:
 
-No programa principal:
+1. enquanto `dia > 30`, subtraia `30` de `dia` e some `1` ao mês;
+2. enquanto `mes > 12`, subtraia `12` de `mes`.
 
-1. Leia a quantidade de dias analisados
-2. Para cada dia, leia `itens_totais` e `itens_bons`
-3. Ao final, mostre:
-- quantidade de dias por categoria
-- eficiência média do período
+No `main`, leia várias datas simplificadas e mostre a data normalizada.
 
-Considere `itens_totais > 0` em cada dia.
+---
+
+<!-- fit -->
+# Exercício 10 - Divisão Inteira
+
+Crie uma função que receba `dividendo` e `divisor` por valor e receba `quociente` e `resto` por referência.
+
+A função deve retornar `true` quando o divisor for diferente de zero.
+
+Quando a divisão for válida, armazene o quociente e o resto nos parâmetros de saída.
+
+No `main`, leia vários pares de inteiros e mostre o resultado apenas quando a divisão for possível.
+
+---
+
+<!-- fit -->
+# Desafio Extra - Simulação de Partida
+
+Crie um programa modularizado para acompanhar o placar de uma partida entre dois times.
+
+Use procedimentos por referência para:
+
+1. registrar ponto para o time A;
+2. registrar ponto para o time B;
+3. aplicar uma penalidade, removendo um ponto de um time apenas se ele tiver pontuação maior que zero.
+
+No `main`, leia comandos até o código `0` e mostre o placar final.

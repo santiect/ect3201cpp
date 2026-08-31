@@ -52,7 +52,7 @@ Exemplo:
 Apresente:
 
 1. Uma função que verifica se um inteiro é perfeito
-2. Outra função que mostre todos os números perfeitos de `2` até `n`
+2. Um procedimento que mostre todos os números perfeitos de `2` até `n`
 
 ---
 
@@ -91,10 +91,7 @@ Apresente um procedimento que:
 1. Receba dois inteiros `a` e `b`
 2. Liste todos os números primos no intervalo `[a, b]`
 
-Use valores padrão:
-
-- `a = 10`
-- `b = 150`
+Considere que `a <= b`.
 
 ---
 

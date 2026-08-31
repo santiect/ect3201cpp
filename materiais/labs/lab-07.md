@@ -7,9 +7,9 @@ math: katex
 
 <!-- fit -->
 
-# Arrays Bidimensionais
+# Arrays e Funções
 
-## Laboratório 07 - Prática da Aula 08
+## Laboratório 07 - Prática da Aula 07
 
 ECT3201 - Linguagem de Programação (C++)
 Prof. Éverton Santi
@@ -18,90 +18,102 @@ Prof. Éverton Santi
 
 <!-- fit -->
 
-# Exercício 1 - Leituras Fora da Faixa
+# Exercício 1 - Salários por Faixa
 
-Uma rede de sensores registra medições em vários pontos e horários.
+Uma empresa paga:
 
-Cada linha representa um ponto de medição.
+$$
+salario = 200 + 0{,}09 \cdot vendas
+$$
 
-Cada coluna representa um horário.
+Leia as vendas semanais de `n` vendedores.
 
-Leia uma matriz de medições do tipo `float`.
+Use funções/procedimentos para:
 
-Depois, leia os limites `minimo` e `maximo`.
+1. calcular o salário de cada vendedor;
+2. atualizar um array contador;
+3. imprimir a quantidade por faixa.
 
-Mostre quantas medições ficaram fora da faixa segura em cada ponto de medição.
-
----
-
-<!-- fit -->
-
-# Exercício 2 - Máscara de Imagem
-
-Uma imagem em tons de cinza pode ser representada por uma matriz de inteiros de `0` até `255`.
-
-Leia a matriz da imagem e um valor `limiar`.
-
-Gere uma matriz `bool` em que:
-
-- `true` indica pixel maior ou igual ao limiar;
-- `false` indica pixel abaixo do limiar.
+Continua no próximo slide.
 
 ---
 
 <!-- fit -->
 
-# Exercício 3 - Picos de Altura
+# Exercício 1 - Faixas
 
-Uma matriz representa alturas de um terreno.
-
-Uma posição interna é um pico quando seu valor é maior que os valores imediatamente:
-
-- acima
-- abaixo
-- à esquerda
-- à direita
-
-Conte quantos picos existem no terreno.
-
----
-
-<!-- fit -->
-
-# Exercício 4 - Jogo da Velha
-
-Leia um tabuleiro `3 x 3` de jogo da velha.
-
-Cada posição contém:
-
-- `'X'` para jogada do primeiro jogador;
-- `'O'` para jogada do segundo jogador;
-- `'-'` para posição vazia.
-
-Verifique se existe vencedor em:
-
-- alguma linha;
-- alguma coluna;
-- alguma diagonal.
-
-Mostre o símbolo vencedor ou informe que não há vencedor.
+| Índice | Faixa salarial |
+| ---: | --- |
+| 0 | `200-299` |
+| 1 | `300-399` |
+| 2 | `400-499` |
+| 3 | `500-599` |
+| 4 | `600-699` |
+| 5 | `700-799` |
+| 6 | `800-899` |
+| 7 | `900-999` |
+| 8 | `1000 ou mais` |
 
 ---
 
 <!-- fit -->
 
-# Exercício 5 - Agenda de Laboratório
+# Exercício 2 - Funções de Consulta e Ajuste
 
-Uma matriz `bool` representa a ocupação de um laboratório.
+Implemente as funções abaixo usando arrays unidimensionais.
 
-Cada linha representa um dia.
+```cpp
+float calcular_media(float v[], int n);
+void limitar_valores(float v[], int n, float minimo, float maximo);
+int contar_verdadeiros(bool v[], int n);
+void inverter_sinais(int v[], int n);
+```
 
-Cada coluna representa um horário.
+No `main`, teste cada função com arrays pequenos.
 
-O valor `true` indica horário ocupado.
+Continua no próximo slide.
 
-O valor `false` indica horário livre.
+---
 
-Leia também a duração `k` da reserva.
+<!-- fit -->
 
-Mostre o primeiro horário livre para uma reserva de `k` horários consecutivos em um mesmo dia.
+# Exercício 2 - Regras
+
+Regras:
+
+- `limitar_valores` deve substituir valores abaixo de `minimo` por `minimo`;
+- `limitar_valores` deve substituir valores acima de `maximo` por `maximo`;
+- `inverter_sinais` deve trocar o sinal de cada elemento do array.
+
+---
+
+<!-- fit -->
+
+# Exercício 3 - Valores em Comum
+
+Crie uma função que receba dois arrays de inteiros e retorne quantos valores aparecem nos dois arrays.
+
+Protótipo sugerido:
+
+```cpp
+int contar_comuns(int a[], int n_a, int b[], int n_b);
+```
+
+Considere que cada array informado não possui valores repetidos internamente.
+
+---
+
+<!-- fit -->
+
+# Exercício 4 - Temperaturas da Semana
+
+Uma estação registrou a temperatura média de `7` dias.
+
+Escreva um programa modularizado que armazene as temperaturas em um array do tipo `float` e mostre:
+
+1. a diferença de temperatura entre cada par de dias consecutivos;
+2. quantos dias ficaram abaixo de `20.0` graus;
+3. quantos dias ficaram na faixa de conforto, de `20.0` até `25.0` graus;
+4. quantas vezes a temperatura aumentou em relação ao dia anterior.
+
+Use funções/procedimentos para separar os cálculos principais.

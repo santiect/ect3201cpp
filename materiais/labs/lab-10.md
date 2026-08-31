@@ -7,9 +7,9 @@ math: katex
 
 <!-- fit -->
 
-# Tipos Estruturados (`struct`)
+# Recursividade
 
-## Laboratório 10 - Prática da Aula 12
+## Laboratório 10 - Prática da Aula 10
 
 ECT3201 - Linguagem de Programação (C++)
 Prof. Éverton Santi
@@ -17,183 +17,91 @@ Prof. Éverton Santi
 ---
 
 <!-- fit -->
+# Exercício 1 - Múltiplos de 3
 
-# Exercício 1 - Registro de Consulta
+Crie um procedimento recursivo que receba um inteiro positivo `n` e mostre todos os múltiplos de `3` entre `0` e `n`, em ordem crescente.
 
-Crie uma `struct` chamada `Consulta` com:
+No `main`, leia `n` e chame o procedimento.
 
-- código;
-- nome do paciente;
-- temperatura.
-
-Leia os dados de uma consulta e mostre todos os campos cadastrados.
+Identifique no código o caso base e a chamada recursiva.
 
 ---
 
 <!-- fit -->
+# Exercício 2 - Soma dos Quadrados
 
-# Exercício 2 - Custo de Viagem
+Crie uma função recursiva que receba um inteiro positivo `n` e retorne:
 
-Crie uma `struct` chamada `Viagem` com:
+$$
+1^2 + 2^2 + 3^2 + ... + n^2
+$$
 
-- destino;
-- distância em quilômetros;
-- consumo médio em km/l;
-- preço do litro do combustível.
+No `main`, leia `n`, chame a função e mostre o resultado.
 
-Leia os dados de uma viagem e mostre o custo estimado do combustível.
+---
 
-Use:
+<!-- fit -->
+# Exercício 3 - Potência
+
+Crie uma função recursiva para calcular:
+
+$$
+a^b
+$$
+
+Considere `a` real e `b` inteiro não negativo.
+
+Não use a função `pow`.
+
+---
+
+<!-- fit -->
+# Exercício 4 - Contagem de Dígitos Pares
+
+Crie uma função recursiva que receba um inteiro positivo `n` e retorne a quantidade de dígitos pares de `n`.
+
+Exemplo:
 
 ```text
-custo = distância / consumo_médio * preço_litro
+28041 -> 3
 ```
 
 ---
 
 <!-- fit -->
+# Exercício 5 - Número Invertido
 
-# Exercício 3 - Sessão Infantil
+Crie uma função recursiva que receba um inteiro positivo `n` e retorne o número formado pelos mesmos dígitos em ordem inversa.
 
-Crie uma `struct` chamada `Filme` com:
+Exemplo:
 
-- título;
-- duração em minutos;
-- classificação indicativa.
+```text
+1234 -> 4321
+```
 
-Implemente uma função que receba um `Filme` e retorne `true` se ele puder ser recomendado para uma sessão infantil e `false` caso contrário.
-
-Este exercício continua no próximo slide.
-
----
-
-<!-- fit -->
-# Exercício 3 - Sessão Infantil (continuação)
-
-Reutilize a mesma `struct Filme`.
-
-Considere adequado para sessão infantil o filme com:
-
-- classificação indicativa menor ou igual a `10`; e
-- duração menor ou igual a `120`.
+Dica: use também um parâmetro auxiliar para acumular o resultado.
 
 ---
 
 <!-- fit -->
+# Exercício 6 - Primeiro Negativo
 
-# Exercício 4 - Tempos de Atletas
+Leia `n` inteiros em um array, com `n <= 50`.
 
-Leia `n` atletas em um array de `struct`.
+Crie uma função recursiva que receba o array e retorne a posição do primeiro valor negativo.
 
-Para cada atleta, leia:
-
-- nome;
-- idade;
-- tempo em segundos.
-
-Ao final, mostre:
-
-- o menor tempo;
-- o maior tempo;
-- a média dos tempos.
+Se não houver valor negativo, a função deve retornar `-1`.
 
 ---
 
 <!-- fit -->
+# Desafio Extra - Dígitos em Ordem Crescente
 
-# Exercício 5 - Busca de Contato
+Crie uma função recursiva que receba um inteiro positivo `n` e retorne `true` se seus dígitos aparecem em ordem não decrescente da esquerda para a direita.
 
-Leia `n` contatos em um array de `struct`.
+Exemplos:
 
-Cada contato deve possuir:
-
-- nome;
-- telefone;
-- idade.
-
-Depois, leia um nome de busca.
-
-Crie uma função que receba o array e o nome procurado, retornando:
-
-- o índice do contato encontrado; ou
-- `-1`, se o nome não existir.
-
-Este exercício continua no próximo slide.
-
----
-
-<!-- fit -->
-# Exercício 5 - Busca de Contato (continuação)
-
-Reutilize o mesmo array de contatos.
-
-Use `strcmp` para comparar os nomes.
-
-Se o contato for encontrado, mostre todos os seus dados.
-
----
-
-<!-- fit -->
-
-# Exercício 6 - Leitura de Sensor
-
-Crie uma `struct` chamada `Sensor` com:
-
-- identificador;
-- descrição;
-- valor da leitura;
-- limite de alerta.
-
-Crie um procedimento que receba um sensor por referência e atualize sua leitura.
-
-Este exercício continua no próximo slide.
-
----
-
-<!-- fit -->
-# Exercício 6 - Leitura de Sensor (continuação)
-
-Reutilize a mesma `struct Sensor`.
-
-No programa principal:
-
-- leia os dados de um sensor;
-- leia um novo valor de leitura;
-- informe se o sensor estava em alerta antes da atualização;
-- atualize a leitura;
-- informe se o sensor ficou em alerta depois da atualização.
-
----
-
-<!-- fit -->
-
-# Exercício 7 - Classificação de Equipes
-
-Crie uma `struct` chamada `Equipe` com:
-
-- nome;
-- vitórias;
-- empates;
-- derrotas;
-- gols marcados.
-
-Leia `n` equipes em um array.
-
-Este exercício continua no próximo slide.
-
----
-
-<!-- fit -->
-# Exercício 7 - Classificação de Equipes (continuação)
-
-Reutilize o mesmo array de equipes.
-
-Depois:
-
-- calcule os pontos de cada equipe usando a regra
-  `3` pontos por vitória e `1` por empate;
-- mostre todas as equipes com seus pontos;
-- encontre a equipe com mais pontos;
-- ordene as equipes em ordem decrescente de pontos.
-
-Se duas equipes tiverem a mesma pontuação, elas podem permanecer em qualquer ordem entre si.
+```text
+1228 -> true
+321 -> false
+```

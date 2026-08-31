@@ -196,25 +196,26 @@ Também pode ser usada em expressões, desde que retorne valor compatível.
 ---
 
 <!-- fit -->
-# Parâmetro com Valor Padrão
+# Organização do `main`
 
-Em C++, podemos declarar:
+O `main` deve coordenar o programa:
 
-```cpp
-void nome(int x = 1)
-```
+- ler entradas principais
+- chamar funções e procedimentos
+- mostrar ou solicitar relatórios
 
-Quando nenhum argumento é informado, o padrão é usado.
+Evite concentrar todo o processamento em um único bloco.
 
 ---
 
 <!-- fit -->
 # Exemplo 6
 
-Crie um procedimento para tabuada:
+Crie um programa modularizado para uma tabuada:
 
-- recebe `n` como argumento
-- usa `1` como padrão se nenhum valor for informado
+- leia um inteiro positivo `n`
+- use um procedimento para mostrar a tabuada de `n` de `1` até `10`
+- deixe o `main` responsável apenas pela leitura e pela chamada do procedimento
 
 ---
 
@@ -224,9 +225,9 @@ Crie um procedimento para tabuada:
 Nesta aula:
 
 - vimos funções e procedimentos
-- trabalhamos parâmetros, retorno, escopo e valor padrão
+- trabalhamos retorno, `void`, parâmetros e chamadas
 - aplicamos modularização em problemas maiores
 
 Próximo passo:
 
-- resolver problemas completos com funções
+- entender como os argumentos são passados para funções

@@ -7,7 +7,7 @@ math: katex
 
 <!-- fit -->
 
-# Funções: Valor e Referência
+# Funções: Passagem por Valor e Referência
 
 **ECT3201 - Linguagem de Programação**
 
@@ -18,9 +18,21 @@ Prof. Éverton Santi
 
 <!-- fit -->
 
+# Retomada
+
+Na aula anterior, usamos funções e procedimentos para organizar programas.
+
+Agora vamos observar uma pergunta importante:
+
+**o que acontece com os argumentos enviados para uma função?**
+
+---
+
+<!-- fit -->
+
 # Escopo de Variável
 
-- Bloco de código em que uma variável é válida:
+Escopo é o bloco de código em que uma variável é válida:
 
 ```C++
 int somar(int x, int y){
@@ -58,30 +70,34 @@ Em um mesmo programa, nomes podem se repetir.
 ---
 
 <!-- fit -->
-# Parâmetros formais de uma função
+# Parâmetros Formais
 
-- Visíveis apenas dentro do escopo da função;
-- Tipo, ordem e quantidade correspondem à declaração da função;
-- Valores dos argumentos são convertidos para os tipos definidos dos parâmetros;
+- são variáveis da função
+- existem apenas durante a chamada
+- recebem informações enviadas pelo programa principal ou por outra função
+- têm tipo, ordem e quantidade definidos no cabeçalho
 
 ---
 
 <!-- fit -->
 # Passagem de Parâmetros
 
-Por **Valor:**
+## Por valor
 
-- Parâmetros recebem uma cópia dos valores das variáveis ou expressões usadas na chamada de função;
+O parâmetro recebe uma cópia do argumento.
 
-Por **Referência:**
+Alterações feitas no parâmetro **não alteram** a variável original.
 
-- Parâmetros recebem o endereço de memória da variável utilizada na chamada da função;
-- Parâmetros referenciam variável externa à função durante a execução;
+## Por referência
+
+O parâmetro passa a representar a própria variável enviada.
+
+Alterações feitas no parâmetro **alteram** a variável original.
 
 ---
 
 <!-- fit -->
-# Exemplo 1: Passagem por Valor
+# Exemplo 1 - Passagem por Valor
 
 Qual o valor de `x` ao final da execução?
 
@@ -109,7 +125,7 @@ float quadrado(float x){
 ---
 
 <!-- fit -->
-# Operador Unário de Referência: `&`
+# Operador de Endereço: `&`
 
 Usado para extrair o endereço de memória de uma variável.
 
@@ -132,7 +148,7 @@ int main(){
 ---
 
 <!-- fit -->
-# Exemplo 2: Passagem por Referência
+# Exemplo 2 - Passagem por Referência
 Qual o valor de `x` ao final da execução do código abaixo?
 ```C++
 #include<iostream>
@@ -163,32 +179,46 @@ float quadrado(float &x){
 
 Quais possibilidades o uso de referência nos traz?
 
----
-
-
-<!-- fit -->
-# Passagem por Referência
-
-Quais possibilidades o uso de referência nos traz?
-
-- **Alterar** variáveis pertencentes a outros escopos;
-- Retornar mais de um valor: **Parâmetros de Saída**; 
+- alterar variáveis pertencentes a outro escopo
+- criar procedimentos que atualizam dados
+- devolver mais de um resultado usando parâmetros de saída
 
 ---
 
 <!-- fit -->
 # Exemplo 3
 
-Usando funções e/ou procedimentos, organize em ordem crescente os valores de quatro variáveis `a`, `b`, `c` e `d`.
+Crie um procedimento `trocar` que receba dois inteiros por referência.
+
+O procedimento deve inverter os valores das duas variáveis.
+
+Depois, use esse procedimento para organizar em ordem crescente os valores de quatro variáveis `a`, `b`, `c` e `d`.
 
 ---
 
 <!-- fit -->
 # Exemplo 4
 
-Crie um programa para calcular as raízes reais de uma Equação de Segundo Grau. Implemente este programa utilizando funções e/ou procedimentos.
+Crie um programa para calcular as raízes reais de uma equação de segundo grau.
+
+Use uma função que receba `a`, `b` e `c` por valor e receba `x1` e `x2` por referência.
+
+A função deve retornar `true` quando houver raízes reais e `false` caso contrário.
 $$
  x =  \frac{-b \pm \sqrt{b^2-4ac}}{2a}
 $$
 
 ---
+
+<!-- fit -->
+# Fechamento
+
+Nesta aula:
+
+- diferenciamos passagem por valor e por referência
+- observamos quando a variável original é alterada
+- usamos referência para troca de valores e múltiplas saídas
+
+Próximo passo:
+
+- armazenar muitos valores com arrays

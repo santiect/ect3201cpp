@@ -7,9 +7,9 @@ math: katex
 
 <!-- fit -->
 
-# Números Aleatórios e Ordenação
+# Arrays Bidimensionais
 
-## Laboratório 08 - Prática da Aula 09
+## Laboratório 08 - Prática da Aula 08
 
 ECT3201 - Linguagem de Programação (C++)
 Prof. Éverton Santi
@@ -18,85 +18,90 @@ Prof. Éverton Santi
 
 <!-- fit -->
 
-# Exercício 1 - Amostras de Qualidade
+# Exercício 1 - Leituras Fora da Faixa
 
-Uma fábrica mede automaticamente o peso de pequenas peças.
+Uma rede de sensores registra medições em vários pontos e horários.
 
-Leia `n`, `peso_minimo` e `peso_maximo`.
+Cada linha representa um ponto de medição.
 
-Gere `n` pesos inteiros aleatórios no intervalo `[peso_minimo, peso_maximo]`.
+Cada coluna representa um horário.
 
-Depois, mostre:
+Leia uma matriz de medições do tipo `float`.
 
-- todos os pesos gerados;
-- quantas peças ficaram abaixo de `peso_minimo + 5`;
-- quantas peças ficaram acima de `peso_maximo - 5`.
+Depois, leia os limites `minimo` e `maximo`.
 
----
-
-<!-- fit -->
-
-# Exercício 2 - Monitoramento de Ruído
-
-Um laboratório mede o nível de ruído em decibéis durante vários instantes.
-
-Leia `n` e gere `n` valores aleatórios entre `30` e `120`.
-
-Depois, leia um limite de alerta.
-
-Mostre:
-
-- todos os valores gerados;
-- quantos valores ficaram acima do limite;
-- o maior bloco consecutivo de valores acima do limite.
+Mostre quantas medições ficaram fora da faixa segura em cada ponto de medição.
 
 ---
 
 <!-- fit -->
 
-# Exercício 3 - Ranking de Pontuações
+# Exercício 2 - Máscara de Imagem
 
-Leia a pontuação de `n` jogadores.
+Uma imagem em tons de cinza pode ser representada por uma matriz de inteiros de `0` até `255`.
 
-Ordene as pontuações em ordem decrescente usando o método bolha.
+Leia a matriz da imagem e um valor `limiar`.
 
-Depois, mostre o ranking final.
+Gere uma matriz `bool` em que:
 
-Se duas pontuações forem iguais, elas podem aparecer em qualquer ordem entre si.
-
----
-
-<!-- fit -->
-
-# Exercício 4 - Tempos de Entrega
-
-Uma transportadora registrou os tempos de entrega de `n` pedidos, em minutos.
-
-Gere tempos aleatórios entre `15` e `180`.
-
-Ordene os tempos em ordem crescente.
-
-Ao final, mostre:
-
-- os tempos gerados;
-- os tempos ordenados;
-- a mediana dos tempos.
+- `true` indica pixel maior ou igual ao limiar;
+- `false` indica pixel abaixo do limiar.
 
 ---
 
 <!-- fit -->
 
-# Exercício 5 - Controle de Estoque
+# Exercício 3 - Picos de Altura
 
-Uma loja possui `n` produtos.
+Uma matriz representa alturas de um terreno.
 
-Para cada produto, gere aleatoriamente uma quantidade em estoque entre `0` e `50`.
+Uma posição interna é um pico quando seu valor é maior que os valores imediatamente:
 
-Depois, ordene as quantidades em ordem crescente.
+- acima
+- abaixo
+- à esquerda
+- à direita
 
-Mostre:
+Conte quantos picos existem no terreno.
 
-- as quantidades originais;
-- as quantidades ordenadas;
-- quantos produtos estão com estoque zerado;
-- quantos produtos possuem estoque menor ou igual a `5`.
+---
+
+<!-- fit -->
+
+# Exercício 4 - Jogo da Velha
+
+Leia um tabuleiro `3 x 3` de jogo da velha.
+
+Cada posição contém:
+
+- `'X'` para jogada do primeiro jogador;
+- `'O'` para jogada do segundo jogador;
+- `'-'` para posição vazia.
+
+Verifique se existe vencedor em:
+
+- alguma linha;
+- alguma coluna;
+- alguma diagonal.
+
+Mostre o símbolo vencedor ou informe que não há vencedor.
+
+---
+
+<!-- fit -->
+
+# Exercício 5 - Agenda de Laboratório
+
+Uma matriz `bool` representa a ocupação de um laboratório.
+
+Cada linha representa um dia.
+
+Cada coluna representa um horário.
+
+O valor `true` indica horário ocupado.
+
+O valor `false` indica horário livre.
+
+Leia também a duração `k` da reserva.
+
+Mostre o primeiro horário livre para uma reserva de `k` horários consecutivos em um mesmo dia.
