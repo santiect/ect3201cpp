@@ -31,6 +31,18 @@ Depois, mostre:
 - a maior nota;
 - a média da turma.
 
+Funções sugeridas:
+
+```cpp
+#define MAX 100
+
+void gerar_aleatorios(int v[MAX], int n, int inicio, int fim);
+void mostrar_array(int v[MAX], int n);
+int menor(int v[MAX], int n);
+int maior(int v[MAX], int n);
+double media(int v[MAX], int n);
+```
+
 ---
 
 <!-- fit -->
@@ -50,69 +62,197 @@ Use um array contador para registrar quantas pessoas aparecem em cada faixa:
 
 Ao final, mostre uma tabela com as faixas e suas contagens.
 
----
-
-<!-- fit -->
-
-# Exercício 3 - Controle de Frequência Cardíaca
-
-Um aplicativo registra batimentos cardíacos durante uma atividade física.
-
-Leia `n` e gere `n` medições aleatórias entre `50` e `190`.
-
-Depois, leia `zona_minima` e `zona_maxima`.
-
-Mostre quantas medições ficaram abaixo, dentro e acima da zona informada.
+Este exercício continua no próximo slide.
 
 ---
 
 <!-- fit -->
 
-# Exercício 4 - Preços em Promoção
+# Exercício 2 (continuação)
 
-Leia os preços de `n` produtos.
+Funções sugeridas:
+
+```cpp
+int indice_faixa(int idade);
+void contar_faixas(int idades[MAX], int n, int cont[6]);
+```
+
+`indice_faixa` devolve a posição do contador (de `0` a `5`) correspondente à idade.
+
+---
+
+<!-- fit -->
+
+# Exercício 3 - Moeda Viciada
+
+Uma moeda viciada sai `cara` em 70% dos lançamentos.
+
+Leia `n` e simule `n` lançamentos, guardando `1` para cara e `0` para coroa.
+
+Mostre:
+
+- a sequência de lançamentos;
+- o total de caras;
+- a maior sequência de caras seguidas.
+
+Funções sugeridas:
+
+```cpp
+bool sorteia_cara(int percentual);
+int maior_sequencia(int v[MAX], int n);
+```
+
+---
+
+<!-- fit -->
+
+# Exercício 4 - Passeio Aleatório
+
+Um robô parte da posição `0` de uma reta.
+
+Leia `n`. Em cada um dos `n` passos, o robô anda `+1` ou `-1`, com a mesma chance para cada direção.
+
+Ao final, mostre:
+
+- a posição final do robô;
+- a maior distância da origem atingida durante o passeio.
+
+Este exercício continua no próximo slide.
+
+---
+
+<!-- fit -->
+
+# Exercício 4 (continuação)
+
+Funções sugeridas:
+
+```cpp
+int passo_aleatorio();
+void passeio(int n, int &posicao_final, int &maior_distancia);
+```
+
+`passo_aleatorio` devolve `+1` ou `-1`.
+
+---
+
+<!-- fit -->
+
+# Exercício 5 - Preços em Promoção
+
+Leia os preços de `n` produtos, com `n >= 3`.
 
 Ordene os preços em ordem crescente usando o método bolha.
 
 Depois, mostre:
 
 - os preços ordenados;
-- os três menores preços, se existirem;
-- os três maiores preços, se existirem.
+- os três menores preços;
+- os três maiores preços.
+
+Funções sugeridas:
+
+```cpp
+void trocar(int &a, int &b);
+void ordenar_crescente(int v[MAX], int n);
+void mostrar_extremos(int v[MAX], int n, int k);
+```
 
 ---
 
 <!-- fit -->
 
-# Exercício 5 - Pesquisa de Satisfação
+# Exercício 6 - Orçamento de Compras
 
-Uma pesquisa usa notas inteiras de `1` até `5`.
+Leia os preços de `n` produtos e o valor do orçamento disponível.
 
-Leia `n` e gere `n` respostas aleatórias.
+Ordene os preços em ordem crescente e compre os produtos mais baratos primeiro, enquanto o total não ultrapassar o orçamento.
 
-Mostre a contagem de cada nota e ordene as respostas em ordem crescente.
+Mostre:
 
-Ao final, mostre as respostas ordenadas.
+- quantos produtos foram comprados;
+- o total gasto;
+- o valor que sobrou do orçamento.
+
+Este exercício continua no próximo slide.
 
 ---
 
 <!-- fit -->
 
-# Exercício 6 - Lotes de Produção
+# Exercício 6 (continuação)
+
+Função sugerida:
+
+```cpp
+int itens_que_cabem(int preco[MAX], int n, int orcamento, int &gasto);
+```
+
+Reutilize `ordenar_crescente` do exercício anterior.
+
+---
+
+<!-- fit -->
+
+# Exercício 7 - Fila Alternada
+
+Leia `n` valores inteiros.
+
+Ordene os valores em ordem crescente e monte um segundo array alternando os extremos:
+
+- o menor valor;
+- o maior valor;
+- o segundo menor;
+- o segundo maior;
+- e assim por diante.
+
+Se `n` for ímpar, o valor central é o último da sequência.
+
+Mostre o array lido e o array alternado.
+
+Este exercício continua no próximo slide.
+
+---
+
+<!-- fit -->
+
+# Exercício 7 (continuação)
+
+Função sugerida:
+
+```cpp
+void intercalar_extremos(int origem[MAX], int destino[MAX], int n);
+```
+
+`origem` já deve estar ordenado em ordem crescente quando a função for chamada.
+
+---
+
+<!-- fit -->
+
+# Exercício 8 - Lotes Mais Frequentes
 
 Uma máquina produz peças com códigos de lote entre `1000` e `9999`.
 
-Leia `n` e gere `n` códigos aleatórios.
+Leia `n` códigos de lote.
 
-Depois, ordene os códigos em ordem crescente.
+Ordene os códigos em ordem crescente.
 
-Mostre os códigos ordenados e informe se houve códigos repetidos.
+Percorrendo o array ordenado, descubra qual código aparece mais vezes e quantas vezes ele aparece.
+
+Em caso de empate, mostre o menor código.
+
+Função sugerida:
+
+```cpp
+int mais_frequente(int v[MAX], int n, int &repeticoes);
+```
 
 ---
 
 <!-- fit -->
 
-# Exercício 7 - Intervalo Entre Alertas
+# Exercício 9 - Intervalo Entre Alertas
 
 Um sensor registra códigos de situação ao longo do tempo.
 
@@ -122,34 +262,147 @@ Depois, leia o código de alerta `x`.
 
 Mostre todas as posições em que o código `x` apareceu.
 
-Ao final, informe a maior distância entre duas ocorrências de `x` na lista de situações.
+Ao final, informe a distância entre a primeira e a última ocorrência de `x`.
 
 Se `x` aparecer menos de duas vezes, informe que não há distância a calcular.
 
----
-
-<!-- fit -->
-
-# Exercício 8 - Fila por Prioridade
-
-Uma fila de chamados possui prioridades inteiras de `1` até `10`.
-
-Leia `n` e gere `n` prioridades aleatórias.
-
-Ordene as prioridades em ordem decrescente usando o método bolha.
-
-Depois, mostre a fila original e a fila organizada por prioridade.
+Este exercício continua no próximo slide.
 
 ---
 
 <!-- fit -->
 
-# Desafio Extra - Cartela Ordenada
+# Exercício 9 (continuação)
 
-Uma cartela possui `n` números distintos sorteados no intervalo `[1, 99]`.
+Funções sugeridas:
 
-Leia `n`, gere a cartela sem valores repetidos e ordene os números em ordem crescente.
+```cpp
+void mostrar_posicoes(int v[MAX], int n, int x);
+int maior_distancia(int v[MAX], int n, int x);
+```
 
-Depois, mostre a cartela em linhas com `5` números por linha.
+`maior_distancia` devolve `-1` quando `x` aparece menos de duas vezes.
 
-Se `n` não for múltiplo de `5`, a última linha terá menos números.
+---
+
+<!-- fit -->
+
+# Exercício 10 - Nota de Corte
+
+Um processo seletivo avaliou `n` candidatos.
+
+Leia `n` e o número de vagas `vagas`, com `1 <= vagas <= n`.
+
+Gere as notas dos candidatos, entre `0` e `100`.
+
+Ordene as notas em ordem decrescente. A nota de corte é a nota que está na posição `vagas` do ranking.
+
+Mostre:
+
+- o ranking de notas;
+- a nota de corte;
+- quantos candidatos foram aprovados, contando todos com nota maior ou igual à nota de corte.
+
+Este exercício continua no próximo slide.
+
+---
+
+<!-- fit -->
+
+# Exercício 10 (continuação)
+
+Funções sugeridas:
+
+```cpp
+void ordenar_decrescente(int v[MAX], int n);
+int nota_de_corte(int notas[MAX], int n, int vagas);
+int contar_aprovados(int notas[MAX], int n, int corte);
+```
+
+Reutilize `gerar_aleatorios` e `mostrar_array`.
+
+---
+
+<!-- fit -->
+
+# Exercício 11 - Vendedores do Mês
+
+Uma loja tem `n` vendedores numerados de `1` até `n`, com `n >= 3`.
+
+Gere o total vendido por cada vendedor, entre `1000` e `9999`.
+
+Ordene as vendas em ordem decrescente, mas sem perder de quem é cada venda: sempre que trocar duas vendas, troque também os números dos vendedores.
+
+Mostre o pódio com os três primeiros colocados, indicando o número do vendedor e o valor vendido.
+
+Este exercício continua no próximo slide.
+
+---
+
+<!-- fit -->
+
+# Exercício 11 (continuação)
+
+Funções sugeridas:
+
+```cpp
+void ordenar_com_vendedores(int vendas[MAX], int vendedor[MAX], int n);
+void mostrar_podio(int vendas[MAX], int vendedor[MAX]);
+```
+
+Use `trocar` duas vezes dentro da ordenação: uma para `vendas` e outra para `vendedor`.
+
+---
+
+<!-- fit -->
+
+# Exercício 12 - Intercalação de Dois Lotes
+
+Leia `n` e `m`.
+
+Gere dois arrays, `a` com `n` valores e `b` com `m` valores, todos aleatórios entre `1` e `50`.
+
+Ordene cada array em ordem crescente.
+
+Monte um terceiro array `c`, já ordenado, com todos os valores de `a` e `b`. Para isso, percorra `a` e `b` ao mesmo tempo, copiando sempre o menor valor que ainda não foi usado. Não ordene `c` depois de montado.
+
+Mostre `a`, `b` e `c`.
+
+Este exercício continua no próximo slide.
+
+---
+
+<!-- fit -->
+
+# Exercício 12 (continuação)
+
+Função sugerida:
+
+```cpp
+int intercalar(int a[MAX], int na, int b[MAX], int nb, int c[MAX]);
+```
+
+A função devolve o tamanho de `c`.
+
+Considere `n + m <= MAX`.
+
+---
+
+<!-- fit -->
+
+# Desafio Extra - Baralho Embaralhado
+
+Crie um array com os valores `1, 2, ..., n`.
+
+Embaralhe o array: repita `n` vezes a troca entre duas posições sorteadas.
+
+Mostre o array embaralhado.
+
+Depois, ordene o array com o método bolha, contando quantas trocas foram feitas, e mostre o array ordenado e o número de trocas.
+
+Funções sugeridas:
+
+```cpp
+void embaralhar(int v[MAX], int n);
+int ordenar_contando_trocas(int v[MAX], int n);
+```

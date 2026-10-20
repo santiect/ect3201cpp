@@ -182,6 +182,9 @@ Ao gerar novos materiais:
   - lista como `Lista NN - Exercícios da Aula NN`;
   - laboratório como `Laboratório NN - Prática da Aula NN`.
 - Mantenha a identificação da disciplina e do professor no cabeçalho inicial.
+- **Regra:** todo o conteúdo de um slide deve caber na página, sem ultrapassar a área útil. Se não couber, divida em dois slides. Não reduza o texto nem confie apenas em estimativa visual.
+  - Ao criar ou alterar aula, laboratório ou lista, renderize com o Marp (`marp --theme theme/ect.css --html arquivo.md`) e meça a altura de cada `section` em 1280x720; o conteúdo deve terminar até cerca de 44 px antes da borda inferior (limite de 676 px).
+  - Slides acima do limite devem ser divididos antes de entregar o material.
 - Se o conteúdo de um slide não couber bem em uma página, divida-o em dois slides.
   - Nesses casos, sinalize explicitamente a continuidade, com algo como:
     - `Este exercício continua no próximo slide.`
