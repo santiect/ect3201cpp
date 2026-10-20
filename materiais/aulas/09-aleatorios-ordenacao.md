@@ -112,6 +112,21 @@ Ao final, mostre a frequência de cada face.
 ---
 
 <!-- fit -->
+# Exemplo 3
+
+Crie um jogo de cara ou coroa.
+
+O programa deve perguntar quantas rodadas serão jogadas.
+
+Em cada rodada, o usuário escolhe `cara` ou `coroa`.
+
+O computador sorteia o resultado e informa se o usuário acertou.
+
+Ao final, mostre a quantidade de acertos.
+
+---
+
+<!-- fit -->
 # Dados Aleatórios para Testes
 
 Arrays preenchidos com valores aleatórios ajudam a testar programas.
@@ -174,26 +189,11 @@ No método bolha, a troca acontece entre posições vizinhas.
 ---
 
 <!-- fit -->
-# Exemplo 3
+# Exemplo 4
 
 Crie um procedimento que ordene um array de inteiros em ordem crescente usando o método bolha.
 
 No programa principal, leia os valores do array, ordene o array e mostre o resultado.
-
----
-
-<!-- fit -->
-# Exemplo 4
-
-Crie um jogo de cara ou coroa.
-
-O programa deve perguntar quantas rodadas serão jogadas.
-
-Em cada rodada, o usuário escolhe `cara` ou `coroa`.
-
-O computador sorteia o resultado e informa se o usuário acertou.
-
-Ao final, mostre a quantidade de acertos.
 
 ---
 
